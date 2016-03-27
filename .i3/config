@@ -158,6 +158,6 @@ bar {
 bindsym $mod+shift+x exec lock
 
 exec xrandr --output DisplayPort-0 --off --output DVI-1 --off --output DVI-0 --mode 1366x768 --pos 1920x312 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal
-
+exec_always feh --bg-scale ~/Pictures/wallpaper.png 
 exec_always compton
 exec google-chrome
