@@ -5,7 +5,8 @@ font pango: System San Francisco Display 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 bindsym $mod+Shift+q kill
 
@@ -46,16 +47,16 @@ bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
 
-set $workspace1 "1: Main Program "
-set $workspace2 "2: Terminals "
+set $workspace1 "1: Main Program"
+set $workspace2 "2"
 set $workspace3 "3"
 set $workspace4 "4"
 set $workspace5 "5"
 set $workspace6 "6"
 set $workspace7 "7"
 set $workspace8 "8"
-set $workspace9 "9: Communication "
-set $workspace10 "10: Chrome "
+set $workspace9 "9: Communication"
+set $workspace10 "10: Chrome"
 
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
@@ -81,7 +82,6 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class = "google-chrome"] $workspace10
 assign [class = "Skype"] $workspace9
-assign [class = "Gnome-terminal"] $workspace2
 assign [class = "Unity"] $workspace1
 
 workspace $workspace1 output DFP5
@@ -138,8 +138,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 hide_edge_borders both
 
-gaps inner 15
-gaps outer -5
+gaps inner 13
+gaps outer -3
 smart_gaps on
 
 bar {
@@ -158,6 +158,7 @@ bar {
 bindsym $mod+shift+x exec lock
 
 exec xrandr --output DisplayPort-0 --off --output DVI-1 --off --output DVI-0 --mode 1366x768 --pos 1920x312 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal
-exec_always feh --bg-scale ~/Pictures/wallpaper.png 
+exec feh --bg-scale ~/Pictures/wallpaper.png 
 exec_always compton
 exec google-chrome
+exec_always /etc/cron.hourly/reddit_wallpaper.php
