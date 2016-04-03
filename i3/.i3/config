@@ -138,8 +138,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 hide_edge_borders both
 
-gaps inner 13
-gaps outer -3
+gaps inner 8
+# gaps outer -2
 smart_gaps on
 
 bar {
@@ -162,3 +162,4 @@ exec feh --bg-scale ~/Pictures/wallpaper.png
 exec_always compton
 exec google-chrome
 exec_always /etc/cron.hourly/reddit_wallpaper.php
+new_window 1pixel
