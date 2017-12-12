@@ -1,10 +1,3 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -19,4 +12,6 @@ function feh() {
 (wal -r &)
 
 alias tymscar="ssh root@tymscar.com"
+alias povestime="ssh root@povesti.me"
 alias vim="nvim"
+alias ls="exa"
