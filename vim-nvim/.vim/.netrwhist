@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/tymscar/.config'
-let g:netrw_dirhist_2='/Users/tymscar/.config/neofetch'
-let g:netrw_dirhist_3='/Volumes/boot/wpa_supplicant.conf'
-let g:netrw_dirhist_4='/Users/tymscar/donorium-android'
-let g:netrw_dirhist_5='/Users/tymscar/.ssh'
-let g:netrw_dirhist_6='/Users/tymscar/.chunkwm_plugins'
-let g:netrw_dirhist_7='/usr/local/var/log/chunkwm'

@@ -1,17 +1,14 @@
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+export ZSH="$HOME/.oh-my-zsh"
 
-# Customize to your needs...
+ZSH_THEME="aditya"
 
-function feh() {
-	open -b "drabweb.macfeh" "$@"
-}
+plugins=(git)
 
-(wal -r &)
+source $ZSH/oh-my-zsh.sh
 
-alias tymscar="ssh root@tymscar.com"
-alias povestime="ssh root@povesti.me"
-alias vim="nvim"
-alias ls="exa"
+source /usr/share/nvm/init-nvm.sh
+
+alias ls="lsd"
+alias cat="bat"
+path+=('/home/tymscar/.local/bin')
+export PATH
