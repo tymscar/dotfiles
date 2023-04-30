@@ -87,6 +87,7 @@ in
       bars = [ ];
 
       startup = [
+        { command = "systemctl --user restart polybar"; always = true; notification = false; }
         { command = "feh --bg-tile ${wallpaper} &"; always = true; notification = true; }
       ];
     };

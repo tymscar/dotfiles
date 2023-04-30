@@ -25,8 +25,8 @@ in
         ui = {
           always_show_tabs = "1";
           max_tab_chars = "32";
-          win_width = "1200";
-          win_height = "500";
+          win_width = "1000";
+          win_height = "1000";
           splitter_pos = "150";
           media_in_new_tab = "0";
           desktop_folder_new_win = "0";

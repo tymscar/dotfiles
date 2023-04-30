@@ -51,6 +51,17 @@ in
 
   services.gpg-agent.pinentryFlavor = "gtk2";
 
+  gtk = {
+    enable = true;
+    theme = {
+            package = pkgs.catppuccin-gtk;
+            name = "Catppuccin-Frappe-Standard-Blue-Dark";
+    };
+    iconTheme = {
+            package = pkgs.vimix-icon-theme;
+            name = "Vimix";
+    };
+  };
 
   home.stateVersion = "22.11";
 }

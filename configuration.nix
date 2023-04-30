@@ -64,6 +64,8 @@
     enableSSHSupport = true;
   };
 
+  programs.dconf.enable = true;
+
   services = {
     pipewire = {
       enable = true;
