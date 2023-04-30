@@ -107,6 +107,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    cifs-utils
     git
     killall
     lsof
