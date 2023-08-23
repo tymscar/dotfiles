@@ -1,3 +1,4 @@
+
 {
   description = "Tymscar's system configuration";
 
@@ -13,19 +14,26 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      nixosConfigurations.bender = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./configuration.nix
-          homeManager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.tymscar = import ./home.nix;
-          }
-        ];
+
+      deviceConfig = device: {
+        "${device}" = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./devices/${device}/configuration.nix
+            homeManager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.tymscar = import ./devices/${device}/home.nix;
+            }
+          ];
+        };
       };
+
+      deviceNames = [ "bender" "vm" ];
+    in {
+      nixosConfigurations =
+        builtins.foldl' (acc: device: acc // deviceConfig device) { }
+        deviceNames;
     };
 }
