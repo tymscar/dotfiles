@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, hostname, ... }:
 
 let
   commonConfig = import ../../common/configuration.nix {
-    inherit config pkgs;
+    inherit pkgs;
     overrides = {
-      networking.hostName = "bender";
+      networking.hostName = hostname;
 
       swapDevices = pkgs.lib.mkForce [ ];
 

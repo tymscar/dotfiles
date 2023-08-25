@@ -1,4 +1,4 @@
-{ config, pkgs, overrides ? { }, ... }:
+{ pkgs, overrides ? { }, ... }:
 
 {
   boot.loader = {
@@ -50,7 +50,6 @@
     nixpkgs-fmt
     pciutils
     pinentry-gtk2
-    vim
     wget
   ];
 

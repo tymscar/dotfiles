@@ -4,13 +4,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixneovimplugins.url = github:jooooscha/nixpkgs-vim-extra-plugins;
     homeManager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, homeManager }:
+  outputs = { self, nixpkgs, nixneovimplugins, homeManager }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -19,7 +20,12 @@
         "${device}" = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./devices/${device}/configuration.nix
+            {
+              nixpkgs.overlays = [
+                nixneovimplugins.overlays.default
+              ];
+            }
+            (import ./devices/${device}/configuration.nix { hostname = device; pkgs = pkgs; })
             homeManager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
