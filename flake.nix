@@ -1,10 +1,9 @@
-
 {
   description = "Tymscar's system configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixneovimplugins.url = github:jooooscha/nixpkgs-vim-extra-plugins;
+    nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
     homeManager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,9 +36,10 @@
       };
 
       deviceNames = [ "bender" "vm" ];
-    in {
+    in
+    {
       nixosConfigurations =
         builtins.foldl' (acc: device: acc // deviceConfig device) { }
-        deviceNames;
+          deviceNames;
     };
 }
