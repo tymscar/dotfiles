@@ -4,11 +4,13 @@ let
   commonHomeConfig = import ../../common/home.nix {
     inherit pkgs config;
     extraPackages = with pkgs; [
-        nodejs_20
-        cargo rustc
+      nodejs_20
+      cargo
+      rustc
     ];
   };
-in {
+in
+{
   imports = [
     ../../apps/zsh
     ../../apps/git

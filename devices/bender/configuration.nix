@@ -59,4 +59,5 @@ let
       };
     };
   };
-in { imports = [ ./hardware-configuration.nix ]; } // commonConfig
+in
+{ imports = [ ./hardware-configuration.nix ]; } // commonConfig

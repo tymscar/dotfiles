@@ -46,7 +46,8 @@ let
       };
     };
   };
-in {
+in
+{
   imports = [
     ./apps/zsh
     ./apps/pcmanfm
