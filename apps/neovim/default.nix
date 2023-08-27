@@ -15,6 +15,7 @@ let
     "nvim/lua/plugins/lsp.lua".source = ./config/plugins/lsp.lua;
     "nvim/lua/plugins/cmp.lua".source = ./config/plugins/cmp.lua;
     "nvim/lua/plugins/treesitter.lua".source = ./config/plugins/treesitter.lua;
+    "nvim/lua/plugins/toggleterm.lua".source = ./config/plugins/toggleterm.lua;
   };
 
 in
@@ -53,6 +54,8 @@ in
       neodev-nvim
       nvim-treesitter.withAllGrammars
       minimap-vim
+      copilot-vim
+      toggleterm-nvim
     ];
   };
 

@@ -13,3 +13,5 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 keymap.set("n", "<leader>mm", ":MinimapToggle<cr>")
+
+keymap.set("n", "<leader>tt", ":lua _TOGGLE_ZSH()<CR>")
