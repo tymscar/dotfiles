@@ -16,6 +16,7 @@ let
     "nvim/lua/plugins/cmp.lua".source = ./config/plugins/cmp.lua;
     "nvim/lua/plugins/treesitter.lua".source = ./config/plugins/treesitter.lua;
     "nvim/lua/plugins/toggleterm.lua".source = ./config/plugins/toggleterm.lua;
+    "nvim/lua/plugins/alpha.lua".source = ./config/plugins/alpha.lua;
   };
 
 in
@@ -27,35 +28,36 @@ in
     vimAlias = true;
 
     extraPackages = with pkgs; [
+      code-minimap
       fd
       gccgo
       lua-language-server
+      nil
       nodePackages.typescript
       nodePackages.typescript-language-server
-      nil
-      code-minimap
     ];
 
     # list of possible plugins: https://github.com/NixNeovim/NixNeovimPlugins/blob/main/plugins.md
     plugins = with pkgs.vimExtraPlugins; with pkgs.vimPlugins; [
-      catppuccin
-      Comment-nvim
-      plenary-nvim
-      nvim-tree-lua
-      nvim-web-devicons
-      lualine-nvim
-      telescope-nvim
-      which-key-nvim
-      nvim-lspconfig
-      nvim-cmp
-      cmp-nvim-lsp
-      LuaSnip
+      alpha-nvim
       cmp-luasnip
-      neodev-nvim
-      nvim-treesitter.withAllGrammars
-      minimap-vim
+      cmp-nvim-lsp
+      Comment-nvim
       copilot-vim
+      kanagawa-nvim
+      lualine-nvim
+      LuaSnip
+      minimap-vim
+      neodev-nvim
+      nvim-cmp
+      nvim-lspconfig
+      nvim-tree-lua
+      nvim-treesitter.withAllGrammars
+      nvim-web-devicons
+      plenary-nvim
+      telescope-nvim
       toggleterm-nvim
+      which-key-nvim
     ];
   };
 

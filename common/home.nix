@@ -14,6 +14,7 @@
       p7zip
       jetbrains-mono
       (jetbrains.plugins.addPlugins jetbrains.webstorm [ "github-copilot" ])
+      cmatrix
     ] ++ extraPackages;
 
   home.stateVersion = "22.11";
