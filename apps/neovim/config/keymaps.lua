@@ -15,3 +15,6 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 keymap.set("n", "<leader>mm", ":MinimapToggle<cr>")
 
 keymap.set("n", "<leader>tt", ":lua _TOGGLE_ZSH()<CR>")
+keymap.set("n", "<leader>gg", ":lua _TOGGLE_LAZYGIT()<CR>")
+
+keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")

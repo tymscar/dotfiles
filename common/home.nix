@@ -9,6 +9,7 @@
       gnupg
       gotop
       htop
+      lazygit
       lsd
       neofetch
       p7zip

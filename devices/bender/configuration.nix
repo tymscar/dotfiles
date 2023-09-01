@@ -1,4 +1,4 @@
-{ pkgs, hostname, ... }:
+{ pkgs, hostname, config, ... }:
 
 let
   commonConfig = import ../../common/configuration.nix {

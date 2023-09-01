@@ -16,3 +16,13 @@ local zshTerm = Terminal:new({
 function _TOGGLE_ZSH()
     zshTerm:toggle()
 end
+
+local lazyGitTerm = Terminal:new({
+    cmd = "lazygit",
+    hidden = true,
+    direction = "tab",
+});
+
+function _TOGGLE_LAZYGIT()
+    lazyGitTerm:toggle()
+end
