@@ -58,3 +58,20 @@ lspconfig.nil_ls.setup {
         },
     },
 }
+
+lspconfig.rust_analyzer.setup {
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy",
+            },
+            workspace = {
+                symbol = {
+                    search = {
+                        kind = "all_symbols"
+                    }
+                }
+            }
+        },
+    }
+}

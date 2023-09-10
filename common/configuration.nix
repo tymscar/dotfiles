@@ -61,6 +61,7 @@
     pciutils
     pinentry-gtk2
     wget
+    gcc_multi
   ];
 
   system.stateVersion = "22.11";

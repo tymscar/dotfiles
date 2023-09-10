@@ -33,6 +33,8 @@ in
       gccgo
       lua-language-server
       nil
+      rust-analyzer
+      clippy
       nodePackages.typescript
       nodePackages.typescript-language-server
     ];
