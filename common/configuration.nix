@@ -1,4 +1,4 @@
-{ pkgs, overrides ? { }, ... }:
+{ pkgs, rustrover, overrides ? { }, ... }:
 
 {
   boot.loader = {
@@ -62,6 +62,7 @@
     pinentry-gtk2
     wget
     gcc_multi
+    rustrover
   ];
 
   system.stateVersion = "22.11";

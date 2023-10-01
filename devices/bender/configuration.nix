@@ -1,8 +1,8 @@
-{ pkgs, hostname, config, ... }:
+{ pkgs, rustrover, hostname, config, ... }:
 
 let
   commonConfig = import ../../common/configuration.nix {
-    inherit pkgs;
+    inherit pkgs rustrover;
     overrides = {
       networking.hostName = hostname;
 
