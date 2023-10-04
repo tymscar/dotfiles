@@ -4,24 +4,16 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
-    rustrovernixpkgs.url = "github:NixOS/nixpkgs/72a455b13db608ba0a9dcf8b93fdbb35ea4a9311";
     homeManager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, rustrovernixpkgs, nixneovimplugins, homeManager }:
+  outputs = { self, nixpkgs, nixneovimplugins, homeManager }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      #rustroverPkgs = rustrovernixpkgs.legacyPackages.${system};
-      rustroverPkgs = import rustrovernixpkgs {
-        config = {
-          allowUnfree = true;
-        };
-        system = system;
-      };
 
       deviceConfig = device: {
         "${device}" = nixpkgs.lib.nixosSystem {
@@ -32,7 +24,7 @@
                 nixneovimplugins.overlays.default
               ];
             }
-            (import ./devices/${device}/configuration.nix { hostname = device; pkgs = pkgs; rustrover = rustroverPkgs.jetbrains.rust-rover; })
+            (import ./devices/${device}/configuration.nix { hostname = device; pkgs = pkgs; })
             homeManager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

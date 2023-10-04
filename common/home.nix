@@ -14,9 +14,8 @@
       neofetch
       p7zip
       jetbrains-mono
-      (jetbrains.plugins.addPlugins jetbrains.webstorm [ "github-copilot" ])
+      (jetbrains.plugins.addPlugins jetbrains.rust-rover [ "github-copilot" ])
       cmatrix
-
     ] ++ extraPackages;
 
   home.stateVersion = "22.11";
