@@ -16,6 +16,7 @@
       jetbrains-mono
       (jetbrains.plugins.addPlugins jetbrains.rust-rover [ "github-copilot" ])
       cmatrix
+      traceroute
     ] ++ extraPackages;
 
   home.stateVersion = "22.11";
