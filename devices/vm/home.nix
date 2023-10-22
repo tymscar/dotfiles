@@ -7,6 +7,10 @@ let
       nodejs_20
       cargo
       rustc
+      jetbrains.ruby-mine
+      crystal
+      shards
+      gnumake
     ];
   };
 in
