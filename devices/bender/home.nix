@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, nix-doom-emacs, ... }:
 
 let
   blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
@@ -49,6 +49,7 @@ let
 in
 {
   imports = [
+    nix-doom-emacs.hmModules
     ./apps/zsh
     ./apps/pcmanfm
     ./apps/i3wm
