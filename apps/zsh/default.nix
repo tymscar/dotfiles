@@ -13,7 +13,7 @@
       ls = "lsd";
       cat = "bat";
       vim = "nvim";
-      switch = "sudo nixos-rebuild switch --flake '.#vm'";
+      switch = "sudo nixos-rebuild switch --flake '.#bender'";
     };
   };
 

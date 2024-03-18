@@ -1,4 +1,4 @@
-{ pkgs, config, nix-doom-emacs, ... }:
+{ pkgs, config, ... }:
 
 let
   blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
@@ -26,36 +26,37 @@ let
       shutter
       usbimager
       vscode
-      (jetbrains.plugins.addPlugins jetbrains.webstorm [ "github-copilot" ])
+      lxappearance
       yubikey-manager
+      gedit
     ];
 
     overrides = {
       services.gpg-agent.pinentryFlavor = "gtk2";
 
-      gtk = {
-        enable = true;
-        theme = {
-          package = pkgs.catppuccin-gtk;
-          name = "Catppuccin-Frappe-Standard-Blue-Dark";
+        gtk = {
+          enable = true;
+          theme = {
+            name = "Catppuccin-Frappe-Standard-Blue-Dark ";
+            package = pkgs.catppuccin-gtk;
+          };
+          iconTheme = {
+            name = "Vimix";
+            package = pkgs.vimix-icon-theme;
+          };
         };
-        iconTheme = {
-          package = pkgs.vimix-icon-theme;
-          name = "Vimix";
-        };
-      };
     };
   };
 in
 {
   imports = [
-    nix-doom-emacs.hmModules
-    ./apps/zsh
-    ./apps/pcmanfm
-    ./apps/i3wm
-    ./apps/rofi
-    ./apps/polybar
-    ./apps/git
+    ../../apps/zsh
+    ../../apps/pcmanfm
+    ../../apps/i3wm
+    ../../apps/rofi
+    ../../apps/polybar
+    ../../apps/git
+    ../../apps/neovim
   ];
 
   home.packages = commonHomeConfig.home.packages;

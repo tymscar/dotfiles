@@ -14,7 +14,6 @@
       neofetch
       p7zip
       jetbrains-mono
-      (jetbrains.plugins.addPlugins jetbrains.rust-rover [ "github-copilot" ])
       cmatrix
       traceroute
     ] ++ extraPackages;

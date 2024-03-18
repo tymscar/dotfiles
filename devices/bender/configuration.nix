@@ -1,4 +1,4 @@
-{ pkgs, hostname, config, ... }:
+{ pkgs, hostname, ... }:
 
 let
   commonConfig = import ../../common/configuration.nix {
@@ -12,7 +12,6 @@ let
         pulseaudio.enable = false;
         opengl.enable = true;
         nvidia = {
-          package = config.boot.kernelPackages.nvidiaPackages.stable;
           modesetting.enable = true;
         };
       };
@@ -23,7 +22,8 @@ let
         hibernate.enable = false;
         hybrid-sleep.enable = false;
       };
-
+      
+      programs.zsh.enable = true;
       programs.dconf.enable = true;
 
       services = {
