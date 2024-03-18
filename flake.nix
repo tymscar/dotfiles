@@ -24,6 +24,7 @@
                 nixneovimplugins.overlays.default
               ];
             }
+            ./common/configuration.nix
             (import ./devices/${device}/configuration.nix { hostname = device; pkgs = pkgs;})
             homeManager.nixosModules.home-manager
             {
@@ -35,7 +36,7 @@
         };
       };
 
-      deviceNames = [ "bender" "vm" ];
+      deviceNames = [ "bender" ];
     in
     {
       nixosConfigurations =

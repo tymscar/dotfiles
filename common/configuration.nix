@@ -1,4 +1,4 @@
-{ pkgs, overrides ? { }, ... }:
+{ pkgs, ... }:
 
 {
   boot.loader = {
@@ -69,4 +69,4 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
-} // overrides
+}

@@ -1,4 +1,4 @@
-{ pkgs, config, extraPackages ? [ ], overrides ? { }, ... }:
+{ pkgs, config, ... }:
 
 {
   home.packages = with pkgs;
@@ -16,7 +16,7 @@
       jetbrains-mono
       cmatrix
       traceroute
-    ] ++ extraPackages;
+    ];
 
   home.stateVersion = "22.11";
-} // overrides
+}
