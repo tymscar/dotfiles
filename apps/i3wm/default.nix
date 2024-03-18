@@ -89,12 +89,14 @@ in
       startup = [
         { command = "systemctl --user restart polybar"; always = true; notification = false; }
         { command = "feh --bg-tile ${wallpaper} &"; always = true; notification = true; }
+        { command = "sudo killall sunshine && sudo sunshine &"; always = true; notification = false; }
       ];
     };
 
     extraConfig = ''
       for_window [class=".shutter-wrapped"] floating enable
       for_window [class="Pcmanfm"] floating enable
+      for_window [class="1Password"] floating enable
     '';
   };
 }

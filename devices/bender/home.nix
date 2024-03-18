@@ -2,6 +2,12 @@
 
 let
   blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
+  # https://github.com/NixOS/nixpkgs/issues/272221#issuecomment-1840482987
+  sunshineWithCuda = pkgs.sunshine.overrideAttrs (prev: {
+    runtimeDependencies = prev.runtimeDependencies ++ [
+      pkgs.linuxKernel.packages.linux_zen.nvidia_x11
+    ];
+  });
 in
 {
   imports = [
@@ -41,16 +47,21 @@ in
     lxappearance
     yubikey-manager
     gedit
+    sunshineWithCuda
   ];
 
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Frappe-Standard-Blue-Dark ";
-      package = pkgs.catppuccin-gtk;
+      name = "Catppuccin-Mocha-Compact-Red-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "red" ];
+        variant = "mocha";
+        size = "compact";
+      };
     };
     iconTheme = {
-      name = "Vimix";
+      name = "Vimix-dark";
       package = pkgs.vimix-icon-theme;
     };
   };
