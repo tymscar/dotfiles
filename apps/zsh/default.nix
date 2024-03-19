@@ -1,3 +1,4 @@
+{ config, specialArgs, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -13,7 +14,7 @@
       ls = "lsd";
       cat = "bat";
       vim = "nvim";
-      switch = "sudo nixos-rebuild switch --flake '.#bender'";
+      switch = "sudo nixos-rebuild switch --flake '.#${specialArgs.device}'";
     };
   };
 

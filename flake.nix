@@ -35,6 +35,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.tymscar = import ./devices/${device}/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit device;
+              };
             }
           ];
         };
