@@ -89,7 +89,7 @@ in
       startup = [
         { command = "systemctl --user restart polybar"; always = true; notification = false; }
         { command = "feh --bg-tile ${wallpaper} &"; always = true; notification = true; }
-        { command = "sudo killall sunshine && sudo sunshine &"; always = true; notification = false; }
+        { command = "sudo killall sunshine; sudo sunshine &"; always = true; notification = false; }
       ];
     };
 

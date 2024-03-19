@@ -1,6 +1,23 @@
 { pkgs, hostname, ... }:
 
-{
+let 
+  apple-color-emoji = pkgs.stdenv.mkDerivation {
+      name = "apple-color-emoji";
+      version = "16.4-patch.1";
+
+      src = pkgs.fetchurl {
+          url = "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
+          sha256 = "15assqyxax63hah0g51jd4d4za0kjyap9m2cgd1dim05pk7mgvfm";
+      };
+
+      phases = ["installPhase"];
+
+      installPhase = ''
+          mkdir -p $out/share/fonts/truetype/apple-color-emoji
+          cp $src $out/share/fonts/truetype/apple-color-emoji/AppleColorEmoji.ttf
+      '';
+  };
+in {
   imports = [ ./hardware-configuration.nix ];
   networking = {
     hostName = hostname;
@@ -39,10 +56,25 @@
       };
     };
 
-
-
   programs.zsh.enable = true;
   programs.dconf.enable = true;
+
+  fonts = {
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = ["JetBrainsMono" "Noto"]; })
+      apple-color-emoji
+    ];
+
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "JetBrains Mono" ];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
+        emoji = [ "Apple Color Emoji" ];
+      };
+    };
+  };
 
   services = {
     pipewire = {

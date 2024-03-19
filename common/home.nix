@@ -13,7 +13,6 @@
       lsd
       neofetch
       p7zip
-      jetbrains-mono
       cmatrix
       traceroute
     ];

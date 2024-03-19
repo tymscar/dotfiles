@@ -12,6 +12,8 @@ in
 {
   imports = [
     ../../common/home.nix
+    ../../apps/vscode
+    ../../apps/alacritty
     ../../apps/zsh
     ../../apps/pcmanfm
     ../../apps/i3wm
@@ -23,7 +25,6 @@ in
 
   home.packages = with pkgs; [
     _1password-gui
-    alacritty
     bat
     blenderWithCuda
     brave
@@ -43,7 +44,6 @@ in
     usbutils
     shutter
     usbimager
-    vscode
     lxappearance
     yubikey-manager
     gedit
