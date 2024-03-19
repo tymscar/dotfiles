@@ -12,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixneovimplugins, alacritty-theme, catppuccin-vsc, homeManager, ...}:
+  outputs = { self, nixpkgs, nixneovimplugins, alacritty-theme, catppuccin-vsc, homeManager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -20,6 +20,7 @@
       deviceConfig = device: {
         "${device}" = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit device; };
           modules = [
             {
               nixpkgs.overlays = [
@@ -29,15 +30,13 @@
               ];
             }
             ./common/configuration.nix
-            (import ./devices/${device}/configuration.nix { hostname = device; pkgs = pkgs;})
+            ./devices/${device}/configuration.nix
             homeManager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.tymscar = import ./devices/${device}/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit device;
-              };
+              home-manager.extraSpecialArgs = { inherit device; };
             }
           ];
         };

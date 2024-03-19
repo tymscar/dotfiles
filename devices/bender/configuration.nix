@@ -1,26 +1,27 @@
-{ pkgs, hostname, ... }:
+{ pkgs, device, ... }:
 
-let 
+let
   apple-color-emoji = pkgs.stdenv.mkDerivation {
-      name = "apple-color-emoji";
-      version = "16.4-patch.1";
+    name = "apple-color-emoji";
+    version = "16.4-patch.1";
 
-      src = pkgs.fetchurl {
-          url = "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
-          sha256 = "15assqyxax63hah0g51jd4d4za0kjyap9m2cgd1dim05pk7mgvfm";
-      };
+    src = pkgs.fetchurl {
+      url = "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
+      sha256 = "15assqyxax63hah0g51jd4d4za0kjyap9m2cgd1dim05pk7mgvfm";
+    };
 
-      phases = ["installPhase"];
+    phases = [ "installPhase" ];
 
-      installPhase = ''
-          mkdir -p $out/share/fonts/truetype/apple-color-emoji
-          cp $src $out/share/fonts/truetype/apple-color-emoji/AppleColorEmoji.ttf
-      '';
+    installPhase = ''
+      mkdir -p $out/share/fonts/truetype/apple-color-emoji
+      cp $src $out/share/fonts/truetype/apple-color-emoji/AppleColorEmoji.ttf
+    '';
   };
-in {
+in
+{
   imports = [ ./hardware-configuration.nix ];
   networking = {
-    hostName = hostname;
+    hostName = device;
     firewall = {
       enable = true;
       allowedTCPPorts = [ 22 80 443 3030 5173 48010 47989 47990 47984 47999 ];
@@ -61,7 +62,7 @@ in {
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = ["JetBrainsMono" "Noto"]; })
+      (nerdfonts.override { fonts = [ "JetBrainsMono" "Noto" ]; })
       apple-color-emoji
     ];
 
