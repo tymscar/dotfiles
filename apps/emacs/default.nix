@@ -1,6 +1,21 @@
+{ config, pkgs, ... }:
+
 {
-  services.doom-emacs = {
+  programs.emacs = {
     enable = true;
-    doomPrivateDir = ./doom.d;
+    extraConfig = builtins.readFile ./config.el;
+    extraPackages = epkgs: with epkgs;[
+      evil
+      general
+      which-key
+      magit
+      catppuccin-theme
+      all-the-icons
+      evil-collection
+      dashboard
+      spaceline-all-the-icons
+      all-the-icons-dired
+      all-the-icons-ibuffer
+    ];
   };
 }

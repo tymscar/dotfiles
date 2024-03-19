@@ -21,6 +21,7 @@ in
     ../../apps/polybar
     ../../apps/git
     ../../apps/neovim
+    ../../apps/emacs
   ];
 
   home.packages = with pkgs; [
@@ -48,6 +49,7 @@ in
     yubikey-manager
     gedit
     sunshineWithCuda
+    emacs-all-the-icons-fonts
   ];
 
   gtk = {
