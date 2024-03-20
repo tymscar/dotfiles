@@ -46,17 +46,6 @@ in
     hybrid-sleep.enable = false;
   };
 
-  systemd.services.sunshine =
-    {
-      description = "Sunshine Service";
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.sudo}/bin/sudo ${pkgs.sunshine}/bin/sunshine";
-        Restart = "always";
-      };
-    };
-
   programs.zsh.enable = true;
   programs.dconf.enable = true;
 

@@ -17,6 +17,8 @@
       helm
       helm-company
       helm-themes
+      lsp-mode
+      lsp-ui
       magit
       nix-mode
       spaceline-all-the-icons

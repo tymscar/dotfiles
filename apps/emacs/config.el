@@ -65,6 +65,16 @@
   "qq" '(save-buffers-kill-terminal :which-key "Quit Emacs")
   "qw" '(save-buffers-kill-emacs :which-key "Save and quit"))
 
+;; Git keybindings
+(my-leader-def
+  "g" '(:ignore t :which-key "Git")
+  "gg" '(magit :which-key "Magit"))
+
+;; LSP keybindings
+(my-leader-def
+  "l" '(:ignore t :which-key "LSP")
+  "lff" '(lsp-format-buffer :which-key "Format file"))
+
 ;; Font settings
 (set-face-attribute 'default nil :font "JetBrains Mono Nerd Font" :height 130)
 (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono Nerd Font" :height 130)
@@ -114,16 +124,25 @@
 (treesit-auto-add-to-auto-mode-alist 'all)
 (global-treesit-auto-mode)
 
-;; Eglot
-(require 'eglot)
-(add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
-(add-hook 'nix-mode-hook 'eglot-ensure)
-(add-to-list 'eglot-server-programs '(rust-ts-mode . ("rust-analyzer")))
-(add-hook 'rust-ts-mode-hook 'eglot-ensure)
-(add-hook 'eglot-managed-mode-hook (lambda () (company-mode 1)))
+;; LSP
+(require 'lsp-mode)
+(add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+(require 'lsp-ui)
+(setq lsp-ui-doc-show-with-cursor t)
+(setq lsp-ui-doc-position 'at-point) 
+(setq lsp-ui-sideline-show-diagnostics t) 
+(setq lsp-ui-sideline-show-hover t)
+(setq lsp-ui-sideline-delay 0)
+(add-hook 'nix-mode-hook #'lsp)
+(add-hook 'rust-ts-mode-hook #'lsp)
+(setq lsp-rust-server 'rust-analyzer)
+(setq lsp-nix-server 'nil)
+(setq lsp-ui-sideline-show-diagnostics 1)
+(setq lsp-ui-sideline-delay 0.25)
+(setq lsp-nix-nil-formatter ["nixpkgs-fmt"])
 
 ;; Company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-minimum-prefix-length 1)
-(setq company-idle-delay 0.1)
+(setq company-idle-delay 0.15)
