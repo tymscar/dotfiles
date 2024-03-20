@@ -49,7 +49,6 @@ in
     yubikey-manager
     gedit
     sunshineWithCuda
-    emacs-all-the-icons-fonts
   ];
 
   gtk = {

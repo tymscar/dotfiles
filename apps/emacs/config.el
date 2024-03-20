@@ -100,3 +100,6 @@
 (which-key-mode)
 (setq which-key-idle-delay 0.25)
 
+;; Tree-sitter
+(require 'treesit)
+

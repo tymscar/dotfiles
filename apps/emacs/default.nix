@@ -16,6 +16,8 @@
       spaceline-all-the-icons
       all-the-icons-dired
       all-the-icons-ibuffer
+      treesit-grammars.with-all-grammars
     ];
   };
+  home.packages = [ pkgs.emacs-all-the-icons-fonts ];
 }
