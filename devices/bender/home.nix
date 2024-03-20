@@ -29,26 +29,28 @@ in
     bat
     blenderWithCuda
     brave
+    cargo
     discord
     feh
     fsv
+    gedit
     gnupg
     gotop
     htop
     lsd
+    lxappearance
     neofetch
     p7zip
     pavucontrol
     pcmanfm
     polybar
     rofi
-    usbutils
+    rust-analyzer
     shutter
-    usbimager
-    lxappearance
-    yubikey-manager
-    gedit
     sunshineWithCuda
+    usbimager
+    usbutils
+    yubikey-manager
   ];
 
   gtk = {

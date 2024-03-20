@@ -39,7 +39,7 @@
 
 ;; Emulate Mx
 (my-leader-def
-  "\:" '(execute-extended-command :which-key "Execute command"))
+  "\:" '(helm-M-x :which-key "Execute command"))
 
 ;; Window keybindings
 (my-leader-def
@@ -57,7 +57,7 @@
 (my-leader-def
   "f" '(:ignore t :which-key "File")
   "fs" '(save-buffer :which-key "Save file")
-  "ff" '(find-file :which-key "Find file"))
+  "ff" '(helm-find-files :which-key "Find file"))
 
 ;; Quit keybindings
 (my-leader-def
@@ -100,6 +100,30 @@
 (which-key-mode)
 (setq which-key-idle-delay 0.25)
 
+;; Helm
+(require 'helm)
+(require 'helm-autoloads)
+(require 'helm-themes)
+(helm-mode 1)
+
 ;; Tree-sitter
 (require 'treesit)
+(require 'nix-mode)
+(require 'treesit-auto)
+(customize-set-variable 'treesit-auto-install 'prompt)
+(treesit-auto-add-to-auto-mode-alist 'all)
+(global-treesit-auto-mode)
 
+;; Eglot
+(require 'eglot)
+(add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+(add-hook 'nix-mode-hook 'eglot-ensure)
+(add-to-list 'eglot-server-programs '(rust-ts-mode . ("rust-analyzer")))
+(add-hook 'rust-ts-mode-hook 'eglot-ensure)
+(add-hook 'eglot-managed-mode-hook (lambda () (company-mode 1)))
+
+;; Company
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0.1)

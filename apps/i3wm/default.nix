@@ -16,23 +16,14 @@ in
 
       keybindings = {
         "Mod4+w" = "kill";
-        "Mod4+j" = "focus left";
-        "Mod4+k" = "focus down";
-        "Mod4+l" = "focus up";
-        "Mod4+semicolon" = "focus right";
-        "Mod4+Left" = "focus left";
-        "Mod4+Down" = "focus down";
-        "Mod4+Up" = "focus up";
-        "Mod4+Right" = "focus right";
+        "Mod4+h" = "focus left";
+        "Mod4+j" = "focus down";
+        "Mod4+k" = "focus up";
+        "Mod4+l" = "focus right";
         "Mod4+Shift+h" = "move left";
         "Mod4+Shift+j" = "move down";
         "Mod4+Shift+k" = "move up";
         "Mod4+Shift+l" = "move right";
-        "Mod4+Shift+Left" = "move left";
-        "Mod4+Shift+Down" = "move down";
-        "Mod4+Shift+Up" = "move up";
-        "Mod4+Shift+Right" = "move right";
-        "Mod4+h" = "split h";
         "Mod4+v" = "split v";
         "Mod4+f" = "fullscreen toggle";
         "Mod4+Shift+space" = "floating toggle";
