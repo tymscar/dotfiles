@@ -73,13 +73,13 @@
 ;; LSP keybindings
 (my-leader-def
   "l" '(:ignore t :which-key "LSP")
+  "lc" '(evilnc-comment-or-uncomment-lines :which-key "Comment out lines")
   "lff" '(lsp-format-buffer :which-key "Format file"))
 
 ;; Font settings
 (set-face-attribute 'default nil :font "JetBrains Mono Nerd Font" :height 130)
 (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono Nerd Font" :height 130)
 (set-face-attribute 'variable-pitch nil :font "JetBrains Mono Nerd Font" :height 130 :weight 'regular)
-
 
 ;; Doom Emacs start screen
 (require 'dashboard)
@@ -97,13 +97,17 @@
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 (add-hook 'ibuffer-mode-hook #'all-the-icons-ibuffer-mode)
 
-;; Spaceline
-(require 'spaceline-all-the-icons) 
-(setq spaceline-all-the-icons-separator-type 'none)
-(setq spaceline-all-the-icons-spacer-size 0)
-(set-face-attribute 'mode-line nil :height 100)
-(set-face-attribute 'mode-line-inactive nil :height 100)
-(spaceline-all-the-icons-theme)
+;; Doom modeline
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+(setq doom-modeline-height 20)
+(setq doom-modeline-bar-width 0)
+(setq doom-modeline-total-line-number t)
+(setq doom-modeline-vcs-max-length 10)
+(setq doom-modeline-lsp t)
+(setq doom-modeline-modal t)
+(setq doom-modeline-modal-icon t)
+(setq doom-modeline-modal-modern-icon t)
 
 ;; Which-key
 (require 'which-key)
@@ -126,6 +130,7 @@
 
 ;; LSP
 (require 'lsp-mode)
+(add-hook 'after-save-hook 'lsp-format-buffer)
 (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
 (require 'lsp-ui)
 (setq lsp-ui-doc-show-with-cursor t)
@@ -139,7 +144,7 @@
 (setq lsp-nix-server 'nil)
 (setq lsp-ui-sideline-show-diagnostics 1)
 (setq lsp-ui-sideline-delay 0.25)
-(setq lsp-nix-nil-formatter ["nixpkgs-fmt"])
+(setq lsp-nix-nil-formatter ["nixfmt"])
 
 ;; Company
 (require 'company)
