@@ -6,7 +6,8 @@ let
     version = "16.4-patch.1";
 
     src = pkgs.fetchurl {
-      url = "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
+      url =
+        "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
       sha256 = "15assqyxax63hah0g51jd4d4za0kjyap9m2cgd1dim05pk7mgvfm";
     };
 
@@ -17,8 +18,7 @@ let
       cp $src $out/share/fonts/truetype/apple-color-emoji/AppleColorEmoji.ttf
     '';
   };
-in
-{
+in {
   imports = [ ./hardware-configuration.nix ];
   networking = {
     hostName = device;
@@ -34,9 +34,7 @@ in
   hardware = {
     pulseaudio.enable = false;
     opengl.enable = true;
-    nvidia = {
-      modesetting.enable = true;
-    };
+    nvidia = { modesetting.enable = true; };
   };
 
   systemd.targets = {
@@ -51,14 +49,14 @@ in
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "Noto" ]; })
+      (nerdfonts.override { fonts = [ "Monaspace" "Noto" ]; })
       apple-color-emoji
     ];
 
     fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [ "JetBrains Mono" ];
+        monospace = [ "Monaspace" ];
         serif = [ "Noto Serif" ];
         sansSerif = [ "Noto Sans" ];
         emoji = [ "Apple Color Emoji" ];
@@ -75,11 +73,10 @@ in
     };
     getty.autologinUser = "tymscar";
     xserver = {
-      xkb =
-        {
-          layout = "us";
-          variant = "";
-        };
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
       videoDrivers = [ "nvidia" ];
       enable = true;
       desktopManager = { xterm.enable = false; };

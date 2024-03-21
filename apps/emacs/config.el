@@ -59,6 +59,11 @@
   "fs" '(save-buffer :which-key "Save file")
   "ff" '(helm-find-files :which-key "Find file"))
 
+;; Search keybindings
+(my-leader-def
+  "s" '(:ignore t :which-key "Search")
+  "st" '(helm-do-grep-ag :which-key "Search Text"))
+
 ;; Quit keybindings
 (my-leader-def
   "q" '(:ignore t :which-key "Quit")
@@ -77,9 +82,9 @@
   "lff" '(lsp-format-buffer :which-key "Format file"))
 
 ;; Font settings
-(set-face-attribute 'default nil :font "JetBrains Mono Nerd Font" :height 130)
-(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono Nerd Font" :height 130)
-(set-face-attribute 'variable-pitch nil :font "JetBrains Mono Nerd Font" :height 130 :weight 'regular)
+(set-face-attribute 'default nil :font "MonaspiceNe Nerd Font Propo" :height 130)
+(set-face-attribute 'fixed-pitch nil :font "MonaspiceNe Nerd Font Propo" :height 130)
+(set-face-attribute 'variable-pitch nil :font "MonaspiceNe Nerd Font Propo" :height 130 :weight 'regular)
 
 ;; Doom Emacs start screen
 (require 'dashboard)

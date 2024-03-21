@@ -1,9 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  fontFamily = "JetBrainsMono Nerd Font";
-in
-{
+let fontFamily = "MonaspiceNe Nerd Font Propo";
+in {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -14,9 +12,7 @@ in
           y = 12;
         };
       };
-      scrolling = {
-        history = 99999;
-      };
+      scrolling = { history = 99999; };
       font = {
         normal = {
           family = fontFamily;
