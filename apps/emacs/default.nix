@@ -9,10 +9,10 @@
         all-the-icons
         all-the-icons-dired
         all-the-icons-ibuffer
-        catppuccin-theme
         company
         dashboard
         doom-modeline
+        dracula-theme
         evil
         evil-collection
         evil-nerd-commenter

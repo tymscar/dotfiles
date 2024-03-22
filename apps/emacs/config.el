@@ -93,9 +93,9 @@
 (setq dashboard-center-content t)
 (setq dashboard-items '((recents  . 10)))
 
-;; Doom themes
-(require 'catppuccin-theme)
-(load-theme 'catppuccin t)
+;; Dracula theme
+(require 'dracula-theme)
+(load-theme 'dracula t)
 
 ;; All-the-icons
 (require 'all-the-icons)

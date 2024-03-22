@@ -1,21 +1,20 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
-  home.packages = with pkgs;
-    [
-      bat
-      tree
-      ripgrep
-      gnupg
-      gotop
-      htop
-      lazygit
-      lsd
-      neofetch
-      p7zip
-      cmatrix
-      traceroute
-    ];
+  home.packages = with pkgs; [
+    bat
+    tree
+    ripgrep
+    gnupg
+    gotop
+    htop
+    lazygit
+    lsd
+    neofetch
+    p7zip
+    cmatrix
+    traceroute
+  ];
 
   home.stateVersion = "22.11";
 }

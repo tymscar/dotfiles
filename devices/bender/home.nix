@@ -1,15 +1,13 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
   blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
   # https://github.com/NixOS/nixpkgs/issues/272221#issuecomment-1840482987
   sunshineWithCuda = pkgs.sunshine.overrideAttrs (prev: {
-    runtimeDependencies = prev.runtimeDependencies ++ [
-      pkgs.linuxKernel.packages.linux_zen.nvidia_x11
-    ];
+    runtimeDependencies = prev.runtimeDependencies
+      ++ [ pkgs.linuxKernel.packages.linux_zen.nvidia_x11 ];
   });
-in
-{
+in {
   imports = [
     ../../common/home.nix
     ../../apps/vscode
@@ -56,16 +54,12 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Compact-Red-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "red" ];
-        variant = "mocha";
-        size = "compact";
-      };
+      name = "Dracula";
+      package = pkgs.dracula-theme;
     };
     iconTheme = {
-      name = "Vimix-dark";
-      package = pkgs.vimix-icon-theme;
+      name = "Dracula";
+      package = pkgs.dracula-icon-theme;
     };
   };
 }

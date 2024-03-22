@@ -1,14 +1,14 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.vscode = {
     enable = true;
-    extensions = [
-      pkgs.vscode-extensions.bbenoist.nix
-      (pkgs.catppuccin-vsc.override { accent = "red"; })
+    extensions = with pkgs.vscode-extensions; [
+      bbenoist.nix
+      dracula-theme.theme-dracula
     ];
     userSettings = {
-      "workbench.colorTheme" = "Catppuccin Macchiato";
+      "workbench.colorTheme" = "Dracula";
       "window.titleBarStyle" = "custom";
     };
   };

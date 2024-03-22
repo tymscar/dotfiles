@@ -3,6 +3,6 @@
 {
   programs.rofi = {
     enable = true;
-    theme = builtins.toPath ./catppuccin-mocha.rasi;
+    theme = builtins.toPath ./dracula.rasi;
   };
 }
