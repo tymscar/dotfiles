@@ -19,8 +19,7 @@ let
     "nvim/lua/plugins/alpha.lua".source = ./config/plugins/alpha.lua;
   };
 
-in
-{
+in {
   programs.neovim = {
     defaultEditor = true;
     enable = true;
@@ -40,27 +39,28 @@ in
     ];
 
     # list of possible plugins: https://github.com/NixNeovim/NixNeovimPlugins/blob/main/plugins.md
-    plugins = with pkgs.vimExtraPlugins; with pkgs.vimPlugins; [
-      alpha-nvim
-      cmp-luasnip
-      cmp-nvim-lsp
-      Comment-nvim
-      copilot-vim
-      kanagawa-nvim
-      lualine-nvim
-      LuaSnip
-      minimap-vim
-      neodev-nvim
-      nvim-cmp
-      nvim-lspconfig
-      nvim-tree-lua
-      nvim-treesitter.withAllGrammars
-      nvim-web-devicons
-      plenary-nvim
-      telescope-nvim
-      toggleterm-nvim
-      which-key-nvim
-    ];
+    plugins = with pkgs.vimExtraPlugins;
+      with pkgs.vimPlugins; [
+        Comment-nvim
+        LuaSnip
+        alpha-nvim
+        cmp-luasnip
+        cmp-nvim-lsp
+        copilot-vim
+        dracula-nvim
+        lualine-nvim
+        minimap-vim
+        neodev-nvim
+        nvim-cmp
+        nvim-lspconfig
+        nvim-tree-lua
+        nvim-treesitter.withAllGrammars
+        nvim-web-devicons
+        plenary-nvim
+        telescope-nvim
+        toggleterm-nvim
+        which-key-nvim
+      ];
   };
 
   xdg.configFile = configFileMap;
