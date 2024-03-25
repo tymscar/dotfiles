@@ -19,11 +19,14 @@
         general
         helm
         helm-company
+        helm-projectile
+        helm-rg
         helm-themes
         lsp-mode
         lsp-ui
         magit
         nix-mode
+        projectile
         treesit-auto
         treesit-grammars.with-all-grammars
         which-key

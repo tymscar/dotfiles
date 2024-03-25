@@ -57,12 +57,12 @@
 (my-leader-def
   "f" '(:ignore t :which-key "File")
   "fs" '(save-buffer :which-key "Save file")
-  "ff" '(helm-find-files :which-key "Find file"))
+  "ff" '(helm-projectile-find-file :which-key "Find file"))
 
 ;; Search keybindings
 (my-leader-def
   "s" '(:ignore t :which-key "Search")
-  "st" '(helm-do-grep-ag :which-key "Search Text"))
+  "st" '(helm-projectile-rg :which-key "Search Text"))
 
 ;; Quit keybindings
 (my-leader-def
@@ -89,9 +89,11 @@
 ;; Doom Emacs start screen
 (require 'dashboard)
 (dashboard-setup-startup-hook)
+(setq dashboard-projects-backend 'projectile)
 (setq dashboard-startup-banner 'logo)
 (setq dashboard-center-content t)
-(setq dashboard-items '((recents  . 10)))
+(setq dashboard-items '((recents  . 10)
+			(projects . 5)))
 
 ;; Dracula theme
 (require 'dracula-theme)
@@ -123,6 +125,7 @@
 (require 'helm)
 (require 'helm-autoloads)
 (require 'helm-themes)
+(require 'helm-projectile)
 (helm-mode 1)
 
 ;; Tree-sitter
@@ -156,3 +159,6 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-minimum-prefix-length 1)
 (setq company-idle-delay 0.15)
+
+;; Projectile
+(projectile-mode +1) 
