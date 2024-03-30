@@ -65,6 +65,12 @@ in {
   };
 
   services = {
+    sunshine = {
+      enable = true;
+      package = pkgs.sunshine;
+      openFirewall = true;
+      capSysAdmin = true;
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;

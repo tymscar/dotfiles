@@ -2,15 +2,6 @@
 
 let
   blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
-  sunshinePkgs = import (builtins.fetchGit {
-    url = "https://github.com/NixOS/nixpkgs";
-    rev = "de74b3be3e945106c947451fe4ae913f3db1d03f";
-  }) { system = pkgs.system; };
-  # https://github.com/NixOS/nixpkgs/issues/272221#issuecomment-1840482987
-  sunshineWithCuda = sunshinePkgs.sunshine.overrideAttrs (prev: {
-    runtimeDependencies = prev.runtimeDependencies
-      ++ [ pkgs.linuxKernel.packages.linux_zen.nvidia_x11 ];
-  });
 in {
   imports = [
     ../../common/home.nix
@@ -49,7 +40,6 @@ in {
     rofi
     rust-analyzer
     shutter
-    sunshineWithCuda
     usbimager
     usbutils
     yubikey-manager
