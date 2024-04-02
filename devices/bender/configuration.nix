@@ -4,28 +4,26 @@ let
   apple-color-emoji = pkgs.stdenv.mkDerivation {
     name = "apple-color-emoji";
     version = "16.4-patch.1";
-
     src = pkgs.fetchurl {
       url =
         "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
       sha256 = "15assqyxax63hah0g51jd4d4za0kjyap9m2cgd1dim05pk7mgvfm";
     };
-
     phases = [ "installPhase" ];
-
     installPhase = ''
       mkdir -p $out/share/fonts/truetype/apple-color-emoji
       cp $src $out/share/fonts/truetype/apple-color-emoji/AppleColorEmoji.ttf
     '';
   };
 in {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ../../apps/sunshine ];
+
   networking = {
     hostName = device;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 443 3030 5173 48010 47989 47990 47984 47999 ];
-      allowedUDPPorts = [ 53 47998 47999 48000 ];
+      allowedTCPPorts = [ 22 80 443 3030 5173 ];
+      allowedUDPPorts = [ 53 ];
     };
   };
 
@@ -65,12 +63,6 @@ in {
   };
 
   services = {
-    sunshine = {
-      enable = true;
-      package = pkgs.sunshine;
-      openFirewall = true;
-      capSysAdmin = true;
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;

@@ -79,11 +79,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711133180,
-        "narHash": "sha256-WJOahf+6115+GMl3wUfURu8fszuNeJLv9qAWFQl3Vmo=",
+        "lastModified": 1712016346,
+        "narHash": "sha256-O2nO7pD+krq+4HgkLB4VThRtAucIPfXDs/jJqCGlK1w=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1c2c5e4cabba4c43504ef0f8cc3f3dfa284e2dbb",
+        "rev": "4be0464472675212654dedf3e021bd5f1d58b92f",
         "type": "github"
       },
       "original": {
@@ -121,11 +121,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1711289814,
-        "narHash": "sha256-uyogH2yz6uVIX+WF6SrNOnLVHskXwP+gWaoiHhdDJ7o=",
+        "lastModified": 1711906790,
+        "narHash": "sha256-fGHpdToU6MQ1rGSUvXn0zZcSuSY5WnX5Wt4U/JAhyuA=",
         "owner": "jooooscha",
         "repo": "nixpkgs-vim-extra-plugins",
-        "rev": "6e4db0fa2fb3a08eff2b1d11879a2356f858bc98",
+        "rev": "29f833146718fe5ab7316adaa65950036072703b",
         "type": "github"
       },
       "original": {
@@ -186,16 +186,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1711451828,
-        "narHash": "sha256-vayQg4huHiU35E7o4MTsX84pA/7EozmLtdJ0PYj4FBM=",
+        "lastModified": 1711703276,
+        "narHash": "sha256-iMUFArF0WCatKK6RzfUJknjem0H9m4KgorO/p3Dopkk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2be8cd01945534bf8d0da96a3b51f35d7ade4afc",
+        "rev": "d8fe5e6c92d0d190646fb9f1056741a229980089",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "pull/294641/head",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -231,7 +231,24 @@
         "alacritty-theme": "alacritty-theme",
         "homeManager": "homeManager",
         "nixneovimplugins": "nixneovimplugins",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "sunshine-service-pr": "sunshine-service-pr"
+      }
+    },
+    "sunshine-service-pr": {
+      "locked": {
+        "lastModified": 1711847268,
+        "narHash": "sha256-SLTEJSykimcVTtye8jETxPWMbDdg2yMNFZTL9H3pBkg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c44ca352868d7c9e8ce5b1b90d7df28a28643be6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/294641/head",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "systems": {

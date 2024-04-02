@@ -2,7 +2,8 @@
   description = "Tymscar's system configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/pull/294641/head";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    sunshine-service-pr.url = "github:NixOS/nixpkgs/pull/294641/head";
     nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     homeManager = {
@@ -11,8 +12,8 @@
     };
   };
 
-  outputs =
-    { self, nixpkgs, nixneovimplugins, alacritty-theme, homeManager, ... }:
+  outputs = { self, nixpkgs, sunshine-service-pr, nixneovimplugins
+    , alacritty-theme, homeManager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -28,6 +29,7 @@
                 alacritty-theme.overlays.default
               ];
             }
+            "${sunshine-service-pr}/nixos/modules/services/networking/sunshine.nix"
             ./common/configuration.nix
             ./devices/${device}/configuration.nix
             homeManager.nixosModules.home-manager
