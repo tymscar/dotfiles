@@ -32,5 +32,5 @@
         which-key
       ];
   };
-  home.packages = with pkgs; [ emacs-all-the-icons-fonts nil nixfmt ];
+  home.packages = with pkgs; [ emacs-all-the-icons-fonts nil nixfmt-classic ];
 }

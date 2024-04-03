@@ -1,20 +1,20 @@
 { pkgs, ... }:
 
-let
-  blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
+let blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
 in {
   imports = [
     ../../common/home.nix
-    ../../apps/vscode
-    ../../apps/alacritty
-    ../../apps/zsh
-    ../../apps/pcmanfm
-    ../../apps/i3wm
-    ../../apps/rofi
-    ../../apps/polybar
-    ../../apps/git
-    ../../apps/neovim
-    ../../apps/emacs
+    ../../apps/home-manager/vscode
+    ../../apps/home-manager/alacritty
+    ../../apps/home-manager/zsh
+    ../../apps/home-manager/pcmanfm
+    ../../apps/home-manager/i3wm
+    ../../apps/home-manager/rofi
+    ../../apps/home-manager/polybar
+    ../../apps/home-manager/git
+    ../../apps/home-manager/neovim
+    ../../apps/home-manager/emacs
+    ../../apps/home-manager/gpg
   ];
 
   home.packages = with pkgs; [

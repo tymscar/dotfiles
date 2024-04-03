@@ -16,7 +16,11 @@ let
     '';
   };
 in {
-  imports = [ ./hardware-configuration.nix ../../apps/sunshine ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../apps/nixos/sunshine
+    ../../apps/nixos/gpg
+  ];
 
   networking = {
     hostName = device;
