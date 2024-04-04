@@ -75,6 +75,10 @@ in {
     };
     getty.autologinUser = "tymscar";
     xserver = {
+      deviceSection = ''
+        Option "ModeValidation" "AllowNonEdidModes"
+        Option "CustomEDID" "DP-0:${./EdidForIphoneUltrawide.bin}"
+      '';
       xkb = {
         layout = "us";
         variant = "";

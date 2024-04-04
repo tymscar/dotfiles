@@ -15,6 +15,14 @@ let
     config.allowUnfree = true;
     system = pkgs.system;
   }).sunshine;
+  connectionScript = pkgs.writeShellScriptBin "script" ''
+    export DISPLAY=:0
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --mode 2796x1290 --rate 140
+  '';
+  disconnectionScript = pkgs.writeShellScriptBin "script" ''
+    export DISPLAY=:0
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --mode 3440x1440 --rate 144
+  '';
 in {
   services = {
     sunshine = {
@@ -35,6 +43,10 @@ in {
         apps = [{
           name = "Desktop";
           image-path = "${image}";
+          prep-cmd = [{
+            do = "${connectionScript}/bin/script";
+            undo = "${disconnectionScript}/bin/script";
+          }];
           exclude-global-prep-cmd = "false";
           auto-detach = "true";
         }];
