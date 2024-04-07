@@ -162,3 +162,13 @@
 
 ;; Projectile
 (projectile-mode +1) 
+
+;; Centaur Tabs
+(require 'centaur-tabs)
+(centaur-tabs-mode t)
+(setq centaur-tabs-style "bar"
+      centaur-tabs-set-icons t
+      centaur-tabs-height 32
+      centaur-tabs-set-close-button nil
+      centaur-tabs-set-modified-marker t)
+(centaur-tabs-group-by-projectile-project)

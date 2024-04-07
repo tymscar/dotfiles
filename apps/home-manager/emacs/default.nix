@@ -9,6 +9,7 @@
         all-the-icons
         all-the-icons-dired
         all-the-icons-ibuffer
+        centaur-tabs
         company
         dashboard
         doom-modeline
