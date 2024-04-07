@@ -4,6 +4,9 @@ Tymscar's dotfiles
 Here I keep all my dotfiles serving the purpose of sharing but also as a backup for myself. I use [Nix](https://nixos.org/) to manage them. Feel free to take a look!
 
 Here is an example of how I set up my desktop (bender) using my config.
+
+<p align="center"> <img src="pictures/nixOS-Apr2024.png" alt="NixOS Logo" style="width: 80%; height: auto;"> </p> 
+
 All you have to do before running these commands is to install Nixos on a desktop.
 
 ```bash
