@@ -30,6 +30,10 @@
         projectile
         treesit-auto
         treesit-grammars.with-all-grammars
+        treemacs
+        treemacs-all-the-icons
+        treemacs-evil
+        treemacs-projectile
         which-key
       ];
   };

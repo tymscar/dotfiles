@@ -7,6 +7,11 @@
   (undecorated . t)
   (internal-border-width . 10)))
 
+;; Terminal
+(defun my-term ()
+  (interactive)
+  (term "/run/current-system/sw/bin/zsh"))
+
 ;; Line number
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
@@ -64,11 +69,19 @@
   "s" '(:ignore t :which-key "Search")
   "st" '(helm-projectile-rg :which-key "Search Text"))
 
+;; Treemacs keybindings
+(my-leader-def
+  "<tab>" '(treemacs-select-window :which-key "Treemacs"))
+
 ;; Quit keybindings
 (my-leader-def
   "q" '(:ignore t :which-key "Quit")
   "qq" '(save-buffers-kill-terminal :which-key "Quit Emacs")
   "qw" '(save-buffers-kill-emacs :which-key "Save and quit"))
+
+;; Terminal keybinding
+(my-leader-def
+  "t" '(my-term :which-key "Terminal"))
 
 ;; Git keybindings
 (my-leader-def
@@ -172,3 +185,32 @@
       centaur-tabs-set-close-button nil
       centaur-tabs-set-modified-marker t)
 (centaur-tabs-group-by-projectile-project)
+
+;; Treemacs
+(require 'treemacs)
+(require 'treemacs-all-the-icons)
+(require 'treemacs-projectile)
+(require 'treemacs-all-the-icons)
+(treemacs-load-theme "all-the-icons")
+(treemacs-project-follow-mode t)
+(setq treemacs-width 30
+      treemacs-space-between-root-nodes nil
+      treemacs-indentation 1
+      treemacs-indentation-string " "
+      treemacs-is-never-other-window t
+      treemacs-silent-refresh t
+      treemacs-silent-filewatch t
+      treemacs-expand-after-init t
+      treemacs-width-is-initially-locked nil
+      treemacs-show-hidden-files t
+      treemacs-never-persist nil
+      treemacs-file-follow-delay 0.1
+      treemacs-goto-tag-strategy 'refetch-index
+      treemacs-collapse-dirs 0)
+
+(setq treemacs-display-in-side-window t
+      treemacs-position 'left
+      treemacs-show-cursor nil
+      treemacs-use-all-the-icons-theme t
+      treemacs-icon-size 12)
+(add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode -1)))
