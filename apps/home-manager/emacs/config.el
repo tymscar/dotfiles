@@ -214,3 +214,6 @@
       treemacs-use-all-the-icons-theme t
       treemacs-icon-size 12)
 (add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode -1)))
+
+;; Magit fullscreen
+(setq magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1)

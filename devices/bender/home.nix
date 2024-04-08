@@ -4,7 +4,6 @@ let blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
 in {
   imports = [
     ../../common/home.nix
-    ../../apps/home-manager/vscode
     ../../apps/home-manager/alacritty
     ../../apps/home-manager/zsh
     ../../apps/home-manager/pcmanfm
