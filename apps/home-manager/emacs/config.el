@@ -40,6 +40,7 @@
   "b" '(:ignore t :which-key "Buffer")
   "bb" '(switch-to-buffer :which-key "Switch buffer")
   "bk" '(kill-buffer :which-key "Kill buffer")
+  "bf" '(lsp-format-buffer :which-key "Format buffer")
   "bi" '(ibuffer :which-key "Ibuffer"))
 
 ;; Emulate Mx
@@ -151,7 +152,6 @@
 
 ;; LSP
 (require 'lsp-mode)
-(add-hook 'after-save-hook 'lsp-format-buffer)
 (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
 (require 'lsp-ui)
 (setq lsp-ui-doc-show-with-cursor t)
