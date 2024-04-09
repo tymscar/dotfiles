@@ -206,9 +206,8 @@
       treemacs-never-persist nil
       treemacs-file-follow-delay 0.1
       treemacs-goto-tag-strategy 'refetch-index
-      treemacs-collapse-dirs 0)
-
-(setq treemacs-display-in-side-window t
+      treemacs-collapse-dirs 0
+      treemacs-display-in-side-window t
       treemacs-position 'left
       treemacs-show-cursor nil
       treemacs-use-all-the-icons-theme t
