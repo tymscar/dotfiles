@@ -16,6 +16,9 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
 
+;; Magit for git management (must run before evil mode for keybinds to apply)
+(require 'magit)
+
 ;; Evil mode
 (setq evil-want-keybinding nil)
 (require 'evil)
