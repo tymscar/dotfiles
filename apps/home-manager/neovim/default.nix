@@ -29,7 +29,6 @@ in {
     extraPackages = with pkgs; [
       code-minimap
       fd
-      gccgo
       lua-language-server
       nil
       rust-analyzer

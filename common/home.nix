@@ -13,7 +13,6 @@
     neofetch
     p7zip
     cmatrix
-    traceroute
   ];
 
   home.stateVersion = "22.11";

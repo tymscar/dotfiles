@@ -55,6 +55,7 @@ in {
     rofi
     rust-analyzer
     shutter
+    traceroute
     usbimager
     usbutils
     yubikey-manager

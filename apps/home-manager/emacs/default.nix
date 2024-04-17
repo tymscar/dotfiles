@@ -1,8 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, specialArgs, ... }:
 
 {
   programs.emacs = {
     enable = true;
+    package =
+      if specialArgs.os == "linux" then pkgs.emacs else pkgs.emacsMacport;
+
     extraConfig = builtins.readFile ./config.el;
     extraPackages = epkgs:
       with epkgs; [

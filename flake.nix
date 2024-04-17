@@ -10,17 +10,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sunshine-service-pr, nixneovimplugins
+  outputs = { self, nix-darwin, nixpkgs, sunshine-service-pr, nixneovimplugins
     , alacritty-theme, homeManager, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-
-      deviceConfig = device: {
+      nixosDeviceConfig = device: {
         "${device}" = nixpkgs.lib.nixosSystem {
-          inherit system;
+          system = "x86_64-linux";
           specialArgs = { inherit device; };
           modules = [
             {
@@ -37,16 +38,51 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.tymscar = import ./devices/${device}/home.nix;
-              home-manager.extraSpecialArgs = { inherit device; };
+              home-manager.extraSpecialArgs = {
+                inherit device;
+                os = "linux";
+              };
             }
           ];
         };
       };
 
-      deviceNames = [ "bender" ];
+      macosDeviceConfig = device: {
+        "${device}" = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = { inherit device; };
+          modules = [
+            {
+              nixpkgs.overlays = [
+                nixneovimplugins.overlays.default
+                alacritty-theme.overlays.default
+              ];
+            }
+            ./devices/${device}/configuration.nix
+            homeManager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.tymscar = import ./devices/${device}/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit device;
+                os = "darwin";
+              };
+            }
+          ];
+        };
+      };
+
+      nixosDeviceNames = [ "bender" ];
+      macosDeviceNames = [ "zoidberg" ];
     in {
       nixosConfigurations =
-        builtins.foldl' (acc: device: acc // deviceConfig device) { }
-        deviceNames;
+        builtins.foldl' (acc: device: acc // nixosDeviceConfig device) { }
+        nixosDeviceNames;
+      darwinConfigurations =
+        builtins.foldl' (acc: device: acc // macosDeviceConfig device) { }
+        macosDeviceNames;
+
+      darwinPackages = self.darwinConfigurations."zoidberg".pkgs;
     };
 }

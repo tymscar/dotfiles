@@ -1,8 +1,7 @@
-{ config, pkgs, ... }: {
+{ pkgs, specialArgs, ... }: {
   programs.gpg = {
     enable = true;
     package = pkgs.gnupg;
-
     publicKeys = [
       # Yubikey
       {
@@ -13,13 +12,13 @@
   };
 
   # Enable use of Yubikey for GPG and SSH via SmartCard.
-  services.gpg-agent = {
+  services.gpg-agent = if specialArgs.os == "linux" then {
     enable = true;
     enableSshSupport = true;
     enableZshIntegration = true;
     pinentryPackage = pkgs.pinentry-gnome3;
-
     defaultCacheTtl = 60;
     maxCacheTtl = 120;
-  };
+  } else
+    { };
 }
