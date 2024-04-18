@@ -5,8 +5,15 @@
     enable = true;
     onActivation.cleanup = "uninstall";
     taps = [ ];
-    brews = [ ];
-    casks = [ "1password" "blender" "brave-browser" "discord" ];
+    brews = [ "swiftlint" ];
+    casks = [
+      "1password"
+      "coconutbattery"
+      "blender"
+      "brave-browser"
+      "discord"
+      "vlc"
+    ];
     masApps = { Xcode = 497799835; };
   };
 }

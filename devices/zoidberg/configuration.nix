@@ -1,7 +1,6 @@
 { pkgs, device, ... }: {
 
   imports = [ ../../apps/darwin/homebrew ];
-
   environment.extraInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)'';
