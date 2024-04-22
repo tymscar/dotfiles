@@ -79,11 +79,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713566308,
-        "narHash": "sha256-7Y91t8pheIzjJveUMAPyeh5NOq5F49Nq4Hl2532QpJs=",
+        "lastModified": 1713732794,
+        "narHash": "sha256-AYCofb8Zu4Mbc1lHDtju/uxeARawRijmOueAqEMEfMU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "057117a401a34259c9615ce62218aea7afdee4d3",
+        "rev": "670d9ecc3e46a6e3265c203c2d136031a3d3548e",
         "type": "github"
       },
       "original": {
@@ -141,11 +141,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1713449966,
-        "narHash": "sha256-NV+smpU0WBMSFJg3dbLyg7f6D3vlJySPC+DyluaBfps=",
+        "lastModified": 1713709085,
+        "narHash": "sha256-4kh1cjBLPthdIwqSKP/GXG+lauW9ik3rFwBbOB3tSZM=",
         "owner": "jooooscha",
         "repo": "nixpkgs-vim-extra-plugins",
-        "rev": "1dce874db5862d23112f89a85c069cf4a9e48f3c",
+        "rev": "a3b04a11255fe96544c0ab3ea89997421fe218df",
         "type": "github"
       },
       "original": {
@@ -206,16 +206,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1713297878,
-        "narHash": "sha256-hOkzkhLT59wR8VaMbh1ESjtZLbGi+XNaBN6h49SPqEc=",
+        "lastModified": 1713687659,
+        "narHash": "sha256-Yd8KuOBpZ0Slau/NxFhMPJI0gBxeax0vq/FD0rqKwuQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "66adc1e47f8784803f2deb6cacd5e07264ec2d5c",
+        "rev": "f2d7a289c5a5ece8521dd082b81ac7e4a57c2c5c",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -252,24 +252,7 @@
         "homeManager": "homeManager",
         "nix-darwin": "nix-darwin",
         "nixneovimplugins": "nixneovimplugins",
-        "nixpkgs": "nixpkgs_3",
-        "sunshine-service-pr": "sunshine-service-pr"
-      }
-    },
-    "sunshine-service-pr": {
-      "locked": {
-        "lastModified": 1711847268,
-        "narHash": "sha256-SLTEJSykimcVTtye8jETxPWMbDdg2yMNFZTL9H3pBkg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c44ca352868d7c9e8ce5b1b90d7df28a28643be6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "pull/294641/head",
-        "repo": "nixpkgs",
-        "type": "github"
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "systems": {
