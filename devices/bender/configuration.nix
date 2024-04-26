@@ -20,14 +20,15 @@ in {
     ./hardware-configuration.nix
     ../../apps/nixos/sunshine
     ../../apps/nixos/gpg
+    ../../apps/nixos/ollama
   ];
 
   networking = {
     hostName = device;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 443 3030 5173 ];
-      allowedUDPPorts = [ 53 ];
+      allowedTCPPorts = [ 22 80 443 3030 5173 11434 ];
+      allowedUDPPorts = [ 53 11434 ];
     };
   };
 
