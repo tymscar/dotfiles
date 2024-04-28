@@ -5,11 +5,6 @@
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)'';
 
-  system.keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToControl = true;
-  };
-
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -19,10 +14,74 @@
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "Monaspace" "Noto" ]; })
       emacs-all-the-icons-fonts
-
     ];
 
     fontDir.enable = true;
+  };
+
+  system = {
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
+
+    defaults = {
+      ActivityMonitor.IconType = 6;
+      screencapture = {
+        disable-shadow = true;
+        type = "png";
+
+      };
+      menuExtraClock = {
+        Show24Hour = true;
+        ShowDayOfWeek = true;
+        ShowDayOfMonth = true;
+        ShowSeconds = true;
+        ShowDate = 1;
+      };
+      loginwindow.LoginwindowText =
+        "If lost, contact oscar@tymscar.com for reward";
+      finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        ShowPathbar = true;
+        ShowStatusBar = true;
+        _FXShowPosixPathInTitle = true;
+      };
+      dock = {
+        magnification = true;
+        mru-spaces = false;
+        minimize-to-application = true;
+        tilesize = 8;
+        largesize = 64;
+        show-recents = false;
+        autohide = true;
+      };
+      NSGlobalDomain = {
+        AppleMeasurementUnits = "Centimeters";
+        AppleMetricUnits = 1;
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        AppleShowScrollBars = "WhenScrolling";
+        AppleTemperatureUnit = "Celsius";
+        ApplePressAndHoldEnabled = false;
+        InitialKeyRepeat = 0;
+        KeyRepeat = 0;
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
+        _HIHideMenuBar = true;
+        "com.apple.mouse.tapBehavior" = 1;
+        AppleInterfaceStyle = "Dark";
+      };
+      universalaccess = {
+        closeViewScrollWheelToggle = true;
+        reduceMotion = true;
+      };
+      ".GlobalPreferences"."com.apple.mouse.scaling" = 3.0;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
