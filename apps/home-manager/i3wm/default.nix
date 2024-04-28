@@ -2,8 +2,8 @@
 
 let
   wallpaper = builtins.fetchurl {
-    url = "https://cdn.osxdaily.com/wp-content/uploads/2017/12/classic-mac-os-tile-wallpapers-4.png";
-    sha256 = "sha256:1mf6298l74ll251z2qrr9ld5mzn4ncgdr4sg5gz6h8sd39pzj5wz";
+    url = "https://trisquel.info/files/tile.png";
+    sha256 = "sha256:1n5wwm3mafhsl1j57nkx410c6gas1h2qw4m9yh44j8qza2c68h1g";
   };
 in
 {
