@@ -14,6 +14,9 @@
       "discord"
       "vlc"
     ];
-    masApps = { Xcode = 497799835; };
+    masApps = {
+      Xcode = 497799835;
+      Amphetamine = 937984704;
+    };
   };
 }
