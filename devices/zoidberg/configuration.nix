@@ -52,7 +52,7 @@
         magnification = true;
         mru-spaces = false;
         minimize-to-application = true;
-        tilesize = 8;
+        tilesize = 16;
         largesize = 64;
         show-recents = false;
         autohide = true;
@@ -80,7 +80,7 @@
         closeViewScrollWheelToggle = true;
         reduceMotion = true;
       };
-      ".GlobalPreferences"."com.apple.mouse.scaling" = 3.0;
+      ".GlobalPreferences"."com.apple.mouse.scaling" = 1.5;
     };
   };
 
