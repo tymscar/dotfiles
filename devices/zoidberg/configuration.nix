@@ -1,6 +1,10 @@
 { pkgs, device, ... }: {
 
-  imports = [ ../../apps/darwin/homebrew ];
+  imports = [
+    ../../apps/darwin/homebrew
+    ../../apps/darwin/skhd
+    ../../apps/darwin/yabai
+  ];
   environment.extraInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)'';
@@ -24,7 +28,9 @@
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-
+    activationScripts.postActivation.text = ''
+      su - $(logname) -c '${pkgs.skhd}/bin/skhd -r'
+    '';
     defaults = {
       ActivityMonitor.IconType = 6;
       screencapture = {
@@ -72,7 +78,7 @@
         NSAutomaticPeriodSubstitutionEnabled = false;
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
         "com.apple.mouse.tapBehavior" = 1;
         AppleInterfaceStyle = "Dark";
       };
@@ -80,7 +86,7 @@
         closeViewScrollWheelToggle = true;
         reduceMotion = true;
       };
-      ".GlobalPreferences"."com.apple.mouse.scaling" = 1.5;
+      ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
     };
   };
 

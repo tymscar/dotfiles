@@ -4,7 +4,7 @@
   programs.emacs = {
     enable = true;
     package =
-      if specialArgs.os == "linux" then pkgs.emacs else pkgs.emacsMacport;
+      if specialArgs.os == "linux" then pkgs.emacs else pkgs.emacs-macport;
 
     extraConfig = builtins.readFile ./config.el;
     extraPackages = epkgs:

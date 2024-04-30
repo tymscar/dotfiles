@@ -10,5 +10,5 @@
     ../../apps/home-manager/gpg
   ];
 
-  home.packages = with pkgs; [ cargo gotop rust-analyzer ];
+  home.packages = with pkgs; [ cargo gotop raycast rust-analyzer ];
 }

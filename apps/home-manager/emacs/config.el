@@ -4,7 +4,6 @@
 (scroll-bar-mode -1)
 (setq use-file-dialog nil)
 (setq default-frame-alist '(
-  (undecorated . t)
   (internal-border-width . 10)))
 
 ;; Terminal
