@@ -104,7 +104,12 @@
   };
   networking.hostName = device;
   services.nix-daemon.enable = true;
-  nix.settings.experimental-features = "nix-command flakes";
+  nix = {
+    settings.experimental-features = "nix-command flakes";
+    nixPath = [
+      "nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/nixpkgs-unstable.tar.gz"
+    ];
+  };
   system.stateVersion = 4;
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
