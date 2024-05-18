@@ -6,6 +6,7 @@
     onActivation.cleanup = "uninstall";
     taps = [ "LizardByte/homebrew" "homebrew/services" ];
     brews = [
+      "screenresolution"
       "swiftlint"
       {
         name = "LizardByte/homebrew/sunshine";
@@ -16,10 +17,13 @@
     ];
     casks = [
       "1password"
-      "coconutbattery"
-      "blender"
       "arc"
+      "blender"
+      "chatgpt"
+      "coconutbattery"
+      "cyberduck"
       "discord"
+      "switchresx"
       "vlc"
     ];
     masApps = {
