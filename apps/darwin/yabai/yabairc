@@ -18,4 +18,4 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^QuickTime Player$" manage=off
-yabai -m rule --add app="^Raycast Settings$" manage=off
+yabai -m rule --add app="^Raycast$" manage=off

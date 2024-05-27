@@ -11,7 +11,6 @@
   ];
 
   home.packages = with pkgs; [
-    element-desktop
     appcleaner
     cargo
     gotop

@@ -23,6 +23,7 @@
       "coconutbattery"
       "cyberduck"
       "discord"
+      "home-assistant"
       "switchresx"
       "vlc"
     ];
