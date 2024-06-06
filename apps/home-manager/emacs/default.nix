@@ -17,6 +17,7 @@
         dashboard
         doom-modeline
         dracula-theme
+        elisp-autofmt
         evil
         evil-collection
         evil-nerd-commenter
@@ -40,5 +41,12 @@
         which-key
       ];
   };
-  home.packages = with pkgs; [ emacs-all-the-icons-fonts nil nixfmt-classic ];
+  home.packages = with pkgs; [
+    nodePackages.typescript-language-server
+    typescript
+    emacs-all-the-icons-fonts
+    nil
+    nixfmt-classic
+    python3
+  ];
 }

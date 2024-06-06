@@ -3,8 +3,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (setq use-file-dialog nil)
-(setq default-frame-alist '(
-  (internal-border-width . 10)))
+(setq default-frame-alist '((internal-border-width . 10)))
 
 ;; Terminal
 (defun my-term ()
@@ -31,76 +30,117 @@
 (require 'general)
 
 ;; Define leader key
-(general-create-definer my-leader-def
-  :states '(normal visual emacs)
-  :keymaps 'override
-  :prefix "SPC"
-  :global-prefix "SPC")
+(general-create-definer
+ my-leader-def
+ :states '(normal visual emacs)
+ :keymaps 'override
+ :prefix "SPC"
+ :global-prefix "SPC")
 
 ;; Buffer keybindings
+(require 'elisp-autofmt)
+(defun my-format-buffer ()
+  "Format the current buffer. Use `elisp-format-buffer` for Emacs Lisp mode, otherwise use `lsp-format-buffer`."
+  (interactive)
+  (if (derived-mode-p 'emacs-lisp-mode)
+      (elisp-autofmt-buffer)
+    (lsp-format-buffer)))
+
 (my-leader-def
-  "b" '(:ignore t :which-key "Buffer")
-  "bb" '(switch-to-buffer :which-key "Switch buffer")
-  "bk" '(kill-buffer :which-key "Kill buffer")
-  "bf" '(lsp-format-buffer :which-key "Format buffer")
-  "bi" '(ibuffer :which-key "Ibuffer"))
+ "b"
+ '(:ignore t :which-key "Buffer")
+ "bb"
+ '(switch-to-buffer :which-key "Switch buffer")
+ "bk"
+ '(kill-buffer :which-key "Kill buffer")
+ "bf"
+ '(my-format-buffer :which-key "Format buffer")
+ "bi"
+ '(ibuffer :which-key "Ibuffer"))
 
 ;; Emulate Mx
-(my-leader-def
-  "\:" '(helm-M-x :which-key "Execute command"))
+(my-leader-def "\:" '(helm-M-x :which-key "Execute command"))
 
 ;; Window keybindings
 (my-leader-def
-  "w" '(:ignore t :which-key "Window")
-  "wh" '(evil-window-left :which-key "Window left")
-  "wj" '(evil-window-down :which-key "Window down")
-  "wk" '(evil-window-up :which-key "Window up")
-  "wl" '(evil-window-right :which-key "Window right")
-  "ws" '(:ignore t :which-key "Split window")
-  "wsh" '(evil-window-split :which-key "Split window horizontally")
-  "wsv" '(evil-window-vsplit :which-key "Split window vertically")
-  "wq" '(evil-window-delete :which-key "Close window"))
+ "w"
+ '(:ignore t :which-key "Window")
+ "wh"
+ '(evil-window-left :which-key "Window left")
+ "wj"
+ '(evil-window-down :which-key "Window down")
+ "wk"
+ '(evil-window-up :which-key "Window up")
+ "wl"
+ '(evil-window-right :which-key "Window right")
+ "ws"
+ '(:ignore t :which-key "Split window")
+ "wsh"
+ '(evil-window-split :which-key "Split window horizontally")
+ "wsv"
+ '(evil-window-vsplit :which-key "Split window vertically")
+ "wq"
+ '(evil-window-delete :which-key "Close window"))
 
 ;; File keybindings
 (my-leader-def
-  "f" '(:ignore t :which-key "File")
-  "fs" '(save-buffer :which-key "Save file")
-  "ff" '(helm-projectile-find-file :which-key "Find file"))
+ "f"
+ '(:ignore t :which-key "File")
+ "fs"
+ '(save-buffer :which-key "Save file")
+ "ff"
+ '(helm-projectile-find-file :which-key "Find file"))
 
 ;; Search keybindings
 (my-leader-def
-  "s" '(:ignore t :which-key "Search")
-  "st" '(helm-projectile-rg :which-key "Search Text"))
+ "s"
+ '(:ignore t :which-key "Search")
+ "st"
+ '(helm-projectile-rg :which-key "Search Text"))
 
 ;; Treemacs keybindings
 (my-leader-def
-  "<tab>" '(treemacs-select-window :which-key "Treemacs"))
+ "<tab>" '(treemacs-select-window :which-key "Treemacs"))
 
 ;; Quit keybindings
 (my-leader-def
-  "q" '(:ignore t :which-key "Quit")
-  "qq" '(save-buffers-kill-terminal :which-key "Quit Emacs")
-  "qw" '(save-buffers-kill-emacs :which-key "Save and quit"))
+ "q"
+ '(:ignore t :which-key "Quit")
+ "qq"
+ '(save-buffers-kill-terminal :which-key "Quit Emacs")
+ "qw"
+ '(save-buffers-kill-emacs :which-key "Save and quit"))
 
 ;; Terminal keybinding
-(my-leader-def
-  "t" '(my-term :which-key "Terminal"))
+(my-leader-def "t" '(my-term :which-key "Terminal"))
 
 ;; Git keybindings
 (my-leader-def
-  "g" '(:ignore t :which-key "Git")
-  "gg" '(magit :which-key "Magit"))
+ "g" '(:ignore t :which-key "Git") "gg" '(magit :which-key "Magit"))
 
 ;; LSP keybindings
 (my-leader-def
-  "l" '(:ignore t :which-key "LSP")
-  "lc" '(evilnc-comment-or-uncomment-lines :which-key "Comment out lines")
-  "lff" '(lsp-format-buffer :which-key "Format file"))
+ "l"
+ '(:ignore t :which-key "LSP")
+ "lc"
+ '(evilnc-comment-or-uncomment-lines :which-key "Comment out lines")
+ "lff"
+ '(lsp-format-buffer :which-key "Format file"))
 
 ;; Font settings
-(set-face-attribute 'default nil :font "MonaspiceNe Nerd Font Propo" :height 130)
-(set-face-attribute 'fixed-pitch nil :font "MonaspiceNe Nerd Font Propo" :height 130)
-(set-face-attribute 'variable-pitch nil :font "MonaspiceNe Nerd Font Propo" :height 130 :weight 'regular)
+(set-face-attribute 'default nil
+                    :font "MonaspiceNe Nerd Font Propo"
+                    :height 130)
+(set-face-attribute 'fixed-pitch nil
+                    :font "MonaspiceNe Nerd Font Propo"
+                    :height 130)
+(set-face-attribute 'variable-pitch nil
+                    :font "MonaspiceNe Nerd Font Propo"
+                    :height 130
+                    :weight 'regular)
+
+;; Fix tab width
+(setq-default tab-width 2)
 
 ;; Doom Emacs start screen
 (require 'dashboard)
@@ -108,8 +148,7 @@
 (setq dashboard-projects-backend 'projectile)
 (setq dashboard-startup-banner 'logo)
 (setq dashboard-center-content t)
-(setq dashboard-items '((recents  . 10)
-			(projects . 5)))
+(setq dashboard-items '((recents . 10) (projects . 5)))
 
 ;; Dracula theme
 (require 'dracula-theme)
@@ -157,17 +196,24 @@
 (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
 (require 'lsp-ui)
 (setq lsp-ui-doc-show-with-cursor t)
-(setq lsp-ui-doc-position 'at-point) 
-(setq lsp-ui-sideline-show-diagnostics t) 
+(setq lsp-ui-doc-position 'at-point)
+(setq lsp-ui-sideline-show-diagnostics t)
 (setq lsp-ui-sideline-show-hover t)
 (setq lsp-ui-sideline-delay 0)
 (add-hook 'nix-mode-hook #'lsp)
 (add-hook 'rust-ts-mode-hook #'lsp)
+(add-hook 'typescript-ts-mode-hook #'lsp)
+(add-hook 'tsx-ts-mode-hook #'lsp)
 (setq lsp-rust-server 'rust-analyzer)
 (setq lsp-nix-server 'nil)
 (setq lsp-ui-sideline-show-diagnostics 1)
 (setq lsp-ui-sideline-delay 0.25)
 (setq lsp-nix-nil-formatter ["nixfmt"])
+(setq lsp-clients-typescript-server-args '("--stdio"))
+(setq lsp-clients-typescript-server "typescript-language-server")
+(setq lsp-clients-typescript-tls-path "typescript-language-server")
+(setq lsp-typescript-format-enable t)
+(setq lsp-enable-which-key-integration t)
 
 ;; Company
 (require 'company)
@@ -176,16 +222,17 @@
 (setq company-idle-delay 0.15)
 
 ;; Projectile
-(projectile-mode +1) 
+(projectile-mode +1)
 
 ;; Centaur Tabs
 (require 'centaur-tabs)
 (centaur-tabs-mode t)
-(setq centaur-tabs-style "bar"
-      centaur-tabs-set-icons t
-      centaur-tabs-height 32
-      centaur-tabs-set-close-button nil
-      centaur-tabs-set-modified-marker t)
+(setq
+ centaur-tabs-style "bar"
+ centaur-tabs-set-icons t
+ centaur-tabs-height 32
+ centaur-tabs-set-close-button nil
+ centaur-tabs-set-modified-marker t)
 (centaur-tabs-group-by-projectile-project)
 
 ;; Treemacs
@@ -195,26 +242,29 @@
 (require 'treemacs-all-the-icons)
 (treemacs-load-theme "all-the-icons")
 (treemacs-project-follow-mode t)
-(setq treemacs-width 30
-      treemacs-space-between-root-nodes nil
-      treemacs-indentation 1
-      treemacs-indentation-string " "
-      treemacs-is-never-other-window t
-      treemacs-silent-refresh t
-      treemacs-silent-filewatch t
-      treemacs-expand-after-init t
-      treemacs-width-is-initially-locked nil
-      treemacs-show-hidden-files t
-      treemacs-never-persist nil
-      treemacs-file-follow-delay 0.1
-      treemacs-goto-tag-strategy 'refetch-index
-      treemacs-collapse-dirs 0
-      treemacs-display-in-side-window t
-      treemacs-position 'left
-      treemacs-show-cursor nil
-      treemacs-use-all-the-icons-theme t
-      treemacs-icon-size 12)
-(add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode -1)))
+(setq
+ treemacs-width 30
+ treemacs-space-between-root-nodes nil
+ treemacs-indentation 1
+ treemacs-indentation-string " "
+ treemacs-is-never-other-window t
+ treemacs-silent-refresh t
+ treemacs-silent-filewatch t
+ treemacs-expand-after-init t
+ treemacs-width-is-initially-locked nil
+ treemacs-show-hidden-files t
+ treemacs-never-persist nil
+ treemacs-file-follow-delay 0.1
+ treemacs-goto-tag-strategy 'refetch-index
+ treemacs-collapse-dirs 0
+ treemacs-display-in-side-window t
+ treemacs-position 'left
+ treemacs-show-cursor nil
+ treemacs-use-all-the-icons-theme t
+ treemacs-icon-size 12)
+(add-hook
+ 'treemacs-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 ;; Magit fullscreen
-(setq magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1)
+(setq magit-display-buffer-function
+      'magit-display-buffer-same-window-except-diff-v1)
