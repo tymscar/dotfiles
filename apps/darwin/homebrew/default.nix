@@ -17,6 +17,7 @@
     ];
     casks = [
       "1password"
+      "audacity"
       "arc"
       "blender"
       "chatgpt"
@@ -26,6 +27,7 @@
       "home-assistant"
       "switchresx"
       "vlc"
+      "zed"
     ];
     masApps = {
       Xcode = 497799835;

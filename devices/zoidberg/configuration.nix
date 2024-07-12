@@ -15,12 +15,10 @@
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       (nerdfonts.override { fonts = [ "Monaspace" "Noto" ]; })
       emacs-all-the-icons-fonts
     ];
-
-    fontDir.enable = true;
   };
 
   system = {
