@@ -19,13 +19,29 @@ let
     outputHash = "sha256-x9W3P1IYQTStxARQucMkgP25SCe9nI3bDBwfslXTgD4=";
   };
 
+  colourHex = "#0F0F0F";
+  colourWallpaper = pkgs.stdenv.mkDerivation {
+    name = "colour-wallpaper";
+    buildInputs = [ pkgs.imagemagick ];
+    buildCommand = ''
+      mkdir -p $out
+      magick -size 1x1 xc:${colourHex} $out/solid-color.png
+      magick $out/solid-color.png -resize 3024x1964! $out/internal-wallpaper.png
+      magick $out/solid-color.png -resize 3440x1440! $out/external-wallpaper.png
+    '';
+    outputHashMode = "recursive";
+    outputHashAlgo = "sha256";
+    outputHash = "sha256-YOL52WdJe+K6e5jvtFOCNpxXpTEaABnudliT/SfY4kA=";
+  };
+
+  selectedWallpaper = colourWallpaper;
 in {
   home.activation.setWallpaper = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     resolutions=$(/usr/sbin/system_profiler SPDisplaysDataType | /usr/bin/awk '/Resolution/{print $2 " x " $4}')
     internalScreen="3024 x 1964"
     externalScreen="3440 x 1440"
-    internalWallpaper="${tiledWallpaper}/internal-wallpaper.png"
-    externalWallpaper="${tiledWallpaper}/external-wallpaper.png"
+    internalWallpaper="${selectedWallpaper}/internal-wallpaper.png"
+    externalWallpaper="${selectedWallpaper}/external-wallpaper.png"
     index=1
     echo "$resolutions" | while read -r resolution; do
       if [[ "$resolution" == *"$internalScreen"* ]]; then
