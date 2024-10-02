@@ -8,6 +8,7 @@
     ../../apps/home-manager/alacritty
     ../../apps/home-manager/emacs
     ../../apps/home-manager/gpg
+    ../../apps/home-manager/vscode
   ];
 
   home.packages = with pkgs; [
@@ -15,6 +16,7 @@
     cargo
     gotop
     raycast
+    gitkraken
     rust-analyzer
   ];
 }
