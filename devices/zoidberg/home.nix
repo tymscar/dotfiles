@@ -13,10 +13,11 @@
 
   home.packages = with pkgs; [
     appcleaner
+    bottom
     cargo
+    gitkraken
     gotop
     raycast
-    gitkraken
     rust-analyzer
   ];
 }

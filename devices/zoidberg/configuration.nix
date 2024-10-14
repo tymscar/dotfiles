@@ -60,6 +60,13 @@
         largesize = 64;
         show-recents = false;
         autohide = true;
+        persistent-apps = [
+          "/Applications/Arc.app"
+          "/Applications/Discord.app"
+          "/System/Applications/iPhone Mirroring.app"
+          "/System/Applications/System Settings.app"
+        ];
+        persistent-others = [ "/Users/tymscar/Downloads" ];
       };
       NSGlobalDomain = {
         AppleMeasurementUnits = "Centimeters";
