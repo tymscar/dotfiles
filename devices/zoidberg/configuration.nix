@@ -44,7 +44,7 @@
         ShowDate = 1;
       };
       loginwindow.LoginwindowText =
-        "If lost, contact oscar@tymscar.com for reward";
+        "If found, contact oscar@tymscar.com for reward";
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
@@ -60,11 +60,16 @@
         largesize = 64;
         show-recents = false;
         autohide = true;
+        wvous-bl-corner = 1;
+        wvous-tl-corner = 1;
+        wvous-tr-corner = 1;
+        wvous-br-corner = 1;
         persistent-apps = [
           "/Applications/Arc.app"
           "/Applications/Discord.app"
           "/System/Applications/iPhone Mirroring.app"
           "/System/Applications/System Settings.app"
+          "/System/Applications/Utilities/Activity Monitor.app"
         ];
         persistent-others = [ "/Users/tymscar/Downloads" ];
       };
