@@ -45,7 +45,7 @@ in {
         alpha-nvim
         cmp-luasnip
         cmp-nvim-lsp
-        copilot-vim
+        # copilot-vim
         dracula-nvim
         lualine-nvim
         minimap-vim
