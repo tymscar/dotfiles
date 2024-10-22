@@ -1,12 +1,14 @@
-{ pkgs, ... }:
+{ nix-vscode-extensions, ... }:
 
-{
+let extensions-marketplace = nix-vscode-extensions.vscode-marketplace;
+in {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    extensions = with extensions-marketplace; [
       bbenoist.nix
       dracula-theme.theme-dracula
       vscodevim.vim
+      koog1000.fossil
     ];
     userSettings = {
       "workbench.colorTheme" = "Dracula";
@@ -16,7 +18,4 @@
     };
   };
 }
-
-
-
 

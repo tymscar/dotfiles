@@ -16,6 +16,7 @@
     appcleaner
     bottom
     cargo
+    fossil
     gitkraken
     gotop
     raycast
