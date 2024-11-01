@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   blenderWithCuda = pkgs.blender.override { cudaSupport = true; };
@@ -10,14 +15,16 @@ let
     inherit pkgs;
     inherit lib;
     inherit config;
-    additionalStartupCommands = [{
-      command =
-        "sudo ${pkgs.liquidctl}/bin/liquidctl -m nzxt set lcd screen gif ${aioImage}";
-      always = true;
-      notification = false;
-    }];
+    additionalStartupCommands = [
+      {
+        command = "sudo ${pkgs.liquidctl}/bin/liquidctl -m nzxt set lcd screen gif ${aioImage}";
+        always = true;
+        notification = false;
+      }
+    ];
   };
-in {
+in
+{
   imports = [
     ../../common/home.nix
     i3wm-module

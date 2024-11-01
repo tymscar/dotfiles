@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   wallpaper = builtins.fetchurl {
@@ -59,16 +64,46 @@ in
       };
 
       workspaceOutputAssign = [
-        { workspace = "1"; output = "DP-0"; }
-        { workspace = "2"; output = "DP-0"; }
-        { workspace = "3"; output = "DP-0"; }
-        { workspace = "4"; output = "DP-0"; }
-        { workspace = "5"; output = "DP-0"; }
-        { workspace = "6"; output = "HDMI-0"; }
-        { workspace = "7"; output = "HDMI-0"; }
-        { workspace = "8"; output = "HDMI-0"; }
-        { workspace = "9"; output = "HDMI-0"; }
-        { workspace = "10"; output = "DP-3"; }
+        {
+          workspace = "1";
+          output = "DP-0";
+        }
+        {
+          workspace = "2";
+          output = "DP-0";
+        }
+        {
+          workspace = "3";
+          output = "DP-0";
+        }
+        {
+          workspace = "4";
+          output = "DP-0";
+        }
+        {
+          workspace = "5";
+          output = "DP-0";
+        }
+        {
+          workspace = "6";
+          output = "HDMI-0";
+        }
+        {
+          workspace = "7";
+          output = "HDMI-0";
+        }
+        {
+          workspace = "8";
+          output = "HDMI-0";
+        }
+        {
+          workspace = "9";
+          output = "HDMI-0";
+        }
+        {
+          workspace = "10";
+          output = "DP-3";
+        }
       ];
 
       gaps = {
@@ -78,8 +113,16 @@ in
       bars = [ ];
 
       startup = [
-        { command = "systemctl --user restart polybar"; always = true; notification = false; }
-        { command = "feh --bg-tile ${wallpaper} &"; always = true; notification = true; }
+        {
+          command = "systemctl --user restart polybar";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "feh --bg-tile ${wallpaper} &";
+          always = true;
+          notification = true;
+        }
       ];
     };
 

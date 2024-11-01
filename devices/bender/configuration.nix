@@ -5,8 +5,7 @@ let
     name = "apple-color-emoji";
     version = "16.4-patch.1";
     src = pkgs.fetchurl {
-      url =
-        "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
+      url = "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
       sha256 = "15assqyxax63hah0g51jd4d4za0kjyap9m2cgd1dim05pk7mgvfm";
     };
     phases = [ "installPhase" ];
@@ -15,7 +14,8 @@ let
       cp $src $out/share/fonts/truetype/apple-color-emoji/AppleColorEmoji.ttf
     '';
   };
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
     ../../apps/nixos/sunshine
@@ -27,8 +27,18 @@ in {
     hostName = device;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 443 3030 5173 11434 ];
-      allowedUDPPorts = [ 53 11434 ];
+      allowedTCPPorts = [
+        22
+        80
+        443
+        3030
+        5173
+        11434
+      ];
+      allowedUDPPorts = [
+        53
+        11434
+      ];
     };
   };
 
@@ -37,7 +47,9 @@ in {
   hardware = {
     pulseaudio.enable = false;
     opengl.enable = true;
-    nvidia = { modesetting.enable = true; };
+    nvidia = {
+      modesetting.enable = true;
+    };
   };
 
   systemd.targets = {
@@ -52,7 +64,12 @@ in {
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Monaspace" "Noto" ]; })
+      (nerdfonts.override {
+        fonts = [
+          "Monaspace"
+          "Noto"
+        ];
+      })
       apple-color-emoji
     ];
 
@@ -86,7 +103,9 @@ in {
       };
       videoDrivers = [ "nvidia" ];
       enable = true;
-      desktopManager = { xterm.enable = false; };
+      desktopManager = {
+        xterm.enable = false;
+      };
 
       displayManager = {
         autoLogin.enable = true;
@@ -101,7 +120,9 @@ in {
           xrandr --output HDMI-0 --mode 3840x2160 --pos 3440x0 --rotate normal
         '';
       };
-      windowManager.i3 = { enable = true; };
+      windowManager.i3 = {
+        enable = true;
+      };
     };
   };
 }

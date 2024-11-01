@@ -19,7 +19,8 @@ let
     "nvim/lua/plugins/alpha.lua".source = ./config/plugins/alpha.lua;
   };
 
-in {
+in
+{
   programs.neovim = {
     defaultEditor = true;
     enable = true;
@@ -38,8 +39,10 @@ in {
     ];
 
     # list of possible plugins: https://github.com/NixNeovim/NixNeovimPlugins/blob/main/plugins.md
-    plugins = with pkgs.vimExtraPlugins;
-      with pkgs.vimPlugins; [
+    plugins =
+      with pkgs.vimExtraPlugins;
+      with pkgs.vimPlugins;
+      [
         Comment-nvim
         LuaSnip
         alpha-nvim

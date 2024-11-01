@@ -35,7 +35,8 @@ let
   };
 
   selectedWallpaper = colourWallpaper;
-in {
+in
+{
   home.activation.setWallpaper = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     resolutions=$(/usr/sbin/system_profiler SPDisplaysDataType | /usr/bin/awk '/Resolution/{print $2 " x " $4}')
     internalScreen="3024 x 1964"
