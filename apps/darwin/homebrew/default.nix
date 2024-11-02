@@ -4,30 +4,18 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "uninstall";
-    taps = [ "LizardByte/homebrew" "homebrew/services" ];
-    brews = [
-      "screenresolution"
-      "swiftlint"
-      {
-        name = "LizardByte/homebrew/sunshine";
-        args = [ ];
-        start_service = true;
-        restart_service = "changed";
-      }
+    taps = [
+      "LizardByte/homebrew"
+      "homebrew/services"
     ];
+    brews = [ ];
     casks = [
       "1password"
-      "audacity"
       "arc"
-      "blender"
-      "chatgpt"
       "coconutbattery"
       "cyberduck"
-      "discord"
-      "home-assistant"
-      "switchresx"
+      "docker"
       "vlc"
-      "zed"
     ];
     masApps = {
       Xcode = 497799835;

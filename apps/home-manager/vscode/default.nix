@@ -1,14 +1,25 @@
 { nix-vscode-extensions, ... }:
 
-let extensions-marketplace = nix-vscode-extensions.vscode-marketplace;
-in {
+let
+  extensions-marketplace = nix-vscode-extensions.vscode-marketplace;
+in
+{
   programs.vscode = {
     enable = true;
     extensions = with extensions-marketplace; [
       bbenoist.nix
       dracula-theme.theme-dracula
       vscodevim.vim
-      koog1000.fossil
+      bruno-api-client.bruno
+      mkhl.shfmt
+      clinyong.vscode-css-modules
+      ms-python.black-formatter
+      editorconfig.editorconfig
+      dbaeumer.vscode-eslint
+      ms-azuretools.vscode-docker
+      esbenp.prettier-vscode
+      ms-python.vscode-pylance
+      ms-python.python
     ];
     userSettings = {
       "workbench.colorTheme" = "Dracula";
@@ -18,4 +29,3 @@ in {
     };
   };
 }
-

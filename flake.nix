@@ -17,15 +17,30 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = { self, mac-app-util, nix-vscode-extensions, nix-darwin, nixpkgs
-    , nixneovimplugins, alacritty-theme, homeManager, ... }:
+  outputs =
+    {
+      self,
+      mac-app-util,
+      nix-vscode-extensions,
+      nix-darwin,
+      nixpkgs,
+      nixneovimplugins,
+      alacritty-theme,
+      homeManager,
+      ...
+    }:
     let
-      nixosDeviceConfig = device:
-        let system = "x86_64-linux";
-        in {
+      nixosDeviceConfig =
+        device:
+        let
+          system = "x86_64-linux";
+        in
+        {
           "${device}" = nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = { inherit device; };
+            specialArgs = {
+              inherit device;
+            };
             modules = [
               {
                 nixpkgs.overlays = [
@@ -39,25 +54,31 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.tymscar =
-                  import ./devices/${device}/home.nix;
+                home-manager.users.tymscar = import ./devices/${device}/home.nix;
                 home-manager.extraSpecialArgs = {
                   inherit device;
+                  accountUsername = "tymscar";
                   os = "linux";
-                  nix-vscode-extensions =
-                    nix-vscode-extensions.extensions.${system};
+                  nix-vscode-extensions = nix-vscode-extensions.extensions.${system};
                 };
               }
             ];
           };
         };
 
-      macosDeviceConfig = device:
-        let system = "aarch64-darwin";
-        in {
+      macosDeviceConfig =
+        device:
+        let
+          system = "aarch64-darwin";
+          macUsername = if device == "fry" then "oscar.molnar@glean.co" else "tymscar";
+        in
+        {
           "${device}" = nix-darwin.lib.darwinSystem {
             inherit system;
-            specialArgs = { inherit device; };
+            specialArgs = {
+              inherit device;
+              accountUsername = macUsername;
+            };
             modules = [
               {
                 nixpkgs.overlays = [
@@ -68,17 +89,15 @@
               ./devices/${device}/configuration.nix
               homeManager.darwinModules.home-manager
               {
-                home-manager.sharedModules =
-                  [ mac-app-util.homeManagerModules.default ];
+                home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.tymscar =
-                  import ./devices/${device}/home.nix;
+                home-manager.users.${macUsername} = import ./devices/${device}/home.nix;
                 home-manager.extraSpecialArgs = {
                   inherit device;
+                  accountUsername = macUsername;
                   os = "darwin";
-                  nix-vscode-extensions =
-                    nix-vscode-extensions.extensions.${system};
+                  nix-vscode-extensions = nix-vscode-extensions.extensions.${system};
                 };
               }
             ];
@@ -86,14 +105,18 @@
         };
 
       nixosDeviceNames = [ "bender" ];
-      macosDeviceNames = [ "zoidberg" ];
-    in {
-      nixosConfigurations =
-        builtins.foldl' (acc: device: acc // nixosDeviceConfig device) { }
-        nixosDeviceNames;
-      darwinConfigurations =
-        builtins.foldl' (acc: device: acc // macosDeviceConfig device) { }
-        macosDeviceNames;
+      macosDeviceNames = [
+        "zoidberg"
+        "fry"
+      ];
+    in
+    {
+      nixosConfigurations = builtins.foldl' (
+        acc: device: acc // nixosDeviceConfig device
+      ) { } nixosDeviceNames;
+      darwinConfigurations = builtins.foldl' (
+        acc: device: acc // macosDeviceConfig device
+      ) { } macosDeviceNames;
 
       darwinPackages = self.darwinConfigurations."zoidberg".pkgs;
     };

@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
-let fontFamily = "MonaspiceNe Nerd Font Propo";
-in {
+let
+  fontFamily = "MonaspiceNe Nerd Font Propo";
+in
+{
   programs.alacritty = {
     enable = true;
     settings = {
@@ -12,7 +14,9 @@ in {
           y = 12;
         };
       };
-      scrolling = { history = 99999; };
+      scrolling = {
+        history = 99999;
+      };
       font = {
         normal = {
           family = fontFamily;
@@ -29,12 +33,13 @@ in {
         size = 11.0;
       };
       mouse = {
-        bindings = [{
-          mouse = "Middle";
-          action = "PasteSelection";
-        }];
+        bindings = [
+          {
+            mouse = "Middle";
+            action = "PasteSelection";
+          }
+        ];
       };
     };
   };
 }
-

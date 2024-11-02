@@ -18,31 +18,15 @@ in
   homebrew = lib.mkMerge [
     defaultHomebrew.homebrew
     {
-      brews = [
-        "screenresolution"
-        "swiftlint"
-        {
-          name = "LizardByte/homebrew/sunshine";
-          args = [ ];
-          start_service = true;
-          restart_service = "changed";
-        }
-      ];
-      casks = [
-        "audacity"
-        "blender"
-        "chatgpt"
-        "discord"
-        "home-assistant"
-        "switchresx"
-        "zed"
-      ];
+      brews = [ "asdf" ];
+      casks = [ "elgato-camera-hub" ];
     }
   ];
 
   environment.extraInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)'';
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  '';
 
   programs.gnupg.agent = {
     enable = true;
@@ -57,7 +41,6 @@ in
           "Noto"
         ];
       })
-      emacs-all-the-icons-fonts
     ];
   };
 
@@ -66,15 +49,11 @@ in
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-    activationScripts.postActivation.text = ''
-      su - $(logname) -c '${pkgs.skhd}/bin/skhd -r'
-    '';
     defaults = {
       ActivityMonitor.IconType = 6;
       screencapture = {
         disable-shadow = true;
         type = "png";
-
       };
       menuExtraClock = {
         Show24Hour = true;
@@ -83,7 +62,6 @@ in
         ShowSeconds = true;
         ShowDate = 1;
       };
-      loginwindow.LoginwindowText = "If found, contact oscar@tymscar.com for reward";
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
@@ -104,9 +82,6 @@ in
         wvous-tr-corner = 1;
         wvous-br-corner = 1;
         persistent-apps = [
-          "/Applications/Arc.app"
-          "/Applications/Discord.app"
-          "/System/Applications/iPhone Mirroring.app"
           "/System/Applications/System Settings.app"
           "/System/Applications/Utilities/Activity Monitor.app"
         ];
@@ -143,13 +118,10 @@ in
 
   security.pam.enableSudoTouchIdAuth = true;
   programs.zsh.enable = true;
-  users.users.tymscar = {
+  users.users."${accountUsername}" = {
     description = "Oscar Molnar";
     shell = pkgs.zsh;
     home = "/Users/${accountUsername}";
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDI2Dde4RdoVd6xILo3lcL/PIUxY5OBMCPS6ABPLsSO60M8fDA/bScYVcRJBTKQzRYpVKv5lOLIqx+GS0Q3rX2YikLyUq2TARyU2fm3QTUeRqNNONBZo791ZWV7riU6YGj4Am7VRou513VwWPtyE5tLywtAIkaxG/gYvqz5oJK4n4izBGGO55hYUNa/fR7KCeX6s2dAh0ds9qwe94+vYEAhYz42M3f4f0QxH4vlVajUXY7JkdgwqVxKmztRONZPxKi7mEFjx0Ypx45f3p7qQm4kdnMnVbOqjxWTqPPli9qBHC1Uv0FINvxpLASSWR6al0JgYKnAQ5kkcdegPgPyEOgr tymscar@Bender"
-    ];
   };
   networking.hostName = device;
   services.nix-daemon.enable = true;

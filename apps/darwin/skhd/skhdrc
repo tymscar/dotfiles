@@ -17,5 +17,3 @@ cmd + shift - 6 : yabai -m window --space 6
 cmd + shift - 7 : yabai -m window --space 7
 cmd + shift - 8 : yabai -m window --space 8
 cmd + shift - 9 : yabai -m window --space 9
-
-cmd - return : /etc/profiles/per-user/tymscar/bin/alacritty   
