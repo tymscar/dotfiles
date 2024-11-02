@@ -45,7 +45,6 @@
     typescript
     emacs-all-the-icons-fonts
     nil
-    nixfmt-classic
     python3
   ];
 }

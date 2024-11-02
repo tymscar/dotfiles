@@ -21,12 +21,12 @@ in
     ../../common/home.nix
     ../../apps/darwin/wallpaper
     ../../apps/home-manager/git
+    ../../apps/home-manager/idea
     ../../apps/home-manager/neovim
     ../../apps/home-manager/alacritty
     ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
     ../../apps/home-manager/ssh
-    # ../../apps/home-manager/zed #zed is broken on macos now
   ];
 
   programs.zsh = lib.mkMerge [
@@ -51,9 +51,6 @@ in
     git-lfs
     gitkraken
     gotop
-    jetbrains.idea-ultimate
-    #(jetbrains.plugins.addPlugins jetbrains.pycharm-professional [ "nixidea" "detekt" "com.facebook.ktfmt_idea_plugin" "com.github.copilot" "IdeaVIM" ]) # Not supported on macos yet
-    nixfmt-rfc-style
     openssl
     pinentry_mac
     pyenv

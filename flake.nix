@@ -2,7 +2,7 @@
   description = "Tymscar's system configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
     nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     homeManager = {

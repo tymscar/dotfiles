@@ -11,6 +11,7 @@
     lazygit
     lsd
     neofetch
+    nixfmt-rfc-style
     p7zip
     cmatrix
   ];

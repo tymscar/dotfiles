@@ -10,7 +10,7 @@
     ../../apps/home-manager/emacs
     ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
-    # ../../apps/home-manager/zed #zed is broken on macos now
+    ../../apps/home-manager/zed
   ];
 
   home.packages = with pkgs; [

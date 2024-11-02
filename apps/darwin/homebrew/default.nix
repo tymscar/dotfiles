@@ -5,7 +5,6 @@
     enable = true;
     onActivation.cleanup = "uninstall";
     taps = [
-      "LizardByte/homebrew"
       "homebrew/services"
     ];
     brews = [ ];
@@ -14,7 +13,6 @@
       "arc"
       "coconutbattery"
       "cyberduck"
-      "docker"
       "vlc"
     ];
     masApps = {

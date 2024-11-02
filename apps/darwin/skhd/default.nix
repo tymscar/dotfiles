@@ -4,7 +4,7 @@ let
   skhdrcContent =
     builtins.readFile ./skhdrc
     + ''
-      cmd - return : /etc/profiles/per-user/${accountUsername}/bin/alacritty
+      cmd - return : open -a "Alacritty" 
     '';
 in
 {

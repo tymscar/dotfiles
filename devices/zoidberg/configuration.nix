@@ -18,11 +18,15 @@ in
   homebrew = lib.mkMerge [
     defaultHomebrew.homebrew
     {
+      taps = [
+        "LizardByte/homebrew"
+        "homebrew/services"
+      ];
       brews = [
         "screenresolution"
         "swiftlint"
         {
-          name = "LizardByte/homebrew/sunshine";
+          name = "LizardByte/homebrew/sunshine-beta";
           args = [ ];
           start_service = true;
           restart_service = "changed";
@@ -35,7 +39,6 @@ in
         "discord"
         "home-assistant"
         "switchresx"
-        "zed"
       ];
     }
   ];

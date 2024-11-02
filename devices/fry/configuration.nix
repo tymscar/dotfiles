@@ -19,7 +19,10 @@ in
     defaultHomebrew.homebrew
     {
       brews = [ "asdf" ];
-      casks = [ "elgato-camera-hub" ];
+      casks = [
+        "docker"
+        "elgato-camera-hub"
+      ];
     }
   ];
 
