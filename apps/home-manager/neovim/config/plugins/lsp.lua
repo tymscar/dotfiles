@@ -45,7 +45,7 @@ lspconfig.lua_ls.setup {
     },
 }
 
-lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup {}
 
 lspconfig.nil_ls.setup {
     autostart = true,

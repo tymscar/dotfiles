@@ -5,7 +5,7 @@ in {
   programs.alacritty = {
     enable = true;
     settings = {
-      import = with pkgs; [ alacritty-theme.dracula ];
+      general.import = with pkgs; [ alacritty-theme.dracula ];
       window = {
         padding = {
           x = 12;
