@@ -1,72 +1,15 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-let
-  fetchPluginSrc =
-    { url, hash }:
-    let
-      isJar = lib.hasSuffix ".jar" url;
-      fetcher = if isJar then pkgs.fetchurl else pkgs.fetchzip;
-    in
-    fetcher {
-      executable = isJar;
-      inherit url hash;
-    };
+{ ... }:
 
-  downloadPlugin =
-    {
-      name,
-      version,
-      url,
-      hash,
-    }:
-    let
-      isJar = lib.hasSuffix ".jar" url;
-      installPhase =
-        if isJar then
-          ''
-            mkdir -p $out && cp $src $out
-          ''
-        else
-          ''
-            mkdir -p $out && cp -r . $out
-          '';
-    in
-    pkgs.stdenv.mkDerivation {
-      inherit name version;
-      src = fetchPluginSrc { inherit url hash; };
-      dontUnpack = isJar;
-      inherit installPhase;
-    };
-
-  detekt-plugin = downloadPlugin {
-    name = "detekt";
-    version = "2.4.2";
-    url = "https://downloads.marketplace.jetbrains.com/files/10761/621940/Detekt_IntelliJ_Plugin-2.4.2.zip";
-    hash = "sha256-9dGFZkrovtu7vawAOJe0AL8fNQXu/mkyha1RXoorXD8=";
-  };
-  ktfmt = downloadPlugin {
-    name = "ktfmt";
-    version = "1.2.0.53";
-    url = "https://downloads.marketplace.jetbrains.com/files/14912/626875/ktfmt_idea_plugin-1.2.0.53.zip";
-    hash = "sha256-9dGFZkrovtu7vawAOJe0AL8fNQXu/mkyha1RXoorXD8=";
-  };
-  copilot = downloadPlugin {
-    name = "copilot";
-    version = "1.5.28.7313";
-    url = "https://downloads.marketplace.jetbrains.com/files/17718/625434/github-copilot-intellij-1.5.28.7313.zip";
-    hash = "sha256-9dGFZkrovtu7vawAOJe0AL8fNQXu/mkyha1RXoorXD8=";
-  };
-in
 {
-  home.packages = with pkgs; [
-    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [
-      "nixidea"
-      detekt
-      ktfmt
-      copilot
-    ])
-  ];
+  programs.git = {
+    enable = true;
+    ignores = [ ".DS_Store" ];
+    signing = {
+      key = "F5350C5A";
+      signByDefault = true;
+    };
+    userEmail = "oscar@tymscar.com";
+    userName = "Oscar Molnar";
+    delta.enable = true;
+  };
 }

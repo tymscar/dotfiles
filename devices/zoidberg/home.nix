@@ -11,6 +11,7 @@
     ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
     ../../apps/home-manager/zed
+    ../../apps/home-manager/idea
   ];
 
   home.packages = with pkgs; [

@@ -27,11 +27,15 @@ let
       installPhase =
         if isJar then
           ''
+            runHook preInstall
             mkdir -p $out && cp $src $out
+            runHook postInstall
           ''
         else
           ''
+            runHook preInstall
             mkdir -p $out && cp -r . $out
+            runHook postInstall
           '';
     in
     pkgs.stdenv.mkDerivation {
@@ -41,7 +45,7 @@ let
       inherit installPhase;
     };
 
-  detekt-plugin = downloadPlugin {
+  detekt = downloadPlugin {
     name = "detekt";
     version = "2.4.2";
     url = "https://downloads.marketplace.jetbrains.com/files/10761/621940/Detekt_IntelliJ_Plugin-2.4.2.zip";
@@ -59,14 +63,20 @@ let
     url = "https://downloads.marketplace.jetbrains.com/files/17718/625434/github-copilot-intellij-1.5.28.7313.zip";
     hash = "sha256-9dGFZkrovtu7vawAOJe0AL8fNQXu/mkyha1RXoorXD8=";
   };
+  discord_integration = downloadPlugin {
+    name = "dev.azn9.plugins.discord";
+    version = "2.1.3.242";
+    url = "https://downloads.marketplace.jetbrains.com/files/23420/589466/JetBrains-Discord-Integration-2.1.3.242.zip";
+    hash = "sha256-IAej9Hqyk3M/BSSj9URC0Q1D5XaVirmbmP8Hj1RYMKU=";
+  };
 in
 {
   home.packages = with pkgs; [
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [
-      "nixidea"
       detekt
       ktfmt
       copilot
+      discord_integration
     ])
   ];
 }
