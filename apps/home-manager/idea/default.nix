@@ -55,19 +55,7 @@ let
     name = "ktfmt";
     version = "1.2.0.53";
     url = "https://downloads.marketplace.jetbrains.com/files/14912/626875/ktfmt_idea_plugin-1.2.0.53.zip";
-    hash = "sha256-9dGFZkrovtu7vawAOJe0AL8fNQXu/mkyha1RXoorXD8=";
-  };
-  copilot = downloadPlugin {
-    name = "copilot";
-    version = "1.5.28.7313";
-    url = "https://downloads.marketplace.jetbrains.com/files/17718/625434/github-copilot-intellij-1.5.28.7313.zip";
-    hash = "sha256-9dGFZkrovtu7vawAOJe0AL8fNQXu/mkyha1RXoorXD8=";
-  };
-  discord_integration = downloadPlugin {
-    name = "dev.azn9.plugins.discord";
-    version = "2.1.3.242";
-    url = "https://downloads.marketplace.jetbrains.com/files/23420/589466/JetBrains-Discord-Integration-2.1.3.242.zip";
-    hash = "sha256-IAej9Hqyk3M/BSSj9URC0Q1D5XaVirmbmP8Hj1RYMKU=";
+    hash = "sha256-SIixbEcmsF8NgwH0k/ur9CpvBYxMdCvu/6wlHlOwYRc=";
   };
 in
 {
@@ -75,8 +63,6 @@ in
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [
       detekt
       ktfmt
-      copilot
-      discord_integration
     ])
   ];
 }
