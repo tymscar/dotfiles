@@ -3,6 +3,9 @@
 {
   programs.git = {
     enable = true;
+    lfs = {
+      enable = true;
+    };
     ignores = [ ".DS_Store" ];
     signing = {
       key = "F5350C5A";

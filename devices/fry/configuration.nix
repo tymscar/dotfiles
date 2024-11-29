@@ -20,8 +20,10 @@ in
     {
       brews = [ "asdf" ];
       casks = [
+        "android-studio"
         "docker"
         "elgato-camera-hub"
+        "firefox@developer-edition"
       ];
     }
   ];

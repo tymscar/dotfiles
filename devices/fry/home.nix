@@ -38,6 +38,9 @@ in
         . ~/.asdf/plugins/java/set-java-home.zsh
         eval "$(direnv hook zsh)"
         export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+        export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk/26.1.10909125
+        export ANDROID_HOME=$HOME/Library/Android/sdk
+        export PATH=$ANDROID_NDK_HOME:$PATH
       '';
     }
   ];
@@ -47,10 +50,13 @@ in
     bottom
     bruno
     cargo
+    cmake
     direnv
+    fastlane
     git-lfs
     gitkraken
     gotop
+    ninja
     openssl
     pinentry_mac
     pyenv
@@ -60,6 +66,7 @@ in
     slack
     sqlite
     tcl
+    utm
     watchman
     xz
     zlib
