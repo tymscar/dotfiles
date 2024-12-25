@@ -19,7 +19,7 @@ let
     outputHash = "sha256-x9W3P1IYQTStxARQucMkgP25SCe9nI3bDBwfslXTgD4=";
   };
 
-  colourHex = "#008180";
+  colourHex = "#625092";
   colourWallpaper = pkgs.stdenv.mkDerivation {
     name = "colour-wallpaper";
     buildInputs = [ pkgs.imagemagick ];
@@ -31,7 +31,7 @@ let
     '';
     outputHashMode = "recursive";
     outputHashAlgo = "sha256";
-    outputHash = "sha256-hg1fF0m2m6SGfVMOoVN3NQ8uPtIRv4yxGS61HZr9IN0=";
+    outputHash = "sha256-VouGGeVSK7mxes1jR3yLaw0zhMMBTxgVOuaq17qovvA=";
   };
 
   selectedWallpaper = colourWallpaper;

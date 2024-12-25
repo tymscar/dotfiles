@@ -13,6 +13,7 @@
       "arc"
       "coconutbattery"
       "cyberduck"
+      "proxyman"
       "vlc"
     ];
     masApps = {

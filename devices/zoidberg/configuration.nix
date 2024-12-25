@@ -54,12 +54,8 @@ in
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "Monaspace"
-          "Noto"
-        ];
-      })
+      nerd-fonts.monaspace
+      nerd-fonts.noto
       emacs-all-the-icons-fonts
     ];
   };
@@ -70,7 +66,7 @@ in
       remapCapsLockToControl = true;
     };
     activationScripts.postActivation.text = ''
-      su - $(logname) -c '${pkgs.skhd}/bin/skhd -r'
+      su - "$(logname)" -c '${pkgs.skhd}/bin/skhd -r'
     '';
     defaults = {
       ActivityMonitor.IconType = 6;
