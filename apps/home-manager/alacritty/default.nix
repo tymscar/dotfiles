@@ -30,7 +30,7 @@ in
           family = fontFamily;
           style = "Italic";
         };
-        size = 11.0;
+        size = 18.0;
       };
       mouse = {
         bindings = [

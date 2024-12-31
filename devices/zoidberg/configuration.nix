@@ -11,8 +11,7 @@ in
 {
 
   imports = [
-    ../../apps/darwin/skhd
-    ../../apps/darwin/yabai
+    ../../apps/darwin/aerospace
   ];
 
   homebrew = lib.mkMerge [
