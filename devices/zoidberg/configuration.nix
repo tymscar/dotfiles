@@ -36,6 +36,7 @@ in
         "blender"
         "chatgpt"
         "discord"
+        "ghostty"
         "home-assistant"
         "switchresx"
       ];

@@ -23,7 +23,7 @@ in
     ../../apps/home-manager/git
     ../../apps/home-manager/idea
     ../../apps/home-manager/neovim
-    ../../apps/home-manager/alacritty
+    ../../apps/home-manager/ghostty
     ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
     ../../apps/home-manager/ssh

@@ -24,7 +24,7 @@ outer.right =      12
 
 [mode.main.binding]
 
-cmd-enter = 'exec-and-forget open -a "Alacritty"'
+cmd-enter = 'exec-and-forget open -a "Ghostty"'
 
 cmd-ctrl-h = 'focus left'
 cmd-ctrl-j = 'focus down'

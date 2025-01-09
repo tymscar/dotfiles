@@ -6,7 +6,7 @@
     ../../apps/home-manager/zsh
     ../../apps/home-manager/git
     ../../apps/home-manager/neovim
-    ../../apps/home-manager/alacritty
+    ../../apps/home-manager/ghostty
     ../../apps/home-manager/emacs
     ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
@@ -21,7 +21,10 @@
     fossil
     gitkraken
     gotop
+#    pam-watchid
+    pinentry_mac
     raycast
     rust-analyzer
+    rustc
   ];
 }
