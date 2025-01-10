@@ -65,4 +65,6 @@ in
       ktfmt
     ])
   ];
+
+  home.file.".ideavimrc".text = builtins.readFile ./.ideavimrc;
 }

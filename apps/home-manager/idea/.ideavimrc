@@ -1,0 +1,7 @@
+set so=5
+set incsearch
+set rnu
+set clipboard=unnamedplus
+let mapleader=" "
+set easymotion
+map <Leader> <Plug>(easymotion-prefix)

@@ -11,8 +11,7 @@ in
 {
 
   imports = [
-    ../../apps/darwin/skhd
-    ../../apps/darwin/yabai
+    ../../apps/darwin/aerospace
   ];
 
   homebrew = lib.mkMerge [
@@ -41,12 +40,8 @@ in
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "Monaspace"
-          "Noto"
-        ];
-      })
+      nerd-fonts.monaspace
+      nerd-fonts.noto
     ];
   };
 
