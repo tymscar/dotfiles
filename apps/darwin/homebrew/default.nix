@@ -16,8 +16,6 @@
       "proxyman"
       "vlc"
     ];
-    masApps = {
-      Xcode = 497799835;
-    };
+    masApps = { };
   };
 }

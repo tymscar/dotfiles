@@ -40,3 +40,4 @@ font-family = MonaspiceNe Nerd Font Propo
 mouse-hide-while-typing = true
 focus-follows-mouse = true
 macos-titlebar-style = hidden
+macos-icon = xray

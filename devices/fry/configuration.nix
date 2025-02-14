@@ -1,9 +1,8 @@
-{
-  pkgs,
-  device,
-  accountUsername,
-  lib,
-  ...
+{ pkgs
+, device
+, accountUsername
+, lib
+, ...
 }:
 let
   defaultHomebrew = import ../../apps/darwin/homebrew/default.nix { };
@@ -17,7 +16,7 @@ in
   homebrew = lib.mkMerge [
     defaultHomebrew.homebrew
     {
-      brews = [ "asdf" ];
+      brews = [ ];
       casks = [
         "android-studio"
         "docker"
@@ -125,13 +124,15 @@ in
     home = "/Users/${accountUsername}";
   };
   networking.hostName = device;
-  services.nix-daemon.enable = true;
   nix = {
     settings.experimental-features = "nix-command flakes";
     nixPath = [
       "nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/nixpkgs-unstable.tar.gz"
     ];
   };
+
+  ids.gids.nixbld = 350;
+
   system.stateVersion = 4;
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
