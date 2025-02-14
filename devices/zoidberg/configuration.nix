@@ -25,15 +25,17 @@ in
         "screenresolution"
         "swiftlint"
         {
-          name = "LizardByte/homebrew/sunshine-beta";
+          name = "LizardByte/homebrew/sunshine";
           args = [ ];
           start_service = true;
           restart_service = "changed";
         }
       ];
       casks = [
+     "arduino-ide"
         "audacity"
         "blender"
+        "cursor"
         "chatgpt"
         "discord"
         "ghostty"
@@ -45,7 +47,8 @@ in
 
   environment.extraInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)'';
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    eval $(op signin)'';
 
   programs.gnupg.agent = {
     enable = true;
@@ -65,9 +68,9 @@ in
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-    activationScripts.postActivation.text = ''
-      su - "$(logname)" -c '${pkgs.skhd}/bin/skhd -r'
-    '';
+#    activationScripts.postActivation.text = ''
+#      su - "$(logname)" -c '${pkgs.skhd}/bin/skhd -r'
+#    '';
     defaults = {
       ActivityMonitor.IconType = 6;
       screencapture = {
