@@ -32,14 +32,15 @@ in
         }
       ];
       casks = [
-     "arduino-ide"
+        "arduino-ide"
         "audacity"
         "blender"
-        "cursor"
         "chatgpt"
+        "cursor"
         "discord"
         "ghostty"
         "home-assistant"
+        "karabiner-elements"
         "switchresx"
       ];
     }
@@ -161,7 +162,7 @@ in
     ];
   };
 
-  ids.gids.nixbld = 350;
+  ids.gids.nixbld = 30000;
 
   system.stateVersion = 4;
   nixpkgs.hostPlatform = "aarch64-darwin";

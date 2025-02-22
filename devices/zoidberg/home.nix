@@ -3,6 +3,7 @@
   imports = [
     ../../common/home.nix
     ../../apps/darwin/wallpaper
+    ../../apps/darwin/karabiner
     ../../apps/home-manager/zsh
     ../../apps/home-manager/git
     ../../apps/home-manager/neovim
@@ -21,7 +22,6 @@
     fossil
     gitkraken
     gotop
-#    pam-watchid
     pinentry_mac
     raycast
     rust-analyzer
