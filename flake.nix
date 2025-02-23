@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     homeManager = {
@@ -24,6 +28,7 @@
       nix-vscode-extensions,
       nix-darwin,
       nixpkgs,
+      nur,
       nixneovimplugins,
       alacritty-theme,
       homeManager,
@@ -46,6 +51,7 @@
                 nixpkgs.overlays = [
                   nixneovimplugins.overlays.default
                   alacritty-theme.overlays.default
+                  nur.overlay
                 ];
               }
               ./common/configuration.nix
@@ -84,6 +90,7 @@
                 nixpkgs.overlays = [
                   nixneovimplugins.overlays.default
                   alacritty-theme.overlays.default
+                  nur.overlay
                 ];
               }
               ./devices/${device}/configuration.nix

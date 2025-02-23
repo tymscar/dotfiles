@@ -38,7 +38,6 @@ in
         "chatgpt"
         "cursor"
         "discord"
-        "ghostty"
         "home-assistant"
         "karabiner-elements"
         "switchresx"

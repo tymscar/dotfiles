@@ -20,7 +20,6 @@ in
       casks = [
         "android-studio"
         "docker"
-        "ghostty"
         "elgato-camera-hub"
         "firefox@developer-edition"
       ];
