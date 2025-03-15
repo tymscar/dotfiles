@@ -35,8 +35,6 @@ in
         "arduino-ide"
         "audacity"
         "blender"
-        "chatgpt"
-        "cursor"
         "discord"
         "home-assistant"
         "karabiner-elements"
@@ -68,9 +66,6 @@ in
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-#    activationScripts.postActivation.text = ''
-#      su - "$(logname)" -c '${pkgs.skhd}/bin/skhd -r'
-#    '';
     defaults = {
       ActivityMonitor.IconType = 6;
       screencapture = {
@@ -143,7 +138,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
   programs.zsh.enable = true;
   users.users.tymscar = {
     description = "Oscar Molnar";

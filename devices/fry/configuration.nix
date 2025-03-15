@@ -115,7 +115,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
   programs.zsh.enable = true;
   users.users."${accountUsername}" = {
     description = "Oscar Molnar";

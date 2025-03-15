@@ -3,7 +3,7 @@
 {
   programs.emacs = {
     enable = true;
-    package = if specialArgs.os == "linux" then pkgs.emacs else pkgs.emacs-macport;
+    package = with pkgs; if specialArgs.os == "linux" then emacs else nur.repos.natsukium.emacs-plus;
 
     extraConfig = builtins.readFile ./config.el;
     extraPackages =

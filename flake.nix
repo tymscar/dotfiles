@@ -51,7 +51,7 @@
                 nixpkgs.overlays = [
                   nixneovimplugins.overlays.default
                   alacritty-theme.overlays.default
-                  nur.overlay
+                  nur.overlays.default
                 ];
               }
               ./common/configuration.nix
@@ -90,7 +90,7 @@
                 nixpkgs.overlays = [
                   nixneovimplugins.overlays.default
                   alacritty-theme.overlays.default
-                  nur.overlay
+                  nur.overlays.default
                 ];
               }
               ./devices/${device}/configuration.nix
