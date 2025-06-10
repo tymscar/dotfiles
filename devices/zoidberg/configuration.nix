@@ -46,7 +46,7 @@ in
   environment.extraInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-    eval $(op signin)'';
+  '';
 
   programs.gnupg.agent = {
     enable = true;

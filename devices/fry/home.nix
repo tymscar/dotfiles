@@ -32,8 +32,8 @@ in
   programs.zsh = lib.mkMerge [
     defaultZsh.programs.zsh
     {
-      initExtra = ''
-        ${defaultZsh.programs.zsh.initExtra}
+      initContent = ''
+        ${defaultZsh.programs.zsh.initContent}
         eval "$(direnv hook zsh)"
         export USE_GKE_GCLOUD_AUTH_PLUGIN=True
         export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk/26.1.10909125

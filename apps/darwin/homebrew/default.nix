@@ -3,7 +3,11 @@
 {
   homebrew = {
     enable = true;
-    onActivation.cleanup = "uninstall";
+    onActivation = {
+      cleanup = "uninstall";
+      upgrade = true;
+      autoUpdate = true;
+    };
     taps = [
       "homebrew/services"
     ];

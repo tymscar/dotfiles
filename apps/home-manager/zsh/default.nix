@@ -17,7 +17,7 @@ in
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    initExtra =
+    initContent =
       if specialArgs.os == "darwin" then
         ''
           export PATH=/Users/${accountUsername}/.local/bin:/Users/${accountUsername}/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH
@@ -45,7 +45,7 @@ in
     };
     shellAliases = {
       ls = "lsd";
-      cat = "bat";
+      cat = "bat -p --theme 1337";
       vim = "nvim";
       switch = switchCommand;
     };
