@@ -5,7 +5,7 @@ let
     if specialArgs.os == "linux" then
       "sudo nixos-rebuild switch --flake '.#${specialArgs.device}'"
     else
-      "nix run nix-darwin -- switch --flake '.#${specialArgs.device}'";
+      "sudo nix run nix-darwin -- switch --flake '.#${specialArgs.device}'";
 in
 {
   programs.zsh = {

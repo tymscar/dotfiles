@@ -14,21 +14,10 @@
 
   programs.ssh = {
       enable = true;
-      matchBlocks = {
-        "*" = {
-          forwardAgent = true;
-          remoteForwards = [
-             {
-               bind.address = "/run/user/1000/gnupg/S.gpg-agent";
-               host.address = "/Users/tymscar/.gnupg/S.gpg-agent.extra";
-             }
-             {
-               bind.address = "/run/user/1000/gnupg/S.gpg-agent.ssh";
-               host.address = "/Users/tymscar/.gnupg/S.gpg-agent.ssh";
-             }
-           ];
-        };
-      };
+      extraConfig = ''
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent /Users/tymscar/.gnupg/S.gpg-agent.extra
+        RemoteForward /run/user/1000/gnupg/S.gpg-agent.ssh /Users/tymscar/.gnupg/S.gpg-agent.ssh
+      '';
     };
 
   # Enable use of Yubikey for GPG and SSH via SmartCard.

@@ -13,9 +13,12 @@
     ../../apps/home-manager/vscode
     ../../apps/home-manager/zed
     ../../apps/home-manager/idea
+    ../../apps/home-manager/ssh
   ];
 
   home.packages = with pkgs; [
+    _1password-cli
+    uv
     appcleaner
     bottom
     cargo
