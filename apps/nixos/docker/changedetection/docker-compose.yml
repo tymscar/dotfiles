@@ -1,0 +1,30 @@
+version: '3.2'
+services:
+    changedetection:
+      image: ghcr.io/dgtlmoon/changedetection.io
+      container_name: changedetection
+      hostname: changedetection
+      volumes:
+        - changedetection-data:/datastore
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.changedetection.entrypoints=http"
+        - "traefik.http.routers.changedetection.rule=Host(`changedetection.tymscar.com`)"
+        - "traefik.http.middlewares.changedetection-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.changedetection.middlewares=changedetection-https-redirect"
+        - "traefik.http.routers.changedetection-secure.entrypoints=https"
+        - "traefik.http.routers.changedetection-secure.rule=Host(`changedetection.tymscar.com`)"
+        - "traefik.http.routers.changedetection-secure.tls=true"
+        - "traefik.http.routers.changedetection-secure.service=changedetection"
+        - "traefik.http.services.changedetection.loadbalancer.server.port=5000"
+        - "traefik.docker.network=proxy"
+      networks:
+        - proxy
+      restart: unless-stopped
+
+volumes:
+  changedetection-data:
+
+networks:
+  proxy:
+    external: true

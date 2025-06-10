@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  authelia:
+    image: authelia/authelia
+    container_name: authelia
+    restart: unless-stopped
+    volumes:
+      - ./authelia/.runtime-configuration.yml:/config/configuration.yml:ro
+      - ./authelia/.runtime-users_database.yml:/config/users_database.yml:ro
+      - ./authelia/db.sqlite3:/config/db.sqlite3
+      - ./authelia/notification.txt:/config/notification.txt
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.authelia.rule=Host(`auth.tymscar.com`)"
+      - "traefik.http.routers.authelia.entrypoints=https"
+      - "traefik.http.routers.authelia.tls=true"
+      - "traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/verify?rd=https://auth.tymscar.com"
+      - "traefik.http.middlewares.authelia.forwardauth.trustForwardHeader=true"
+      - "traefik.http.middlewares.authelia.forwardauth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email"
+
+  tunnel:
+    container_name: cloudflared-tunnel-for-authelia
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    networks:
+        - proxy
+
+networks:
+  proxy:
+    external: true

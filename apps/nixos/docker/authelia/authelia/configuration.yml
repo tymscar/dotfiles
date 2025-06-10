@@ -1,0 +1,40 @@
+---
+server:
+  host: 0.0.0.0
+  port: 9091
+
+log:
+  level: info
+
+authentication_backend:
+  password_reset:
+    disable: true
+  file:
+    path: /config/users_database.yml
+
+access_control:
+  default_policy: deny
+  rules:
+    - domain: paste.tymscar.com
+      policy: one_factor
+
+session:
+  name: authelia_session
+  secret: PLACEHOLDER_SESSION_SECRET
+  expiration: 3600  # 1 hour
+  inactivity: 300  # 5 minutes
+  domain: tymscar.com
+
+regulation:
+  max_retries: 3
+  find_time: 120
+  ban_time: 300
+
+storage:
+  local:
+    path: /config/db.sqlite3
+  encryption_key: PLACEHOLDER_STORAGE_KEY
+
+notifier:
+  filesystem:
+    filename: /config/notification.txt
