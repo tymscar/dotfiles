@@ -64,12 +64,9 @@ in
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "Monaspace"
-          "Noto"
-        ];
-      })
+      nerd-fonts.monaspace
+      nerd-fonts.noto
+      emacs-all-the-icons-fonts
       apple-color-emoji
     ];
 

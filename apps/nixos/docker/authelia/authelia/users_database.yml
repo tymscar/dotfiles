@@ -1,0 +1,6 @@
+---
+users:
+  tymscar:
+    displayname: "Tymscar"
+    password: "PLACEHOLDER_PASSWORD_HASH"
+    email: oscar@tymscar.com

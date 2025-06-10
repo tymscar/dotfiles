@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  website:
+    image: nginx:alpine
+    container_name: web-server-tymscarcom
+    volumes:
+      - ./website:/usr/share/nginx/html:ro
+    networks:
+      - proxy
+    restart: unless-stopped
+
+  tunnel:
+    container_name: cloudflare-tunnel-for-tymscarcom
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    networks:
+        - proxy
+
+networks:
+  proxy:
+    external: true

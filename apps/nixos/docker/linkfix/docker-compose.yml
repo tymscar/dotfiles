@@ -1,0 +1,15 @@
+services:
+  linkfix_bot:
+    image: ghcr.io/tymscar/linkfix-for-discord:instagram-share-fix 
+    stop_signal: SIGKILL
+    environment:
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - LOCALE=en
+      - LINKFIX_DEBUG=0
+      - INSTAGRAM_FIX_URL=d.ddinstagram.com
+      - PIXIV_FIX_URL=phixiv.net
+      - REDDIT_FIX_URL=rxddit.com
+      - TIKTOK_FIX_URL=vxtiktok.com
+      - TWITTER_FIX_URL=${TWITTER_FIX_URL}
+      - YOUTUBE_FIX_URL=youtu.be
+      - BSKY_FIX_URL=bskyx.app

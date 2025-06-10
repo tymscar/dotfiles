@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13378:80
+    volumes:
+      - ./podcasts:/podcasts
+      - ./config:/config
+      - ./metadata:/metadata
+      - ./books:/books
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.audiobookshelf.entrypoints=http"
+      - "traefik.http.routers.audiobookshelf.rule=Host(`audiobookshelf.tymscar.com`)"
+      - "traefik.http.middlewares.audiobookshelf-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.audiobookshelf.middlewares=audiobookshelf-https-redirect"
+      - "traefik.http.routers.audiobookshelf-secure.entrypoints=https"
+      - "traefik.http.routers.audiobookshelf-secure.rule=Host(`audiobookshelf.tymscar.com`)"
+      - "traefik.http.routers.audiobookshelf-secure.tls=true"
+      - "traefik.http.routers.audiobookshelf-secure.service=audiobookshelf"
+      - "traefik.http.services.audiobookshelf.loadbalancer.server.port=80"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.audiobookshelf-websocket.entrypoints=https"
+      - "traefik.http.routers.audiobookshelf-websocket.rule=Host(`audiobookshelf.tymscar.com`) && Header(`Connection`, `upgrade`) && Header(`Upgrade`, `websocket`)"
+      - "traefik.http.routers.audiobookshelf-websocket.tls=true"
+      - "traefik.http.routers.audiobookshelf-websocket.service=audiobookshelf"
+      - "traefik.http.services.audiobookshelf.loadbalancer.server.scheme=http"
+      - "traefik.http.services.audiobookshelf.loadbalancer.passhostheader=true"
+
+    networks:
+      - proxy
+    restart: always
+
+networks:
+  proxy:
+    external: true

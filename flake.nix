@@ -19,6 +19,10 @@
     };
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,6 +36,7 @@
       nixneovimplugins,
       alacritty-theme,
       homeManager,
+      agenix,
       ...
     }:
     let
@@ -39,14 +44,17 @@
         device:
         let
           system = "x86_64-linux";
+          linuxUsername = "tymscar";
         in
         {
           "${device}" = nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
               inherit device;
+              accountUsername = linuxUsername;
             };
             modules = [
+              agenix.nixosModules.default
               {
                 nixpkgs.overlays = [
                   nixneovimplugins.overlays.default
@@ -63,7 +71,7 @@
                 home-manager.users.tymscar = import ./devices/${device}/home.nix;
                 home-manager.extraSpecialArgs = {
                   inherit device;
-                  accountUsername = "tymscar";
+                  accountUsername = linuxUsername;
                   os = "linux";
                   nix-vscode-extensions = nix-vscode-extensions.extensions.${system};
                 };
@@ -111,7 +119,10 @@
           };
         };
 
-      nixosDeviceNames = [ "bender" ];
+      nixosDeviceNames = [
+        "bender"
+        "farnsworth"  
+     ];
       macosDeviceNames = [
         "zoidberg"
         "fry"

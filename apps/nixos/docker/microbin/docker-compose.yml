@@ -1,0 +1,31 @@
+version: "3"
+services:
+  paste:
+    image: danielszabo99/microbin:latest
+    container_name: microbin
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.microbin-http.rule=Host(`paste.tymscar.com`)"
+      - "traefik.http.routers.microbin-http.entrypoints=http"
+      - "traefik.http.routers.microbin-http.middlewares=https-redirect"
+      - "traefik.http.routers.microbin-secure.rule=Host(`paste.tymscar.com`)"
+      - "traefik.http.routers.microbin-secure.entrypoints=https"
+      - "traefik.http.routers.microbin-secure.tls=true"
+      - "traefik.http.routers.microbin-secure.tls.certresolver=cloudflare"
+      - "traefik.http.routers.microbin-secure.middlewares=authelia@docker"
+      - "traefik.http.services.microbin.loadbalancer.server.port=8080"
+      - "traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/verify?rd=https://auth.tymscar.com"
+      - "traefik.http.middlewares.authelia.forwardauth.trustForwardHeader=true"
+      - "traefik.http.middlewares.authelia.forwardauth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email"
+      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
+
+    volumes:
+      - ./data:/app/pasta_data
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
