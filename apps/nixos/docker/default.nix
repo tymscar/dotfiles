@@ -14,6 +14,7 @@
     ./openwebui
     ./tymscar-website
     ./resume
+    ./atuin
   ];
 
   virtualisation.docker.enable = true;
