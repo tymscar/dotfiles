@@ -52,7 +52,6 @@ in
     };
   };
 
-
   systemd.services.homeassistant-vm = {
     description = "Home Assistant";
     after = [ "network.target" ];
@@ -82,8 +81,6 @@ in
 
     wantedBy = [ "multi-user.target" ];
   };
-
-
 
   swapDevices = pkgs.lib.mkForce [ ];
 
@@ -117,12 +114,15 @@ in
 
   virtualisation.docker.enable = true;
   users.users.tymscar = {
-    extraGroups = [ "docker" "kvm" "libvirtd" ];
+    extraGroups = [
+      "docker"
+      "kvm"
+      "libvirtd"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCbCaPnHUAbLh2lZg4nkYEzAR7X1/b3KKhp/bQUgwwWzJOdHK9aJLFzUonWQaSkdwrCh3E3Lhd5mmxv4YQLiBXagNwGw+hzmrvsi6z1Oa/GpiE/BJPih4nrH62J+q7O8tSgD3JMW62j6Qjc1Qj75Acgan/kYMyIhXKX3ZfqEx4pvggM76HVVbRCfMuHtLE1qiqHTfCbb1ubiJixHWPFSRqaP1DLXpxFPC9Ztzp8A5TblC9dSTdbPPg9C/gSPsKGbJqz8+3Oa9HWmrfHbmsGkBGqvQSHl1T6mQlNTENxcDYkorsGIzg+4XlBne6FO47Gef6YCyOHS+qG0b3ZXL31mFTHDF/sCuPoaJcKjBy9iB40kiAQlceVtjYl2zG0toGDrmGHMoBvo/xOt/noqhUMrhRYDsGf4DVUnzpdDkqd+FDtIe7i8K7ejFmLK88LScr7/E8Ew730ecS6dVMRDMS84FIsSZ2WU1Ptz++DkBJsBPzTgtUN6qbO/jf3xWtn+cMqm/XpuMO+HNq2SCOKrbB9JIg0a8gBWmXsljIDlL+ppvR9WT+d9RNryCHbVF3QzbiPh7mIVEDKaCwmn9q5mzKqJW9/Kxq/DyTXmFdoexmYaIrKpjLqfAsM+1Ix2vPOwTZWiVCZr9cFoDOvxTEubgvQBTTtU/SLwNCunLhqHkcqDDrayw== openpgp:0xB8D50E7A"
     ];
   };
-
 
   services = {
     openssh = {

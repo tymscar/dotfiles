@@ -1,10 +1,14 @@
 { pkgs, config, ... }:
 let
   docker-env = config.age.secrets.docker-tymscar-resume.path;
-in {
+in
+{
   systemd.services.tymscar-resume = {
     description = "Tymscar's resume";
-    after = [ "network.target" "docker.service" ];
+    after = [
+      "network.target"
+      "docker.service"
+    ];
     wants = [ "docker.service" ];
     serviceConfig = {
       ExecStart = "${pkgs.docker}/bin/docker compose --env-file ${docker-env} -f docker-compose.yaml up --force-recreate";

@@ -1,10 +1,14 @@
 { pkgs, config, ... }:
 let
   docker-env = config.age.secrets.docker-traefik.path;
-in {
+in
+{
   systemd.services.traefik = {
     description = "Traefik";
-    after = [ "network.target" "docker.service" ];
+    after = [
+      "network.target"
+      "docker.service"
+    ];
     wants = [ "docker.service" ];
     serviceConfig = {
       ExecStart = "${pkgs.docker}/bin/docker compose --env-file ${docker-env} -f docker-compose.yml up --force-recreate";

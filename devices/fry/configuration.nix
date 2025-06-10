@@ -1,8 +1,9 @@
-{ pkgs
-, device
-, accountUsername
-, lib
-, ...
+{
+  pkgs,
+  device,
+  accountUsername,
+  lib,
+  ...
 }:
 let
   defaultHomebrew = import ../../apps/darwin/homebrew/default.nix { };

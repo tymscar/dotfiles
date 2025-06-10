@@ -121,8 +121,8 @@
 
       nixosDeviceNames = [
         "bender"
-        "farnsworth"  
-     ];
+        "farnsworth"
+      ];
       macosDeviceNames = [
         "zoidberg"
         "fry"

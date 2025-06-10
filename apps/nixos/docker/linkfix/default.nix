@@ -1,10 +1,14 @@
 { pkgs, config, ... }:
 let
   docker-env = config.age.secrets.docker-linkfix.path;
-in {
+in
+{
   systemd.services.linkfix = {
     description = "Discord Linkfix Bot";
-    after = [ "network.target" "docker.service" ];
+    after = [
+      "network.target"
+      "docker.service"
+    ];
     wants = [ "docker.service" ];
     serviceConfig = {
       ExecStart = "${pkgs.docker}/bin/docker compose --env-file ${docker-env} -f docker-compose.yml up --force-recreate";

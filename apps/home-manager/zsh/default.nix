@@ -1,4 +1,9 @@
-{ pkgs, specialArgs, accountUsername, ... }:
+{
+  pkgs,
+  specialArgs,
+  accountUsername,
+  ...
+}:
 
 let
   switchCommand =
@@ -23,11 +28,11 @@ in
       else
         "";
     plugins = [
-        {
-          name = "vi-mode";
-          src = pkgs.zsh-vi-mode;
-          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-        }
+      {
+        name = "vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
     ];
     oh-my-zsh = {
       enable = true;

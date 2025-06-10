@@ -1,10 +1,14 @@
 { pkgs, config, ... }:
 let
-    docker-env = config.age.secrets.docker-tymscar-website.path;
-in {
+  docker-env = config.age.secrets.docker-tymscar-website.path;
+in
+{
   systemd.services.tymscar-website = {
     description = "Tymscar.com";
-    after = [ "network.target" "docker.service" ];
+    after = [
+      "network.target"
+      "docker.service"
+    ];
     wants = [ "docker.service" ];
     serviceConfig = {
       ExecStart = "${pkgs.docker}/bin/docker compose --env-file ${docker-env} -f docker-compose.yaml up --force-recreate";

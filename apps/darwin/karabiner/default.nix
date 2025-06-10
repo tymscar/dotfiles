@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   xdg.configFile = {
     "karabiner/assets/complex_modifications/mx_master.json".text = builtins.toJSON {
       title = "MX Master Custom - Nix managed";
@@ -12,14 +13,17 @@
                 pointing_button = "button4"; # Back Button
               };
               to = [
-                { key_code = "hyphen"; modifiers = ["command"]; }
+                {
+                  key_code = "hyphen";
+                  modifiers = [ "command" ];
+                }
               ];
               conditions = [
                 {
                   type = "device_if";
                   identifiers = [
                     {
-                      vendor_id = 1133;  # Logitech
+                      vendor_id = 1133; # Logitech
                       product_id = 50475; # My mouse
                       is_keyboard = false;
                       is_pointing_device = true;
@@ -34,14 +38,17 @@
                 pointing_button = "button5"; # Forward Button
               };
               to = [
-                { key_code = "equal_sign"; modifiers = ["command"]; }
+                {
+                  key_code = "equal_sign";
+                  modifiers = [ "command" ];
+                }
               ];
               conditions = [
                 {
                   type = "device_if";
                   identifiers = [
                     {
-                      vendor_id = 1133;  # Logitech
+                      vendor_id = 1133; # Logitech
                       product_id = 50475; # My mouse
                       is_keyboard = false;
                       is_pointing_device = true;

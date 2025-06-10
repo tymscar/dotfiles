@@ -56,7 +56,8 @@ in
 
         "Mod4+Shift+c" = "reload";
         "Mod4+Shift+r" = "restart";
-        "Mod4+Shift+e" = "exec i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit' 'i3-msg exit'";
+        "Mod4+Shift+e" =
+          "exec i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit' 'i3-msg exit'";
         "Mod4+space" = "exec rofi -show drun -show-icons";
         "Mod4+Return" = "exec alacritty";
         "Mod4+p" = "exec shutter";

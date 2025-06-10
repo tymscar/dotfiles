@@ -61,10 +61,10 @@ in
 {
   home.packages = with pkgs; [
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [
-          detekt
-          ktfmt
-        ])
-   jetbrains.gateway
+      detekt
+      ktfmt
+    ])
+    jetbrains.gateway
   ];
 
   home.file.".ideavimrc".text = builtins.readFile ./.ideavimrc;

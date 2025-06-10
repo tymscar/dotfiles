@@ -2,7 +2,10 @@
 {
   systemd.services.changedetection = {
     description = "Change Detection io";
-    after = [ "network.target" "docker.service" ];
+    after = [
+      "network.target"
+      "docker.service"
+    ];
     wants = [ "docker.service" ];
     serviceConfig = {
       ExecStart = "${pkgs.docker}/bin/docker compose -f docker-compose.yml up --force-recreate";
