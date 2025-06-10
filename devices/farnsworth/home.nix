@@ -24,6 +24,7 @@ in
     ../../apps/home-manager/neovim
     ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
+    ../../apps/home-manager/atuin
   ];
 
   home.packages = with pkgs; [

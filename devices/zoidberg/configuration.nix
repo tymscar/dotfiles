@@ -62,6 +62,7 @@ in
   };
 
   system = {
+    primaryUser = accountUsername;
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToControl = true;

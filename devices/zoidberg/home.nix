@@ -14,6 +14,7 @@
     ../../apps/home-manager/zed
     ../../apps/home-manager/idea
     ../../apps/home-manager/ssh
+    ../../apps/home-manager/atuin
   ];
 
   home.packages = with pkgs; [
