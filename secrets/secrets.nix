@@ -14,4 +14,5 @@ in {
     "docker/traefik.age".publicKeys = [one-password-agenix farnsworth];
     "docker/linkfix.age".publicKeys = [one-password-agenix farnsworth];
     "docker/authelia.age".publicKeys = [one-password-agenix farnsworth];
+    "docker/atuin.age".publicKeys = [one-password-agenix farnsworth];
 }

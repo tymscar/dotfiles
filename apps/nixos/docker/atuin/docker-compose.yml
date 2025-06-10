@@ -1,0 +1,52 @@
+version: '3.5'
+
+services:
+  atuin:
+    image: ghcr.io/atuinsh/atuin:v18.6.1
+    container_name: atuin
+    command: server start
+    restart: unless-stopped
+
+    volumes:
+      - "./config:/config"
+
+    environment:
+      ATUIN_HOST: "0.0.0.0"
+      ATUIN_OPEN_REGISTRATION: "true"
+      ATUIN_DB_URI: postgres://$ATUIN_DB_USERNAME:$ATUIN_DB_PASSWORD@postgresql/$ATUIN_DB_NAME
+      RUST_LOG: info,atuin_server=debug
+
+    depends_on:
+      - postgresql
+
+    networks:
+      - default
+      - proxy
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.atuin.entrypoints=http"
+      - "traefik.http.routers.atuin.rule=Host(`atuin.tymscar.com`)"
+      - "traefik.http.middlewares.atuin-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.atuin.middlewares=atuin-https-redirect"
+      - "traefik.http.routers.atuin-secure.entrypoints=https"
+      - "traefik.http.routers.atuin-secure.rule=Host(`atuin.tymscar.com`)"
+      - "traefik.http.routers.atuin-secure.tls=true"
+      - "traefik.http.routers.atuin-secure.service=atuin"
+      - "traefik.http.services.atuin.loadbalancer.server.port=8888"
+      - "traefik.docker.network=proxy"
+
+  postgresql:
+    image: postgres:14
+    container_name: atuin-postgresql
+    restart: unless-stopped
+    volumes:
+      - "./database:/var/lib/postgresql/data/"
+    environment:
+      POSTGRES_USER: ${ATUIN_DB_USERNAME}
+      POSTGRES_PASSWORD: ${ATUIN_DB_PASSWORD}
+      POSTGRES_DB: ${ATUIN_DB_NAME}
+
+networks:
+  proxy:
+    external: true
