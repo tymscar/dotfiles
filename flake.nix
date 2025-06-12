@@ -84,7 +84,7 @@
         device:
         let
           system = "aarch64-darwin";
-          macUsername = if device == "fry" then "oscar.molnar@glean.co" else "tymscar";
+          macUsername = if device == "fry" then "oscar.molnar" else "tymscar";
         in
         {
           "${device}" = nix-darwin.lib.darwinSystem {

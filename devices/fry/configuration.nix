@@ -20,9 +20,11 @@ in
       brews = [ ];
       casks = [
         "android-studio"
-        "docker"
         "elgato-camera-hub"
+        "orbstack"
+        "karabiner-elements"
         "firefox@developer-edition"
+        "zen"
       ];
     }
   ];
