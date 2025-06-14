@@ -39,6 +39,7 @@ in
         "home-assistant"
         "karabiner-elements"
         "switchresx"
+        "macs-fan-control"
       ];
     }
   ];

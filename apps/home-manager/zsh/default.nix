@@ -24,6 +24,13 @@ in
           if [ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then
             . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
           fi
+          nixpkgs() {
+            local packages=()
+            for pkg in "$@"; do
+              packages+=("nixpkgs#$pkg")
+            done
+            nix shell "''${packages[@]}"
+          }
         ''
       else
         "";

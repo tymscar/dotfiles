@@ -30,5 +30,7 @@
     raycast
     rust-analyzer
     rustc
+    yt-dlp
+    ffmpeg
   ];
 }
