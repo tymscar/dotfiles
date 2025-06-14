@@ -7,5 +7,6 @@
     docker-linkfix.file = ../../secrets/docker/linkfix.age;
     docker-authelia.file = ../../secrets/docker/authelia.age;
     docker-atuin.file = ../../secrets/docker/atuin.age;
+    docker-n8n.file = ../../secrets/docker/n8n.age;
   };
 }

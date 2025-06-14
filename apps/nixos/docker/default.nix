@@ -15,6 +15,7 @@
     ./tymscar-website
     ./resume
     ./atuin
+    ./n8n
   ];
 
   virtualisation.docker.enable = true;

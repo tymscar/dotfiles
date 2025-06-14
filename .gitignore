@@ -24,3 +24,6 @@ apps/nixos/docker/traefik/data/acme.json
 
 apps/nixos/docker/atuin/config
 apps/nixos/docker/atuin/database
+
+apps/nixos/docker/n8n/data
+apps/nixos/docker/n8n/postgres

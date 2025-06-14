@@ -207,7 +207,7 @@ sections:
         id: 5_956_ebay
       - &ref_25
         title: Nix search
-        icon: https://nixos.org/favicon.png
+        icon: https://search.nixos.org/favicon.png
         url: https://search.nixos.org/
         target: sametab
         id: 6_956_nixsearch
@@ -247,6 +247,12 @@ sections:
         url: https://comfyui.tymscar.com/
         target: sametab
         id: 12_956_comfyui
+      - &ref_32
+        title: N8n
+        icon: https://n8n.io/favicon.ico
+        url: https://n8n.tymscar.com/
+        target: sametab
+        id: 13_956_nn
     displayData:
       sortBy: most-used
       rows: 1
@@ -267,58 +273,59 @@ sections:
       - *ref_29
       - *ref_30
       - *ref_31
+      - *ref_32
   - name: Management
     items:
-      - &ref_32
+      - &ref_33
         title: Pihole
         icon: https://docs.pi-hole.net/images/favicon.ico
         url: https://pihole.tymscar.com/
         target: sametab
         id: 0_1021_pihole
-      - &ref_33
+      - &ref_34
         title: Home assistant
         icon: https://has.tymscar.com/static/icons/favicon.ico
         url: https://has.tymscar.com/
         target: sametab
         id: 1_1021_homeassistant
-      - &ref_34
+      - &ref_35
         title: Synology
         icon: https://www.synology.com/img/icon/favicon@2x.png
         url: https://nas.tymscar.com/
         target: sametab
         id: 2_1021_synology
-      - &ref_35
+      - &ref_36
         title: Traefik
         icon: >-
           https://doc.traefik.io/traefik/assets/images/logo-traefik-proxy-icon.svg
         url: https://traefik.tymscar.com/
         target: sametab
         id: 3_1021_traefik
-      - &ref_36
+      - &ref_37
         title: Paste
         icon: https://microbin.eu/img/favicon.ico
         url: https://paste.tymscar.com/
         target: sametab
         id: 4_1021_paste
-      - &ref_37
+      - &ref_38
         title: Changedetection
         icon: https://changedetection.tymscar.com/static/favicons/favicon.ico
         url: https://changedetection.tymscar.com/
         target: sametab
         id: 5_1021_changedetection
-      - &ref_38
+      - &ref_39
         title: Uptime Kuma
         icon: https://kuma.tymscar.com/favicon.ico
         url: https://kuma.tymscar.com
         target: sametab
         id: 6_1021_uptimekuma
-      - &ref_39
+      - &ref_40
         title: Unifi
         icon: https://udm.tymscar.com/favicon.ico
         url: https://udm.tymscar.com/
         target: sametab
         id: 7_1021_unifi
-      - &ref_40
+      - &ref_41
         title: JetKVM
         icon: https://jetkvm.tymscar.com/static/favicon.png
         url: https://jetkvm.tymscar.com/
@@ -331,7 +338,6 @@ sections:
       collapsed: false
       hideForGuests: false
     filteredItems:
-      - *ref_32
       - *ref_33
       - *ref_34
       - *ref_35
@@ -340,3 +346,4 @@ sections:
       - *ref_38
       - *ref_39
       - *ref_40
+      - *ref_41
