@@ -27,3 +27,5 @@ apps/nixos/docker/atuin/database
 
 apps/nixos/docker/n8n/data
 apps/nixos/docker/n8n/postgres
+
+apps/nixos/docker/grafana/data

@@ -16,6 +16,7 @@
     ./resume
     ./atuin
     ./n8n
+    ./grafana
   ];
 
   virtualisation.docker.enable = true;

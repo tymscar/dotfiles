@@ -38,4 +38,8 @@ in
     one-password-agenix
     farnsworth
   ];
+  "docker/grafana.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
 }
