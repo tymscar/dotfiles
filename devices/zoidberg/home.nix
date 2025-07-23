@@ -8,7 +8,7 @@
     ../../apps/home-manager/git
     ../../apps/home-manager/neovim
     ../../apps/home-manager/ghostty
-    ../../apps/home-manager/emacs
+        #    ../../apps/home-manager/emacs
     ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
     ../../apps/home-manager/zed

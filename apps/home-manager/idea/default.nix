@@ -60,10 +60,11 @@ let
 in
 {
   home.packages = with pkgs; [
-    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [
-      detekt
-      ktfmt
-    ])
+#    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [
+#      detekt
+#      ktfmt
+#    ])
+    jetbrains.idea-ultimate
     jetbrains.gateway
   ];
 
