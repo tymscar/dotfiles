@@ -55,6 +55,7 @@
       "focus-follows-mouse" = true;
       "macos-titlebar-style" = "hidden";
       "macos-icon" = "xray";
+      keybind = "shift+enter=text:\\r\\n";
     };
   };
 }

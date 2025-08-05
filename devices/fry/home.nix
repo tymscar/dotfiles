@@ -15,7 +15,6 @@ let
       accountUsername
       ;
   };
-  daktari = import ../../packages/daktari.nix { inherit pkgs; };
   pinnedJDK = pkgs.jdk21;
   gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
       gke-gcloud-auth-plugin
@@ -39,6 +38,7 @@ in
     ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
     ../../apps/home-manager/ssh
+    ../../apps/home-manager/atuin
   ];
 
   programs.zsh = lib.mkMerge [
@@ -60,7 +60,6 @@ in
 
   home.packages = with pkgs; [
     _1password-cli
-    daktari
     gdk
     google-cloud-sql-proxy
     mkcert
@@ -76,6 +75,7 @@ in
     bottom
     bruno-wrapped 
     cargo
+    claude-code
     cmake
     direnv
     docker-credential-gcr
@@ -85,6 +85,7 @@ in
     gotop
     ninja
     nvtopPackages.apple
+    opencode
     openssl
     pinentry_mac
     pyenv
