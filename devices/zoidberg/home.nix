@@ -21,6 +21,7 @@
     _1password-cli
     uv
     appcleaner
+        #    opencode
     bottom
     cargo
     fossil
