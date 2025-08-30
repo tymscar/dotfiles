@@ -29,40 +29,26 @@ in
     ../../common/home.nix
     i3wm-module
     ../../apps/home-manager/alacritty
-    ../../apps/home-manager/zsh
     ../../apps/home-manager/pcmanfm
     ../../apps/home-manager/rofi
     ../../apps/home-manager/polybar
-    ../../apps/home-manager/git
-    ../../apps/home-manager/neovim
     ../../apps/home-manager/emacs
-    ../../apps/home-manager/gpg
   ];
 
   home.packages = with pkgs; [
     _1password-gui
-    bat
     blenderWithCuda
     brave
-    cargo
     discord
     feh
     fsv
     gedit
-    gnupg
-    gotop
-    htop
-    lsd
     lxappearance
-    neofetch
-    p7zip
     pavucontrol
     pcmanfm
     polybar
     rofi
-    rust-analyzer
     shutter
-    traceroute
     usbimager
     usbutils
     yubikey-manager

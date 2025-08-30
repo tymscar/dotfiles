@@ -17,34 +17,19 @@ in
     ../../common/home.nix
     i3wm-module
     ../../apps/home-manager/alacritty
-    ../../apps/home-manager/zsh
     ../../apps/home-manager/pcmanfm
     ../../apps/home-manager/rofi
     ../../apps/home-manager/polybar
-    ../../apps/home-manager/git
-    ../../apps/home-manager/neovim
-    ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
-    ../../apps/home-manager/atuin
   ];
 
   home.packages = with pkgs; [
-    bat
-    cargo
     feh
     gedit
-    gnupg
-    gotop
-    htop
-    lsd
     lxappearance
-    neofetch
-    p7zip
     pcmanfm
     polybar
     rofi
-    rust-analyzer
-    traceroute
     usbimager
     usbutils
     qemu

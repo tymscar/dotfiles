@@ -25,7 +25,7 @@
         helm-company
         helm-projectile
         helm-rg
-#        helm-themes
+        #        helm-themes
         lsp-mode
         lsp-ui
         magit

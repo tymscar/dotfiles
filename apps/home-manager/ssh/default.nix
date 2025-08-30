@@ -3,10 +3,15 @@
 {
   programs.ssh = {
     enable = true;
-    forwardAgent = lib.mkForce true;
-    extraConfig = ''
-      IgnoreUnknown UseKeychain
-      UseKeychain yes
-    '';
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "*" = {
+        forwardAgent = lib.mkForce true;
+        extraOptions = {
+          "IgnoreUnknown" = "UseKeychain";
+          "UseKeychain" = "yes";
+        };
+      };
+    };
   };
 }

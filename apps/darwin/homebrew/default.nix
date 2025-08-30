@@ -10,8 +10,11 @@
     };
     taps = [
       "homebrew/services"
+      "sst/tap"
     ];
-    brews = [ ];
+    brews = [
+      "opencode"
+    ];
     casks = [
       "1password"
       "arc"

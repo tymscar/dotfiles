@@ -62,7 +62,6 @@
                   nur.overlays.default
                 ];
               }
-              ./common/configuration.nix
               ./devices/${device}/configuration.nix
               homeManager.nixosModules.home-manager
               {

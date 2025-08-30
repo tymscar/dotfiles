@@ -16,10 +16,13 @@ let
       ;
   };
   pinnedJDK = pkgs.jdk21;
-  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (
+    with pkgs.google-cloud-sdk.components;
+    [
       gke-gcloud-auth-plugin
-#      cloud_sql_proxy
-  ]);
+      #      cloud_sql_proxy
+    ]
+  );
 
   bruno-wrapped = pkgs.writeShellScriptBin "bruno" ''
     export NODE_EXTRA_CA_CERTS="$(${pkgs.mkcert}/bin/mkcert -CAROOT)/rootCA.pem"
@@ -31,14 +34,10 @@ in
     ../../common/home.nix
     ../../apps/darwin/wallpaper
     ../../apps/darwin/karabiner
-    ../../apps/home-manager/git
     ../../apps/home-manager/idea
-    ../../apps/home-manager/neovim
     ../../apps/home-manager/ghostty
-    ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
     ../../apps/home-manager/ssh
-    ../../apps/home-manager/atuin
   ];
 
   programs.zsh = lib.mkMerge [
@@ -73,8 +72,7 @@ in
     yarn
     appcleaner
     bottom
-    bruno-wrapped 
-    cargo
+    bruno-wrapped
     claude-code
     cmake
     direnv
@@ -82,7 +80,6 @@ in
     fastlane
     git-lfs
     gitkraken
-    gotop
     ninja
     nvtopPackages.apple
     opencode

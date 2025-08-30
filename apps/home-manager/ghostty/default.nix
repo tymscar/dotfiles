@@ -6,9 +6,7 @@
 {
   programs.ghostty = {
     enable = true;
-    package =
-      with pkgs;
-      if specialArgs.os == "linux" then ghostty else nur.repos.gigamonster256.ghostty-darwin;
+    package = with pkgs; if specialArgs.os == "linux" then ghostty else ghostty-bin;
     settings = {
       "shell-integration" = "zsh";
       term = "xterm-256color";

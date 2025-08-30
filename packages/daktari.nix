@@ -11,7 +11,7 @@ pkgs.python313Packages.buildPythonPackage rec {
     sha256 = "sha256-dr5BCflThM0gP/zMtgh1cTz0srCPkF+3h1PWeXZIh1M=";
   };
   doCheck = false;
-  format = "pyproject"; 
+  format = "pyproject";
   dontCheckRuntimeDeps = true;
   propagatedBuildInputs = with pkgs.python313Packages; [
     ansicolors

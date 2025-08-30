@@ -1,47 +1,24 @@
-{ pkgs, device, ... }:
+{ pkgs, ... }:
 
-let
-  apple-color-emoji = pkgs.stdenv.mkDerivation {
-    name = "apple-color-emoji";
-    version = "16.4-patch.1";
-    src = pkgs.fetchurl {
-      url = "https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4-patch.1/AppleColorEmoji.ttf";
-      sha256 = "15assqyxax63hah0g51jd4d4za0kjyap9m2cgd1dim05pk7mgvfm";
-    };
-    phases = [ "installPhase" ];
-    installPhase = ''
-      mkdir -p $out/share/fonts/truetype/apple-color-emoji
-      cp $src $out/share/fonts/truetype/apple-color-emoji/AppleColorEmoji.ttf
-    '';
-  };
-in
 {
   imports = [
+    ../../common/nixos.nix
     ./hardware-configuration.nix
     ./secrets.nix
-    ../../apps/nixos/gpg
     ../../apps/nixos/docker
   ];
 
-  networking = {
-    hostName = device;
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [
-        22
-        80
-        443
-        3030
-        5173
-        5990
-        8123
-        11434
-      ];
-      allowedUDPPorts = [
-        53
-        11434
-      ];
-    };
+  networking.firewall = {
+    allowedTCPPorts = [
+      3030
+      5173
+      5990
+      8123
+      11434
+    ];
+    allowedUDPPorts = [
+      11434
+    ];
   };
 
   virtualisation.libvirtd = {
@@ -84,34 +61,6 @@ in
 
   swapDevices = pkgs.lib.mkForce [ ];
 
-  systemd.targets = {
-    sleep.enable = false;
-    suspend.enable = false;
-    hibernate.enable = false;
-    hybrid-sleep.enable = false;
-  };
-
-  programs.zsh.enable = true;
-  programs.dconf.enable = true;
-
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.monaspace
-      nerd-fonts.noto
-      apple-color-emoji
-    ];
-
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        monospace = [ "Monaspace" ];
-        serif = [ "Noto Serif" ];
-        sansSerif = [ "Noto Sans" ];
-        emoji = [ "Apple Color Emoji" ];
-      };
-    };
-  };
-
   virtualisation.docker.enable = true;
   users.users.tymscar = {
     extraGroups = [
@@ -126,35 +75,14 @@ in
 
   services = {
     openssh = {
-      enable = true;
       ports = [ 22 ];
       settings = {
         PubkeyAuthentication = true;
-        PasswordAuthentication = false;
         AllowUsers = [ "tymscar" ];
         UseDns = true;
         PermitRootLogin = "no";
       };
       extraConfig = "StreamLocalBindUnlink yes";
-    };
-    getty.autologinUser = "tymscar";
-    xserver = {
-      enable = true;
-      desktopManager = {
-        xterm.enable = false;
-      };
-
-      displayManager = {
-        autoLogin.enable = true;
-        autoLogin.user = "tymscar";
-        lightdm = {
-          enable = true;
-          greeter.enable = false;
-        };
-      };
-      windowManager.i3 = {
-        enable = true;
-      };
     };
   };
 }
