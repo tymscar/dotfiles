@@ -19,7 +19,7 @@
       "window-padding-balance" = true;
       "background-opacity" = 0.9;
       "background-blur-radius" = 20;
-      theme = "catppuccin-mocha";
+      theme = "Catppuccin Mocha";
       background = "#1e1e2e";
       foreground = "#cdd6f4";
       "selection-background" = "#585b70";
