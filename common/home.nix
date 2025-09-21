@@ -10,6 +10,8 @@
   ];
 
   home.packages = with pkgs; [
+    man-pages
+    man-pages-posix
     bat
     tree
     ripgrep
