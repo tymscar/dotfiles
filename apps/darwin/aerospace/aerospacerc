@@ -11,6 +11,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = true
 
+mouse-resize-modifier = 'cmd'
+
 [key-mapping]
 preset = 'qwerty'
 

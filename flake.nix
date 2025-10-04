@@ -99,11 +99,11 @@
                   alacritty-theme.overlays.default
                   nur.overlays.default
                   (final: prev: {
-                    aerospace = prev.aerospace.overrideAttrs (_old: {
-                      version = "0.20.0";
+                    aerospace = prev.aerospace.overrideAttrs (_old: rec {
+                      version = "0.21.0";
                       src = prev.fetchzip {
-                        url = "https://github.com/tymscar/AeroSpace/releases/download/v0.20.0/AeroSpace-v0.20.0.zip";
-                        sha256 = "00bb3bvm6yjabdd9zw51m3qcjm795wkv9iwjajdbb9q151a72aa7";
+                        url = "https://github.com/tymscar/AeroSpace/releases/download/v${version}/AeroSpace-v${version}.zip";
+                        sha256 = "sha256-fOSrG3sDDjuchZeaNRS1yySPtB5RUMLd0JyayfNrTOU=";
                       };
                       postInstall = ":";
                     });

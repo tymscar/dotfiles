@@ -1,4 +1,4 @@
-{ pkgs, accountUsername, ... }:
+{ pkgs, ... }:
 
 let
   aerospacercContent = pkgs.lib.importTOML ./aerospacerc;
