@@ -73,7 +73,6 @@ in
     appcleaner
     bottom
     bruno-wrapped
-    claude-code
     cmake
     direnv
     docker-credential-gcr
