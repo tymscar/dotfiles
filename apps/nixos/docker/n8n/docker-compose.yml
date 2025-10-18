@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   n8n:
-    image: docker.n8n.io/n8nio/n8n:1.48.0
+    image: docker.n8n.io/n8nio/n8n:1.102.4
     container_name: n8n
     restart: unless-stopped
 
@@ -10,6 +10,7 @@ services:
       - data:/home/node/.n8n
 
     environment:
+      - N8N_USER_MANAGEMENT_DISABLED=true
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
       - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
@@ -55,6 +56,16 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
+
+  tunnel:
+    container_name: cloudflare-tunnel-for-n8n
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    networks:
+        - proxy
 
 volumes:
   data:
