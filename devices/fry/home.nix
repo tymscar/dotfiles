@@ -15,12 +15,14 @@ let
       accountUsername
       ;
   };
-  daktari = import ../../packages/daktari.nix { inherit pkgs; };
   pinnedJDK = pkgs.jdk21;
-  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (
+    with pkgs.google-cloud-sdk.components;
+    [
       gke-gcloud-auth-plugin
-#      cloud_sql_proxy
-  ]);
+      #      cloud_sql_proxy
+    ]
+  );
 
   bruno-wrapped = pkgs.writeShellScriptBin "bruno" ''
     export NODE_EXTRA_CA_CERTS="$(${pkgs.mkcert}/bin/mkcert -CAROOT)/rootCA.pem"
@@ -32,11 +34,8 @@ in
     ../../common/home.nix
     ../../apps/darwin/wallpaper
     ../../apps/darwin/karabiner
-    ../../apps/home-manager/git
     ../../apps/home-manager/idea
-    ../../apps/home-manager/neovim
     ../../apps/home-manager/ghostty
-    ../../apps/home-manager/gpg
     ../../apps/home-manager/vscode
     ../../apps/home-manager/ssh
   ];
@@ -60,7 +59,6 @@ in
 
   home.packages = with pkgs; [
     _1password-cli
-    daktari
     gdk
     google-cloud-sql-proxy
     mkcert
@@ -74,17 +72,16 @@ in
     yarn
     appcleaner
     bottom
-    bruno-wrapped 
-    cargo
+    bruno-wrapped
     cmake
     direnv
     docker-credential-gcr
     fastlane
     git-lfs
     gitkraken
-    gotop
     ninja
     nvtopPackages.apple
+    opencode
     openssl
     pinentry_mac
     pyenv

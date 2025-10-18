@@ -1,11 +1,9 @@
 { pkgs, accountUsername, ... }:
 
 let
-  skhdrcContent =
-    builtins.readFile ./skhdrc
-    + ''
-      cmd - return : open -a "Alacritty" 
-    '';
+  skhdrcContent = builtins.readFile ./skhdrc + ''
+    cmd - return : open -a "Alacritty" 
+  '';
 in
 {
   services.skhd = {

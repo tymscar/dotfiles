@@ -55,6 +55,7 @@ in
       cat = "bat -p --theme 1337";
       vim = "nvim";
       switch = switchCommand;
+      man = "batman";
     };
   };
 
@@ -62,4 +63,7 @@ in
     enable = true;
     enableZshIntegration = true;
   };
+
+  home.packages = with pkgs; [ bat-extras.batman ];
+
 }

@@ -62,7 +62,6 @@
                   nur.overlays.default
                 ];
               }
-              ./common/configuration.nix
               ./devices/${device}/configuration.nix
               homeManager.nixosModules.home-manager
               {
@@ -99,6 +98,16 @@
                   nixneovimplugins.overlays.default
                   alacritty-theme.overlays.default
                   nur.overlays.default
+                  (final: prev: {
+                    aerospace = prev.aerospace.overrideAttrs (_old: rec {
+                      version = "0.21.0";
+                      src = prev.fetchzip {
+                        url = "https://github.com/tymscar/AeroSpace/releases/download/v${version}/AeroSpace-v${version}.zip";
+                        sha256 = "sha256-fOSrG3sDDjuchZeaNRS1yySPtB5RUMLd0JyayfNrTOU=";
+                      };
+                      postInstall = ":";
+                    });
+                  })
                 ];
               }
               ./devices/${device}/configuration.nix

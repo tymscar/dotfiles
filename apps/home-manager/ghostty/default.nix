@@ -6,9 +6,7 @@
 {
   programs.ghostty = {
     enable = true;
-    package =
-      with pkgs;
-      if specialArgs.os == "linux" then ghostty else nur.repos.gigamonster256.ghostty-darwin;
+    package = with pkgs; if specialArgs.os == "linux" then ghostty else ghostty-bin;
     settings = {
       "shell-integration" = "zsh";
       term = "xterm-256color";
@@ -21,7 +19,7 @@
       "window-padding-balance" = true;
       "background-opacity" = 0.9;
       "background-blur-radius" = 20;
-      theme = "catppuccin-mocha";
+      theme = "Catppuccin Mocha";
       background = "#1e1e2e";
       foreground = "#cdd6f4";
       "selection-background" = "#585b70";
@@ -55,6 +53,7 @@
       "focus-follows-mouse" = true;
       "macos-titlebar-style" = "hidden";
       "macos-icon" = "xray";
+      keybind = "shift+enter=text:\\r\\n";
     };
   };
 }
