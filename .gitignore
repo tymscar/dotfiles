@@ -29,3 +29,5 @@ apps/nixos/docker/n8n/data
 apps/nixos/docker/n8n/postgres
 
 apps/nixos/docker/grafana/data
+
+apps/nixos/docker/librecounter/data

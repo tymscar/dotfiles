@@ -42,4 +42,8 @@ in
     one-password-agenix
     farnsworth
   ];
+  "docker/librecounter.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
 }

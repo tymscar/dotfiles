@@ -17,6 +17,7 @@
     ./atuin
     ./n8n
     ./grafana
+    ./librecounter
   ];
 
   virtualisation.docker.enable = true;

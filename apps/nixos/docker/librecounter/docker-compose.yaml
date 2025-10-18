@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  librecounter:
+    build: https://github.com/tymscar/librecounter.git#add-docker-support
+    container_name: librecounter
+    restart: unless-stopped
+    ports:
+      - "11893:11893"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - BACKEND_SQLITE_DB=/app/data/librecounter.db
+    networks:
+      - proxy
+
+  tunnel:
+    container_name: cloudflare-tunnel-for-librecounter
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+
