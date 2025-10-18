@@ -331,6 +331,12 @@ sections:
         url: https://jetkvm.tymscar.com/
         target: sametab
         id: 8_1021_jetkvm
+      - &ref_42
+        title: LibreCounter
+        icon: https://librecounter.tymscar.com/favicon.png
+        url: https://librecounter.tymscar.com/
+        target: sametab
+        id: 9_1021_librecounter
     displayData:
       sortBy: most-used
       rows: 1
@@ -347,3 +353,4 @@ sections:
       - *ref_39
       - *ref_40
       - *ref_41
+      - *ref_42
