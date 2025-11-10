@@ -11,8 +11,16 @@
       key = "F5350C5A";
       signByDefault = true;
     };
-    userEmail = "oscar@tymscar.com";
-    userName = "Oscar Molnar";
-    delta.enable = true;
+    settings = {
+      user = {
+        email = "oscar@tymscar.com";
+        name = "Oscar Molnar";
+      };
+    };
+  };
+  
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
   };
 }
