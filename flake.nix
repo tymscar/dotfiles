@@ -107,15 +107,6 @@
                       };
                       postInstall = ":";
                     });
-                    fish =
-                      builtins.trace
-                        "⚠️  WARNING: Fish tests are disabled due to macOS build failures (Nov 2024). Try removing the fish override in flake.nix:111-116 to check if it's fixed upstream."
-                        (
-                          prev.fish.overrideAttrs (oldAttrs: {
-                            doCheck = false;
-                            doInstallCheck = false;
-                          })
-                        );
                   })
                 ];
               }
