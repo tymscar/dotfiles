@@ -23,7 +23,9 @@
 
   virtualisation.libvirtd = {
     enable = true;
-    qemu.swtpm.enable = true;
+    qemu = {
+      swtpm.enable = true;
+    };
   };
 
   systemd.services.homeassistant-vm = {
@@ -38,7 +40,7 @@
           -cpu host \
           -smp 4 \
           -m 8192 \
-          -drive if=pflash,format=raw,readonly=on,file=/run/libvirt/nix-ovmf/OVMF_CODE.fd \
+          -drive if=pflash,format=raw,readonly=on,file=/run/libvirt/nix-ovmf/edk2-x86_64-code.fd \
           -drive file=/home/tymscar/homeassistant/disk-drive-efidisk0.qcow2,if=pflash,format=qcow2 \
           -drive file=/home/tymscar/homeassistant/disk-drive-scsi0.qcow2,format=qcow2,if=virtio \
           -netdev user,id=net0,hostfwd=tcp::8123-:8123 \
