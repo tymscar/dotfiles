@@ -10,5 +10,6 @@
     docker-atuin.file = ../../secrets/docker/atuin.age;
     docker-n8n.file = ../../secrets/docker/n8n.age;
     docker-grafana.file = ../../secrets/docker/grafana.age;
+    docker-imgur-proxy.file = ../../secrets/docker/imgur-proxy.age;
   };
 }

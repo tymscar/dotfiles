@@ -46,4 +46,8 @@ in
     one-password-agenix
     farnsworth
   ];
+  "docker/imgur-proxy.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
 }

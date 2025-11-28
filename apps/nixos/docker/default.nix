@@ -18,6 +18,7 @@
     ./n8n
     ./grafana
     ./librecounter
+    ./imgur-proxy
   ];
 
   virtualisation.docker.enable = true;
