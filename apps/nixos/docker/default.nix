@@ -15,7 +15,7 @@
     ./tymscar-website
     ./resume
     ./atuin
-    ./n8n
+    #    ./n8n
     ./grafana
     ./librecounter
     ./imgur-proxy

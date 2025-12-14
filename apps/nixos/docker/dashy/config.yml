@@ -337,6 +337,12 @@ sections:
         url: https://librecounter.tymscar.com/
         target: sametab
         id: 9_1021_librecounter
+      - &ref_43
+        title: TrueNAS
+        icon: https://truenas.tymscar.com/ui/assets/images/truenas_ondark_favicon.png
+        url: https://truenas.tymscar.com/
+        target: sametab
+        id: 10_1021_truenas
     displayData:
       sortBy: most-used
       rows: 1
@@ -354,3 +360,4 @@ sections:
       - *ref_40
       - *ref_41
       - *ref_42
+      - *ref_43

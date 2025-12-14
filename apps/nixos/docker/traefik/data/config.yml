@@ -65,6 +65,15 @@ http:
       tls:
         certResolver: cloudflare
       service: nas
+    truenas:
+      entryPoints:
+        - "https"
+      rule: "Host(`truenas.tymscar.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: truenas
     pihole:
       entryPoints:
         - "https"
@@ -123,6 +132,11 @@ http:
       loadBalancer:
         servers:
           - url: "https://10.0.0.7:5001"
+        passHostHeader: true
+    truenas:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.0.72:80"
         passHostHeader: true
     pihole:
       loadBalancer:
