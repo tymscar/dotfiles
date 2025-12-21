@@ -1,7 +1,7 @@
 services:
   ollama:
     volumes:
-      - ollama:/root/.ollama
+      - /mnt/nas/openwebui/ollama:/root/.ollama
     container_name: ollama
     pull_policy: always
     tty: true
@@ -14,7 +14,7 @@ services:
     image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
     container_name: open-webui
     volumes:
-      - open-webui:/app/backend/data
+      - /mnt/nas/openwebui/open-webui:/app/backend/data
     depends_on:
       - ollama
     environment:
@@ -37,10 +37,6 @@ services:
       - "traefik.docker.network=proxy"
     networks:
       - proxy
-
-volumes:
-  ollama: {}
-  open-webui: {}
 
 networks:
   proxy:

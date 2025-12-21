@@ -8,7 +8,7 @@ services:
     ports:
       - "11893:11893"
     volumes:
-      - ./data:/app/data
+      - /mnt/nas/librecounter/data:/app/data
     environment:
       - BACKEND_SQLITE_DB=/app/data/librecounter.db
     networks:

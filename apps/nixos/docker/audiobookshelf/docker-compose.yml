@@ -5,10 +5,10 @@ services:
     ports:
       - 13378:80
     volumes:
-      - ./podcasts:/podcasts
-      - ./config:/config
-      - ./metadata:/metadata
-      - ./books:/books
+      - /mnt/nas/audiobookshelf/podcasts:/podcasts
+      - /mnt/nas/audiobookshelf/config:/config
+      - /mnt/nas/audiobookshelf/metadata:/metadata
+      - /mnt/nas/audiobookshelf/books:/books
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.audiobookshelf.entrypoints=http"

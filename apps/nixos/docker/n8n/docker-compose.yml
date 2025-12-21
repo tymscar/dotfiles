@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
 
     volumes:
-      - data:/home/node/.n8n
+      - /mnt/nas/n8n/data:/home/node/.n8n
 
     environment:
       - N8N_USER_MANAGEMENT_DISABLED=true
@@ -51,7 +51,7 @@ services:
     container_name: n8n-postgres
     restart: unless-stopped
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - /mnt/nas/n8n/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -66,10 +66,6 @@ services:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
     networks:
         - proxy
-
-volumes:
-  data:
-  postgres:
 
 networks:
   proxy:

@@ -17,7 +17,11 @@ in
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    initContent =
+    initContent = ''
+      autoload -Uz bracketed-paste-magic
+      zle -N bracketed-paste bracketed-paste-magic
+    ''
+    + (
       if specialArgs.os == "darwin" then
         ''
           export PATH=/Users/${accountUsername}/.local/bin:/Users/${accountUsername}/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH
@@ -33,7 +37,8 @@ in
           }
         ''
       else
-        "";
+        ""
+    );
     plugins = [
       {
         name = "vi-mode";

@@ -22,7 +22,7 @@ services:
       - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
 
     volumes:
-      - ./data:/app/pasta_data
+      - /mnt/nas/microbin/data:/app/pasta_data
     networks:
       - proxy
 

@@ -98,24 +98,24 @@
                   nixneovimplugins.overlays.default
                   alacritty-theme.overlays.default
                   nur.overlays.default
-                    (final: prev: {
-                      aerospace = prev.aerospace.overrideAttrs (_old: rec {
-                        version = "0.21.0";
-                        src = prev.fetchzip {
-                          url = "https://github.com/tymscar/AeroSpace/releases/download/v${version}/AeroSpace-v${version}.zip";
-                          sha256 = "sha256-fOSrG3sDDjuchZeaNRS1yySPtB5RUMLd0JyayfNrTOU=";
-                        };
-                        postInstall = ":";
-                      });
-                      raycast = prev.raycast.overrideAttrs (old: rec {
-                        version = "1.104.0";
-                        src = prev.fetchurl {
-                          name = "Raycast.dmg";
-                          url = "https://releases.raycast.com/releases/${version}/download?build=arm";
-                          hash = "sha256-feEHK3LOycG2vKqQZfMrSkw+NY2yCFYK4RM4iodaV6Y=";
-                        };
-                      });
-                    })
+                  (final: prev: {
+                    aerospace = prev.aerospace.overrideAttrs (_old: rec {
+                      version = "0.21.0";
+                      src = prev.fetchzip {
+                        url = "https://github.com/tymscar/AeroSpace/releases/download/v${version}/AeroSpace-v${version}.zip";
+                        sha256 = "sha256-fOSrG3sDDjuchZeaNRS1yySPtB5RUMLd0JyayfNrTOU=";
+                      };
+                      postInstall = ":";
+                    });
+                    raycast = prev.raycast.overrideAttrs (old: rec {
+                      version = "1.104.0";
+                      src = prev.fetchurl {
+                        name = "Raycast.dmg";
+                        url = "https://releases.raycast.com/releases/${version}/download?build=arm";
+                        hash = "sha256-feEHK3LOycG2vKqQZfMrSkw+NY2yCFYK4RM4iodaV6Y=";
+                      };
+                    });
+                  })
                 ];
               }
               ./devices/${device}/configuration.nix

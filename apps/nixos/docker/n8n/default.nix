@@ -9,7 +9,9 @@ in
     after = [
       "network.target"
       "docker.service"
+      "mnt-nas.mount"
     ];
+    requires = [ "mnt-nas.mount" ];
     wants = [ "docker.service" ];
 
     serviceConfig = {

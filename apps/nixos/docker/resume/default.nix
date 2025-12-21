@@ -8,7 +8,9 @@ in
     after = [
       "network.target"
       "docker.service"
+      "mnt-nas.mount"
     ];
+    requires = [ "mnt-nas.mount" ];
     wants = [ "docker.service" ];
     serviceConfig = {
       ExecStart = "${pkgs.docker}/bin/docker compose --env-file ${docker-env} -f docker-compose.yaml up --force-recreate";

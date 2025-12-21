@@ -5,7 +5,7 @@ services:
     image: nginx:alpine
     container_name: web-server-tymscar-resume
     volumes:
-      - ./website:/usr/share/nginx/html:ro
+      - /mnt/nas/resume/website:/usr/share/nginx/html:ro
     networks:
       - proxy
     restart: unless-stopped

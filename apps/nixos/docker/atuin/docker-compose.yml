@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
 
     volumes:
-      - "./config:/config"
+      - "/mnt/nas/atuin/config:/config"
 
     environment:
       ATUIN_HOST: "0.0.0.0"
@@ -41,7 +41,7 @@ services:
     container_name: atuin-postgresql
     restart: unless-stopped
     volumes:
-      - "./database:/var/lib/postgresql/data/"
+      - "/mnt/nas/atuin/database:/var/lib/postgresql/data/"
     environment:
       POSTGRES_USER: ${ATUIN_DB_USERNAME}
       POSTGRES_PASSWORD: ${ATUIN_DB_PASSWORD}

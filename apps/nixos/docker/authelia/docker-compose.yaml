@@ -6,10 +6,10 @@ services:
     container_name: authelia
     restart: unless-stopped
     volumes:
-      - ./authelia/.runtime-configuration.yml:/config/configuration.yml:ro
-      - ./authelia/.runtime-users_database.yml:/config/users_database.yml:ro
-      - ./authelia/db.sqlite3:/config/db.sqlite3
-      - ./authelia/notification.txt:/config/notification.txt
+      - /mnt/nas/authelia/.runtime-configuration.yml:/config/configuration.yml:ro
+      - /mnt/nas/authelia/.runtime-users_database.yml:/config/users_database.yml:ro
+      - /mnt/nas/authelia/db.sqlite3:/config/db.sqlite3
+      - /mnt/nas/authelia/notification.txt:/config/notification.txt
     networks:
       - proxy
     labels:

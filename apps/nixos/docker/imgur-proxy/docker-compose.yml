@@ -21,7 +21,7 @@ services:
       - HEALTH_VPN_DURATION_INITIAL=30s
       
     volumes:
-      - ./gluetun:/gluetun
+      - /mnt/nas/imgur-proxy/gluetun:/gluetun
     restart: unless-stopped
     networks:
       - proxy

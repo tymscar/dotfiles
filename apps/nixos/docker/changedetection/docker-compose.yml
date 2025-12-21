@@ -5,7 +5,7 @@ services:
       container_name: changedetection
       hostname: changedetection
       volumes:
-        - changedetection-data:/datastore
+        - /mnt/nas/changedetection/datastore:/datastore
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.changedetection.entrypoints=http"
@@ -21,9 +21,6 @@ services:
       networks:
         - proxy
       restart: unless-stopped
-
-volumes:
-  changedetection-data:
 
 networks:
   proxy:

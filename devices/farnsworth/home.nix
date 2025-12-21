@@ -20,7 +20,7 @@ in
     ../../apps/home-manager/pcmanfm
     ../../apps/home-manager/rofi
     ../../apps/home-manager/polybar
-    ../../apps/home-manager/vscode
+    # ../../apps/home-manager/vscode
   ];
 
   home.packages = with pkgs; [

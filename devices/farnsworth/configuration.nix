@@ -30,7 +30,11 @@
 
   systemd.services.homeassistant-vm = {
     description = "Home Assistant";
-    after = [ "network.target" ];
+    after = [
+      "network.target"
+      "mnt-nas.mount"
+    ];
+    requires = [ "mnt-nas.mount" ];
 
     serviceConfig = {
       ExecStart = ''
@@ -41,8 +45,8 @@
           -smp 4 \
           -m 8192 \
           -drive if=pflash,format=raw,readonly=on,file=/run/libvirt/nix-ovmf/edk2-x86_64-code.fd \
-          -drive file=/home/tymscar/homeassistant/disk-drive-efidisk0.qcow2,if=pflash,format=qcow2 \
-          -drive file=/home/tymscar/homeassistant/disk-drive-scsi0.qcow2,format=qcow2,if=virtio \
+          -drive file=/mnt/nas/homeassistant/disk-drive-efidisk0.qcow2,if=pflash,format=qcow2 \
+          -drive file=/mnt/nas/homeassistant/disk-drive-scsi0.qcow2,format=qcow2,if=virtio \
           -netdev user,id=net0,hostfwd=tcp::8123-:8123 \
           -device virtio-net-pci,netdev=net0 \
           -device qemu-xhci,id=xhci \
@@ -59,6 +63,26 @@
   };
 
   swapDevices = pkgs.lib.mkForce [ ];
+
+  fileSystems."/mnt/nas" = {
+    device = "truenas-nfs.tymscar.com:/mnt/oasis/services";
+    fsType = "nfs";
+    options = [
+      "nfsvers=4"
+      "_netdev"
+      "auto"
+      "nofail"
+    ];
+  };
+
+  environment.systemPackages = with pkgs; [
+    nfs-utils
+  ];
+
+  systemd.services.docker = {
+    after = [ "mnt-nas.mount" ];
+    requires = [ "mnt-nas.mount" ];
+  };
 
   virtualisation.docker.enable = true;
   users.users.tymscar = {

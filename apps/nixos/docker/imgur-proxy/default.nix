@@ -9,8 +9,10 @@ in
       "network.target"
       "docker.service"
       "docker-create-proxy-network.service"
+      "mnt-nas.mount"
     ];
-    wants = [ 
+    requires = [ "mnt-nas.mount" ];
+    wants = [
       "docker.service"
       "docker-create-proxy-network.service"
     ];

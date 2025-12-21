@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
 
     volumes:
-      - data:/var/lib/grafana
+      - /mnt/nas/grafana/data:/var/lib/grafana
 
     environment:
       - GF_SECURITY_ADMIN_USER=${GF_SECURITY_ADMIN_USER}
@@ -31,9 +31,6 @@ services:
       - "traefik.http.routers.grafana-secure.service=grafana"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
       - "traefik.docker.network=proxy"
-
-volumes:
-  data:
 
 networks:
   proxy:
