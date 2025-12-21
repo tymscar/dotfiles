@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+  immich-server:
+    image: ghcr.io/immich-app/immich-server:release
+    container_name: immich-server
+    volumes:
+      - /mnt/nas/immich/upload:/usr/src/app/upload
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - DB_HOSTNAME=immich-postgres
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE_NAME=immich
+      - REDIS_HOSTNAME=immich-redis
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    depends_on:
+      immich-redis:
+        condition: service_healthy
+      immich-postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - default
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.immich.entrypoints=http"
+      - "traefik.http.routers.immich.rule=Host(`immich.tymscar.com`)"
+      - "traefik.http.middlewares.immich-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.immich.middlewares=immich-https-redirect"
+      - "traefik.http.routers.immich-secure.entrypoints=https"
+      - "traefik.http.routers.immich-secure.rule=Host(`immich.tymscar.com`)"
+      - "traefik.http.routers.immich-secure.tls=true"
+      - "traefik.http.routers.immich-secure.service=immich"
+      - "traefik.http.services.immich.loadbalancer.server.port=2283"
+      - "traefik.docker.network=proxy"
+
+  immich-machine-learning:
+    image: ghcr.io/immich-app/immich-machine-learning:release
+    container_name: immich-machine-learning
+    volumes:
+      - /mnt/nas/immich/model-cache:/cache
+    restart: unless-stopped
+
+  immich-redis:
+    image: docker.io/redis:6.2-alpine
+    container_name: immich-redis
+    restart: unless-stopped
+    healthcheck:
+      test: redis-cli ping || exit 1
+
+  immich-postgres:
+    image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0
+    container_name: immich-postgres
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=immich
+      - POSTGRES_INITDB_ARGS='--data-checksums'
+    volumes:
+      - /mnt/nas/immich/postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: pg_isready --dbname='immich' --username='postgres' || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  proxy:
+    external: true

@@ -50,4 +50,8 @@ in
     one-password-agenix
     farnsworth
   ];
+  "docker/immich.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
 }

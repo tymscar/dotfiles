@@ -151,6 +151,12 @@ sections:
         url: https://sunshine.tymscar.com
         target: sametab
         id: 8_480_sunshine
+      - &ref_44
+        title: Immich
+        icon: https://immich.tymscar.com/favicon.ico
+        url: https://immich.tymscar.com
+        target: sametab
+        id: 9_480_immich
     displayData:
       sortBy: most-used
       rows: 1
@@ -167,6 +173,7 @@ sections:
       - *ref_16
       - *ref_17
       - *ref_18
+      - *ref_44
   - name: Utilities
     items:
       - &ref_19

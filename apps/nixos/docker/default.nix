@@ -19,6 +19,7 @@
     ./grafana
     ./librecounter
     ./imgur-proxy
+    ./immich
   ];
 
   virtualisation.docker.enable = true;
