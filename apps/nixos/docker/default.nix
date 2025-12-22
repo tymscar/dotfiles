@@ -20,6 +20,7 @@
     ./librecounter
     ./imgur-proxy
     ./immich
+    ./forgejo
   ];
 
   virtualisation.docker.enable = true;

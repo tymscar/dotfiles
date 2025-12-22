@@ -10,6 +10,7 @@
 
   networking.firewall = {
     allowedTCPPorts = [
+      2222
       3030
       5173
       5990

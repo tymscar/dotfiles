@@ -12,5 +12,6 @@
     docker-grafana.file = ../../secrets/docker/grafana.age;
     docker-imgur-proxy.file = ../../secrets/docker/imgur-proxy.age;
     docker-immich.file = ../../secrets/docker/immich.age;
+    docker-forgejo.file = ../../secrets/docker/forgejo.age;
   };
 }

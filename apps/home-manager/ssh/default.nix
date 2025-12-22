@@ -12,6 +12,10 @@
           "UseKeychain" = "yes";
         };
       };
+      "git.tymscar.com" = {
+        hostname = "git.tymscar.com";
+        port = 2222;
+      };
     };
   };
 }

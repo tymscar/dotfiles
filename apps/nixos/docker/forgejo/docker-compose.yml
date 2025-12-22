@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:13
+    container_name: forgejo
+    restart: unless-stopped
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - FORGEJO__database__DB_TYPE=postgres
+      - FORGEJO__database__HOST=forgejo-postgres:5432
+      - FORGEJO__database__NAME=${POSTGRES_DB}
+      - FORGEJO__database__USER=${POSTGRES_USER}
+      - FORGEJO__database__PASSWD=${POSTGRES_PASSWORD}
+      - FORGEJO__server__DOMAIN=git.tymscar.com
+      - FORGEJO__server__SSH_DOMAIN=git.tymscar.com
+      - FORGEJO__server__ROOT_URL=https://git.tymscar.com/
+      - FORGEJO__server__SSH_PORT=2222
+      - FORGEJO__server__SSH_LISTEN_PORT=22
+    volumes:
+      - /mnt/nas/forgejo/data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "2222:22"
+    networks:
+      - default
+      - proxy
+    depends_on:
+      - postgres
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.forgejo.entrypoints=http"
+      - "traefik.http.routers.forgejo.rule=Host(`git.tymscar.com`)"
+      - "traefik.http.middlewares.forgejo-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.forgejo.middlewares=forgejo-https-redirect"
+      - "traefik.http.routers.forgejo-secure.entrypoints=https"
+      - "traefik.http.routers.forgejo-secure.rule=Host(`git.tymscar.com`)"
+      - "traefik.http.routers.forgejo-secure.tls=true"
+      - "traefik.http.routers.forgejo-secure.service=forgejo"
+      - "traefik.http.services.forgejo.loadbalancer.server.port=3000"
+      - "traefik.docker.network=proxy"
+
+  postgres:
+    image: postgres:14
+    container_name: forgejo-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - /mnt/nas/forgejo/postgres:/var/lib/postgresql/data
+
+networks:
+  proxy:
+    external: true

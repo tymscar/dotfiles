@@ -54,4 +54,8 @@ in
     one-password-agenix
     farnsworth
   ];
+  "docker/forgejo.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
 }
