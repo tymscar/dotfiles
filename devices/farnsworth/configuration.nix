@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./secrets.nix
     ../../apps/nixos/docker
+    ../../apps/nixos/b2-cleanup
   ];
 
   networking.firewall = {

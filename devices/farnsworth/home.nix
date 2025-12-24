@@ -18,6 +18,7 @@ in
     i3wm-module
     ../../apps/home-manager/alacritty
     ../../apps/home-manager/pcmanfm
+    ../../apps/home-manager/rclone
     ../../apps/home-manager/rofi
     ../../apps/home-manager/polybar
     # ../../apps/home-manager/vscode

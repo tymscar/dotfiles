@@ -58,4 +58,12 @@ in
     one-password-agenix
     farnsworth
   ];
+  "b2/account.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
+  "b2/key.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
 }
