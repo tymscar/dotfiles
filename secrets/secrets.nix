@@ -66,4 +66,8 @@ in
     one-password-agenix
     farnsworth
   ];
+  "ssh/udr-password.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
 }

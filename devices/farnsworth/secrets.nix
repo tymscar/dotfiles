@@ -21,5 +21,9 @@
       file = ../../secrets/b2/key.age;
       owner = accountUsername;
     };
+    ssh-udr-password = {
+      file = ../../secrets/ssh/udr-password.age;
+      owner = accountUsername;
+    };
   };
 }

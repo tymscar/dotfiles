@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -7,6 +7,7 @@
     ./secrets.nix
     ../../apps/nixos/docker
     ../../apps/nixos/b2-cleanup
+    ../../apps/nixos/unifi-backup
   ];
 
   networking.firewall = {
@@ -79,6 +80,11 @@
 
   environment.systemPackages = with pkgs; [
     nfs-utils
+    rsync
+    sshpass
+    (writeShellScriptBin "ssh-udr" ''
+      sshpass -f ${config.age.secrets.ssh-udr-password.path} ssh root@10.0.0.1 "$@"
+    '')
   ];
 
   systemd.services.docker = {
