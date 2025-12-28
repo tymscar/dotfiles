@@ -18,6 +18,10 @@ services:
       - FORGEJO__server__ROOT_URL=https://git.tymscar.com/
       - FORGEJO__server__SSH_PORT=2222
       - FORGEJO__server__SSH_LISTEN_PORT=22
+      - FORGEJO__server__PER_WRITE_TIMEOUT=600s
+      - FORGEJO__server__PER_WRITE_PER_KB_TIMEOUT=0
+      - FORGEJO__git__timeout__DEFAULT=3600
+      - FORGEJO__git__timeout__CLONE=3600
     volumes:
       - /mnt/nas/forgejo/data:/data
       - /etc/timezone:/etc/timezone:ro
