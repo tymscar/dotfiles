@@ -25,5 +25,9 @@
       file = ../../secrets/ssh/udr-password.age;
       owner = accountUsername;
     };
+    ssh-pihole-password = {
+      file = ../../secrets/ssh/pihole-password.age;
+      owner = accountUsername;
+    };
   };
 }

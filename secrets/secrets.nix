@@ -70,4 +70,8 @@ in
     one-password-agenix
     farnsworth
   ];
+  "ssh/pihole-password.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
 }

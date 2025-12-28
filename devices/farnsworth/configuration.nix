@@ -8,6 +8,7 @@
     ../../apps/nixos/docker
     ../../apps/nixos/b2-cleanup
     ../../apps/nixos/unifi-backup
+    ../../apps/nixos/pihole-backup
   ];
 
   networking.firewall = {
