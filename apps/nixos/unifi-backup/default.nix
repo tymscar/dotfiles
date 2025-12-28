@@ -3,16 +3,21 @@
 {
   systemd.services.unifi-backup = {
     description = "Backup UniFi configuration from UDR";
-    after = [ "network.target" "mnt-nas.mount" ];
+    after = [
+      "network.target"
+      "mnt-nas.mount"
+    ];
     requires = [ "mnt-nas.mount" ];
     wants = [ "network.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = toString (pkgs.writeShellScript "unifi-backup" ''
-        ${pkgs.sshpass}/bin/sshpass -f ${config.age.secrets.ssh-udr-password.path} \
-          ${pkgs.openssh}/bin/scp -o StrictHostKeyChecking=no \
-          'root@10.0.0.1:/data/unifi/data/backup/autobackup/*.unf' /mnt/nas/unifi/
-      '');
+      ExecStart = toString (
+        pkgs.writeShellScript "unifi-backup" ''
+          ${pkgs.sshpass}/bin/sshpass -f ${config.age.secrets.ssh-udr-password.path} \
+            ${pkgs.openssh}/bin/scp -o StrictHostKeyChecking=no \
+            'root@10.0.0.1:/data/unifi/data/backup/autobackup/*.unf' /mnt/nas/unifi/
+        ''
+      );
     };
   };
 

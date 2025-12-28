@@ -6,10 +6,12 @@
     serviceConfig = {
       Type = "oneshot";
       User = "tymscar";
-      ExecStart = toString (pkgs.writeShellScript "b2-cleanup" ''
-        ${pkgs.rclone}/bin/rclone cleanup b2:tymscar-truenas-services
-        ${pkgs.rclone}/bin/rclone cleanup b2:tymscar-truenas-important
-      '');
+      ExecStart = toString (
+        pkgs.writeShellScript "b2-cleanup" ''
+          ${pkgs.rclone}/bin/rclone cleanup b2:tymscar-truenas-services
+          ${pkgs.rclone}/bin/rclone cleanup b2:tymscar-truenas-important
+        ''
+      );
     };
   };
 
