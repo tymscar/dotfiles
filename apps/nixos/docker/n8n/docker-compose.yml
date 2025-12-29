@@ -51,7 +51,7 @@ services:
     container_name: n8n-postgres
     restart: unless-stopped
     volumes:
-      - /mnt/nas/n8n/postgres:/var/lib/postgresql/data
+      - /var/lib/docker/n8n-postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
