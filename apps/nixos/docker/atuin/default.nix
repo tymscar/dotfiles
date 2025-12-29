@@ -20,4 +20,40 @@ in
     };
     wantedBy = [ "multi-user.target" ];
   };
+
+  systemd.services.atuin-backup = {
+    description = "Backup Atuin PostgreSQL database";
+    after = [
+      "atuin.service"
+      "docker.service"
+      "mnt-nas.mount"
+    ];
+    requires = [
+      "atuin.service"
+      "mnt-nas.mount"
+    ];
+    wants = [ "docker.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      EnvironmentFile = [ docker-env ];
+    };
+    script = ''
+      ${pkgs.docker}/bin/docker exec atuin-postgresql \
+        pg_dump -U $ATUIN_DB_USERNAME $ATUIN_DB_NAME | \
+        ${pkgs.gzip}/bin/gzip > \
+        /mnt/nas/atuin/pgBackup/atuin-$(${pkgs.coreutils}/bin/date +%Y%m%d).sql.gz
+
+      cd /mnt/nas/atuin/pgBackup
+      ls -t atuin-*.sql.gz | tail -n +8 | xargs rm -f
+    '';
+  };
+
+  systemd.timers.atuin-backup = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 03:00:00";
+      Persistent = true;
+    };
+  };
 }
