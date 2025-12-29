@@ -60,7 +60,7 @@ services:
       - POSTGRES_DB=immich
       - POSTGRES_INITDB_ARGS='--data-checksums'
     volumes:
-      - /mnt/nas/immich/postgres:/var/lib/postgresql/data
+      - /var/lib/docker/immich-postgres:/var/lib/postgresql/data
     restart: unless-stopped
     healthcheck:
       test: pg_isready --dbname='immich' --username='postgres' || exit 1
