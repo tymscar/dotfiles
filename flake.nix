@@ -23,6 +23,7 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlays.url = "github:nix-community/emacs-overlay";
   };
 
   outputs =
@@ -37,6 +38,7 @@
       alacritty-theme,
       homeManager,
       agenix,
+      emacs-overlays,
       ...
     }:
     let
@@ -60,6 +62,7 @@
                   nixneovimplugins.overlays.default
                   alacritty-theme.overlays.default
                   nur.overlays.default
+                  emacs-overlays.overlays.default
                 ];
               }
               ./devices/${device}/configuration.nix
@@ -116,6 +119,7 @@
                       };
                     });
                   })
+                  emacs-overlays.overlays.default
                 ];
               }
               ./devices/${device}/configuration.nix

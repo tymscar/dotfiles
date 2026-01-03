@@ -7,6 +7,7 @@
     ../../apps/home-manager/ghostty
     ../../apps/home-manager/idea
     ../../apps/home-manager/ssh
+    ../../apps/home-manager/emacs
   ];
 
   home.packages = with pkgs; [
