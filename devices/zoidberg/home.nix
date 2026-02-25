@@ -7,7 +7,7 @@
     ../../apps/home-manager/ghostty
     ../../apps/home-manager/idea
     ../../apps/home-manager/ssh
-    ../../apps/home-manager/emacs
+#    ../../apps/home-manager/emacs
   ];
 
   home.packages = with pkgs; [
@@ -18,7 +18,7 @@
     pinentry_mac
     raycast
     rustc
-    yt-dlp
+#    yt-dlp
     ffmpeg
   ];
 }

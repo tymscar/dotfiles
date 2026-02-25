@@ -7,7 +7,7 @@ let
     "nvim/lua/colourscheme.lua".source = ./config/colourscheme.lua;
     "nvim/lua/keymaps.lua".source = ./config/keymaps.lua;
     "nvim/lua/settings.lua".source = ./config/settings.lua;
-    "nvim/lua/plugins/comment.lua".source = ./config/plugins/comment.lua;
+    #"nvim/lua/plugins/comment.lua".source = ./config/plugins/comment.lua;
     "nvim/lua/plugins/nvim-tree.lua".source = ./config/plugins/nvim-tree.lua;
     "nvim/lua/plugins/telescope.lua".source = ./config/plugins/telescope.lua;
     "nvim/lua/plugins/lualine.lua".source = ./config/plugins/lualine.lua;
@@ -43,10 +43,10 @@ in
       with pkgs.vimExtraPlugins;
       with pkgs.vimPlugins;
       [
-        Comment-nvim
-        LuaSnip
+        # Comment-nvim
+        #LuaSnip
         alpha-nvim
-        cmp-luasnip
+        #cmp-luasnip
         cmp-nvim-lsp
         # copilot-vim
         dracula-nvim

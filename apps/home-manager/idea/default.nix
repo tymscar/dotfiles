@@ -64,7 +64,7 @@ in
     #      detekt
     #      ktfmt
     #    ])
-    jetbrains.idea-ultimate
+    jetbrains.idea
     jetbrains.gateway
   ];
 

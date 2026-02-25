@@ -18,8 +18,11 @@
     casks = [
       "1password"
       "arc"
+      "bambu-studio"
       "coconutbattery"
       "cyberduck"
+      "opencode-desktop"
+      "orion"
       "proxyman"
       "vlc"
     ];
