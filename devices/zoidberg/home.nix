@@ -18,7 +18,7 @@
     pinentry_mac
     raycast
     rustc
-#    yt-dlp
+    yt-dlp
     ffmpeg
   ];
 }

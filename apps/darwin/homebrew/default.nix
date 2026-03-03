@@ -18,6 +18,7 @@
     casks = [
       "1password"
       "arc"
+      "autodesk-fusion"
       "bambu-studio"
       "coconutbattery"
       "cyberduck"
