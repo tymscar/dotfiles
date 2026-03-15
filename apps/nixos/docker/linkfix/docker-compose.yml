@@ -1,5 +1,6 @@
 services:
   linkfix_bot:
+    container_name: linkfix
     image: ghcr.io/tymscar/linkfix-for-discord:instagram-share-fix 
     stop_signal: SIGKILL
     environment:

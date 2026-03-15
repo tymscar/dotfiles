@@ -13,6 +13,7 @@
 
   networking.firewall = {
     allowedTCPPorts = [
+      1883
       2222
       3030
       5173
@@ -52,7 +53,7 @@
           -drive if=pflash,format=raw,readonly=on,file=/run/libvirt/nix-ovmf/edk2-x86_64-code.fd \
           -drive file=/mnt/nas/homeassistant/disk-drive-efidisk0.qcow2,if=pflash,format=qcow2 \
           -drive file=/mnt/nas/homeassistant/disk-drive-scsi0.qcow2,format=qcow2,if=virtio \
-          -netdev user,id=net0,hostfwd=tcp::8123-:8123 \
+          -netdev user,id=net0,hostfwd=tcp::8123-:8123,hostfwd=tcp::22222-:22222,hostfwd=tcp::1883-:1883 \
           -device virtio-net-pci,netdev=net0,rombar=0 \
           -device qemu-xhci,id=xhci \
           -device usb-host,bus=xhci.0,vendorid=0x10c4,productid=0xea60 \

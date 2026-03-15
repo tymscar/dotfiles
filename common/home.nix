@@ -20,7 +20,7 @@
     htop
     lazygit
     lsd
-    neofetch
+    fastfetch
     nixfmt-rfc-style
     p7zip
     cmatrix
