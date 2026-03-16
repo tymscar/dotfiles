@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+
+let
+  dockerEnv = config.age.secrets.docker-uptimekuma.path;
+in
 {
   systemd.services.uptime-kuma = {
     description = "Uptime Kuma";
@@ -10,7 +14,7 @@
     requires = [ "mnt-nas.mount" ];
     wants = [ "docker.service" ];
     serviceConfig = {
-      ExecStart = "${pkgs.docker}/bin/docker compose -f docker-compose.yml up --force-recreate";
+      ExecStart = "${pkgs.docker}/bin/docker compose --env-file ${dockerEnv} -f docker-compose.yml up --force-recreate";
       ExecStop = "${pkgs.docker}/bin/docker compose -f docker-compose.yml down";
       WorkingDirectory = "/home/tymscar/dotfiles/apps/nixos/docker/uptimekuma";
       Restart = "always";

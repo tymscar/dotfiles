@@ -14,3 +14,9 @@ services:
       - TWITTER_FIX_URL=${TWITTER_FIX_URL}
       - YOUTUBE_FIX_URL=youtu.be
       - BSKY_FIX_URL=bskyx.app
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

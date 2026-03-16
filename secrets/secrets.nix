@@ -58,6 +58,10 @@ in
     one-password-agenix
     farnsworth
   ];
+  "docker/uptimekuma.age".publicKeys = [
+    one-password-agenix
+    farnsworth
+  ];
   "b2/account.age".publicKeys = [
     one-password-agenix
     farnsworth

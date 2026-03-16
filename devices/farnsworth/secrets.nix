@@ -13,6 +13,7 @@
     docker-imgur-proxy.file = ../../secrets/docker/imgur-proxy.age;
     docker-immich.file = ../../secrets/docker/immich.age;
     docker-forgejo.file = ../../secrets/docker/forgejo.age;
+    docker-uptimekuma.file = ../../secrets/docker/uptimekuma.age;
     b2-account = {
       file = ../../secrets/b2/account.age;
       owner = accountUsername;

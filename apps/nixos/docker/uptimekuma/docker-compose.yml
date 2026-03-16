@@ -1,11 +1,19 @@
-version: '3.3'
-
 services:
   uptime-kuma:
     image: louislam/uptime-kuma:2
     container_name: uptime-kuma
+    depends_on:
+      mariadb:
+        condition: service_healthy
     volumes:
       - /mnt/nas/uptimekuma/data:/app/data
+    environment:
+      - UPTIME_KUMA_DB_TYPE=mariadb
+      - UPTIME_KUMA_DB_HOSTNAME=uptime-kuma-mariadb
+      - UPTIME_KUMA_DB_PORT=3306
+      - UPTIME_KUMA_DB_NAME=uptimekuma
+      - UPTIME_KUMA_DB_USERNAME=uptimekuma
+      - UPTIME_KUMA_DB_PASSWORD=${UPTIME_KUMA_DB_PASSWORD}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.kuma.entrypoints=http"
@@ -20,6 +28,25 @@ services:
       - "traefik.docker.network=proxy"
     networks:
       - proxy
+      - default
+    restart: always
+
+  mariadb:
+    image: mariadb:11
+    container_name: uptime-kuma-mariadb
+    volumes:
+      - /mnt/nas/uptimekuma/mariadb:/var/lib/mysql
+    environment:
+      - MARIADB_ROOT_PASSWORD=${UPTIME_KUMA_DB_ROOT_PASSWORD}
+      - MARIADB_DATABASE=uptimekuma
+      - MARIADB_USER=uptimekuma
+      - MARIADB_PASSWORD=${UPTIME_KUMA_DB_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h localhost -u uptimekuma -p$$MARIADB_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     restart: always
 
 networks:
