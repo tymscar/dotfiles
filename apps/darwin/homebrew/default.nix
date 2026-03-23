@@ -12,18 +12,13 @@
       "homebrew/services"
       "sst/tap"
     ];
-    brews = [
-      "opencode"
-    ];
+    brews = [ ];
     casks = [
       "1password"
       "arc"
-      "autodesk-fusion"
-      "bambu-studio"
       "coconutbattery"
       "cyberduck"
       "opencode-desktop"
-      "orion"
       "proxyman"
       "vlc"
     ];

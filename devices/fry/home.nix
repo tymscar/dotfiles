@@ -7,15 +7,9 @@
 }:
 
 let
-  defaultZsh = import ../../apps/home-manager/zsh/default.nix {
-    inherit
-      pkgs
-      lib
-      specialArgs
-      accountUsername
-      ;
-  };
   pinnedJDK = pkgs.jdk21;
+  androidSdk = "/Users/${accountUsername}/Library/Android/sdk";
+  androidNdk = "${androidSdk}/ndk/26.1.10909125";
   gdk = pkgs.google-cloud-sdk.withExtraComponents (
     with pkgs.google-cloud-sdk.components;
     [
@@ -34,27 +28,34 @@ in
     ../../common/home.nix
     ../../apps/darwin/wallpaper
     ../../apps/darwin/karabiner
+    ../../apps/home-manager/claude-code
+    ../../apps/home-manager/codex
+    ../../apps/home-manager/opencode
     ../../apps/home-manager/idea
     ../../apps/home-manager/ghostty
     ../../apps/home-manager/vscode
     ../../apps/home-manager/ssh
   ];
 
-  programs.zsh = lib.mkMerge [
-    defaultZsh.programs.zsh
-    {
-      initContent = ''
-        ${defaultZsh.programs.zsh.initContent}
-        eval "$(direnv hook zsh)"
-        export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-        export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk/26.1.10909125
-        export ANDROID_HOME=$HOME/Library/Android/sdk
-        export PATH=$ANDROID_NDK_HOME:$PATH
-        export JAVA_HOME=${pinnedJDK}
-        alias cloud_sql_proxy=cloud-sql-proxy
-        alias bash=zsh
-      '';
-    }
+  programs.zsh.initContent = lib.mkAfter ''
+    eval "$(direnv hook zsh)"
+    alias cloud_sql_proxy=cloud-sql-proxy
+    alias bash=zsh
+  '';
+
+  home.sessionVariables = {
+    USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
+    ANDROID_HOME = androidSdk;
+    ANDROID_SDK_ROOT = androidSdk;
+    ANDROID_NDK_HOME = androidNdk;
+    JAVA_HOME = "${pinnedJDK}";
+  };
+
+  home.sessionPath = [
+    "${androidSdk}/emulator"
+    "${androidSdk}/platform-tools"
+    "${androidSdk}/cmdline-tools/latest/bin"
+    androidNdk
   ];
 
   home.packages = with pkgs; [
@@ -63,11 +64,13 @@ in
     google-cloud-sql-proxy
     mkcert
     pre-commit
+    coreutils
+    jq
     pinnedJDK
     go-task
     detekt
     visualvm
-    nodejs_20
+    nodejs-slim
     postgresql
     yarn
     appcleaner
@@ -81,7 +84,6 @@ in
     gitkraken
     ninja
     nvtopPackages.apple
-    opencode
     openssl
     pinentry_mac
     pyenv

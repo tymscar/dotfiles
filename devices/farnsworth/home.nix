@@ -17,6 +17,9 @@ in
     ../../common/home.nix
     i3wm-module
     ../../apps/home-manager/alacritty
+    ../../apps/home-manager/claude-code
+    ../../apps/home-manager/codex
+    ../../apps/home-manager/opencode
     ../../apps/home-manager/pcmanfm
     ../../apps/home-manager/rclone
     ../../apps/home-manager/rofi
