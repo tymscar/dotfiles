@@ -12,6 +12,8 @@ Preferred order:
 2. If multiple commands from a package are needed, use `nix shell`.
 3. Only suggest permanent installation when it is clearly better than ephemeral use.
 
+**Always single-quote flake references** containing `#` (e.g., `'nixpkgs#gh'`, `'github:nix-community/nix-index#nix-locate'`).
+
 When trying to locate which package contains an executable or file, use:
 
 `nix run github:nix-community/nix-index#nix-locate -- <path-or-file>`

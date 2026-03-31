@@ -72,7 +72,7 @@ in
     visualvm
     nodejs-slim
     postgresql
-    yarn
+    pnpm
     appcleaner
     bottom
     bruno-wrapped
