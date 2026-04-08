@@ -18,6 +18,7 @@ in
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     initContent = ''
+      [[ -t 0 ]] && stty -ixon
       autoload -Uz bracketed-paste-magic
       zle -N bracketed-paste bracketed-paste-magic
     ''

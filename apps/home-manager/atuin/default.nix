@@ -15,5 +15,6 @@
 
   programs.zsh.initContent = ''
     zvm_after_init_commands+=('eval "$(atuin init zsh --disable-up-arrow)"')
+    zvm_after_init_commands+=('bindkey -r "^S"')
   '';
 }

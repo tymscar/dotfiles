@@ -35,6 +35,7 @@ in
     ../../apps/home-manager/ghostty
     ../../apps/home-manager/vscode
     ../../apps/home-manager/ssh
+    ../../apps/home-manager/tmux
   ];
 
   programs.zsh.initContent = lib.mkAfter ''
