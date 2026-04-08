@@ -24,6 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlays.url = "github:nix-community/emacs-overlay";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,18 +43,28 @@
       homeManager,
       agenix,
       emacs-overlays,
+      treefmt-nix,
       ...
     }:
     let
+      nixosSystem = "x86_64-linux";
+      macosSystem = "aarch64-darwin";
+
+      treefmtEval =
+        system:
+        treefmt-nix.lib.evalModule (import nixpkgs { inherit system; }) {
+          projectRootFile = "flake.nix";
+          programs.nixfmt.enable = true;
+        };
+
       nixosDeviceConfig =
         device:
         let
-          system = "x86_64-linux";
           linuxUsername = "tymscar";
         in
         {
           "${device}" = nixpkgs.lib.nixosSystem {
-            inherit system;
+            system = nixosSystem;
             specialArgs = {
               inherit device;
               accountUsername = linuxUsername;
@@ -75,7 +89,7 @@
                   inherit device;
                   accountUsername = linuxUsername;
                   os = "linux";
-                  nix-vscode-extensions = nix-vscode-extensions.extensions.${system};
+                  nix-vscode-extensions = nix-vscode-extensions.extensions.${nixosSystem};
                 };
               }
             ];
@@ -85,12 +99,11 @@
       macosDeviceConfig =
         device:
         let
-          system = "aarch64-darwin";
           macUsername = if device == "fry" then "oscar.molnar" else "tymscar";
         in
         {
           "${device}" = nix-darwin.lib.darwinSystem {
-            inherit system;
+            system = macosSystem;
             specialArgs = {
               inherit device;
               accountUsername = macUsername;
@@ -133,7 +146,7 @@
                   inherit device;
                   accountUsername = macUsername;
                   os = "darwin";
-                  nix-vscode-extensions = nix-vscode-extensions.extensions.${system};
+                  nix-vscode-extensions = nix-vscode-extensions.extensions.${macosSystem};
                 };
               }
             ];
@@ -150,6 +163,11 @@
       ];
     in
     {
+      formatter = {
+        ${macosSystem} = (treefmtEval macosSystem).config.build.wrapper;
+        ${nixosSystem} = (treefmtEval nixosSystem).config.build.wrapper;
+      };
+
       nixosConfigurations = builtins.foldl' (
         acc: device: acc // nixosDeviceConfig device
       ) { } nixosDeviceNames;
