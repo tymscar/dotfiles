@@ -26,6 +26,8 @@ in
     enable = true;
     viAlias = true;
     vimAlias = true;
+    withPython3 = true;
+    withRuby = true;
 
     extraPackages = with pkgs; [
       code-minimap
@@ -34,8 +36,8 @@ in
       nil
       rust-analyzer
       clippy
-      nodePackages.typescript
-      nodePackages.typescript-language-server
+      typescript
+      typescript-language-server
     ];
 
     # list of possible plugins: https://github.com/NixNeovim/NixNeovimPlugins/blob/main/plugins.md

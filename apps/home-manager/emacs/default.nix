@@ -9,7 +9,8 @@
       alwaysEnsure = false;
       alwaysTangle = false;
       extraEmacsPackages =
-        epkgs: with epkgs; [
+        epkgs:
+        (with epkgs; [
           all-the-icons
           all-the-icons-dired
           all-the-icons-ibuffer
@@ -39,12 +40,14 @@
           treemacs-evil
           treemacs-projectile
           which-key
-          nodePackages.typescript-language-server
-          typescript
           emacs-all-the-icons-fonts
+        ])
+        ++ (with pkgs; [
+          typescript-language-server
+          typescript
           nil
           python3
-        ];
+        ]);
     })
   ];
 }

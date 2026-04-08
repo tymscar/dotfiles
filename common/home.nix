@@ -21,7 +21,7 @@
     lazygit
     lsd
     fastfetch
-    nixfmt-rfc-style
+    nixfmt
     p7zip
     cmatrix
     cargo
