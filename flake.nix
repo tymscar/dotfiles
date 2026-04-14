@@ -116,10 +116,10 @@
                   nur.overlays.default
                   (final: prev: {
                     aerospace = prev.aerospace.overrideAttrs (_old: rec {
-                      version = "0.21.0";
+                      version = "0.21.1";
                       src = prev.fetchzip {
                         url = "https://github.com/tymscar/AeroSpace/releases/download/v${version}/AeroSpace-v${version}.zip";
-                        sha256 = "sha256-fOSrG3sDDjuchZeaNRS1yySPtB5RUMLd0JyayfNrTOU=";
+                        sha256 = "sha256-9WjEdLwOO6CPJcWz8pjlytKZk0ILS/m2Kwb/xbleFBw=";
                       };
                       postInstall = ":";
                     });
