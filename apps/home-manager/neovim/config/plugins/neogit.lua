@@ -42,3 +42,12 @@ neogit.setup({
 vim.keymap.set("n", "<leader>gg", function()
   neogit.open({ kind = "replace" })
 end, { desc = "Open Git review" })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "NeogitStatus",
+  callback = function(args)
+    local opts = { buffer = args.buf, silent = true, remap = true }
+    vim.keymap.set("n", "n", "}", opts)
+    vim.keymap.set("n", "p", "{", opts)
+  end,
+})

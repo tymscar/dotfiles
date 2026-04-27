@@ -1,14 +1,9 @@
 { pkgs, lib, ... }:
 
 let
-  ultraWideWallpaper = builtins.fetchurl {
-    url = "https://w.wallhaven.cc/full/o5/wallhaven-o5rj2m.jpg";
-    sha256 = "sha256:1y9xwhlgxpzczcimb6zcvrs35mxym3hi8srhjn9zfw1b595i2kym";
-  };
-
-  macBookWallpaper = builtins.fetchurl {
-    url = "https://w.wallhaven.cc/full/o5/wallhaven-o5rj2m.jpg";
-    sha256 = "sha256:1y9xwhlgxpzczcimb6zcvrs35mxym3hi8srhjn9zfw1b595i2kym";
+  wallpaper = builtins.fetchurl {
+    url = "https://w.wallhaven.cc/full/1j/wallhaven-1jrd5g.jpg";
+    sha256 = "sha256-JDqWYWSf+RLLTvRNmBnFxjy9A+03Aj8nn8xXyfVMlcg=";
   };
 
   knownWallpapers = pkgs.stdenv.mkDerivation {
@@ -17,13 +12,13 @@ let
     buildCommand = ''
       mkdir -p $out/wallpapers
 
-      convert ${ultraWideWallpaper} \
-        -resize 3440x1440^ \
+      convert ${wallpaper} \
+        -resize 5120x2880^ \
         -gravity center \
-        -extent 3440x1440 \
-        $out/wallpapers/3440x1440.png
+        -extent 5120x2880 \
+        $out/wallpapers/5120x2880.png
 
-      convert ${macBookWallpaper} \
+      convert ${wallpaper} \
         -resize 3024x1964^ \
         -gravity center \
         -extent 3024x1964 \
