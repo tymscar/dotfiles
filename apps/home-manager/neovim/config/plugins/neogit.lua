@@ -47,7 +47,11 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "NeogitStatus",
   callback = function(args)
     local opts = { buffer = args.buf, silent = true, remap = true }
-    vim.keymap.set("n", "n", "}", opts)
-    vim.keymap.set("n", "p", "{", opts)
+    vim.schedule(function()
+      if vim.api.nvim_buf_is_valid(args.buf) then
+        vim.keymap.set("n", "n", "}", vim.tbl_extend("force", opts, { buffer = args.buf }))
+        vim.keymap.set("n", "N", "{", vim.tbl_extend("force", opts, { buffer = args.buf }))
+      end
+    end)
   end,
 })
