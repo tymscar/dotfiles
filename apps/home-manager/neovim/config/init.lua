@@ -1,13 +1,22 @@
-require('settings')
-require('colourscheme')
-require('keymaps')
-require('plugins.comment')
-require('plugins.nvim-tree')
-require('plugins.lualine')
-require('plugins.telescope')
-require('plugins.whichkey')
-require('plugins.lsp')
-require('plugins.cmp')
-require('plugins.treesitter')
-require('plugins.toggleterm')
-require('plugins.alpha')
+local modules = {
+  "settings",
+  "colourscheme",
+  "keymaps",
+  "plugins.comment",
+  "plugins.nvim-tree",
+  "plugins.lualine",
+  "plugins.telescope",
+  "plugins.whichkey",
+  "plugins.lsp",
+  "plugins.cmp",
+  "plugins.treesitter",
+  "plugins.gitsigns",
+  "plugins.neogit",
+}
+
+for _, mod in ipairs(modules) do
+  local ok, err = pcall(require, mod)
+  if not ok then
+    vim.notify("Failed to load " .. mod .. ": " .. err, vim.log.levels.WARN)
+  end
+end
