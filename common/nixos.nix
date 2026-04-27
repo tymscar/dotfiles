@@ -152,7 +152,7 @@ in
     git
     killall
     lsof
-    nixpkgs-fmt
+    nixfmt
     pciutils
     pinentry-gtk2
     wget

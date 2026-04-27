@@ -31,6 +31,8 @@
       "karabiner-elements"
       "switchresx"
       "macs-fan-control"
+      "bambu-studio"
+      "autodesk-fusion"
     ];
   };
 
