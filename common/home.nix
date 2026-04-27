@@ -3,6 +3,7 @@
 {
   imports = [
     ../apps/home-manager/git
+    ../apps/home-manager/lazygit
     ../apps/home-manager/neovim
     ../apps/home-manager/gpg
     ../apps/home-manager/zsh
@@ -18,7 +19,6 @@
     gnupg
     gotop
     htop
-    lazygit
     lsd
     fastfetch
     nixfmt
