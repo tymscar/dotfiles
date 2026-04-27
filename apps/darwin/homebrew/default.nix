@@ -18,7 +18,6 @@
       "arc"
       "coconutbattery"
       "cyberduck"
-      "opencode-desktop"
       "proxyman"
       "vlc"
     ];

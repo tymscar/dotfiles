@@ -28,6 +28,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    opencode-nix = {
+      url = "github:dominicnunez/opencode-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -44,6 +48,7 @@
       agenix,
       emacs-overlays,
       treefmt-nix,
+      opencode-nix,
       ...
     }:
     let
@@ -77,6 +82,7 @@
                   alacritty-theme.overlays.default
                   nur.overlays.default
                   emacs-overlays.overlays.default
+                  opencode-nix.overlays.default
                 ];
               }
               ./devices/${device}/configuration.nix
@@ -114,6 +120,7 @@
                   nixneovimplugins.overlays.default
                   alacritty-theme.overlays.default
                   nur.overlays.default
+                  opencode-nix.overlays.default
                   (final: prev: {
                     aerospace = prev.aerospace.overrideAttrs (_old: rec {
                       version = "0.21.1";

@@ -8,6 +8,7 @@
     ../../apps/home-manager/idea
     ../../apps/home-manager/ssh
     ../../apps/home-manager/tmux
+    ../../apps/home-manager/opencode
   ];
 
   home.packages = with pkgs; [
