@@ -28,6 +28,7 @@ in
     ../../common/home.nix
     ../../apps/darwin/wallpaper
     ../../apps/darwin/karabiner
+    ../../apps/home-manager/brightintosh
     ../../apps/home-manager/claude-code
     ../../apps/home-manager/codex
     ../../apps/home-manager/opencode
@@ -91,7 +92,6 @@ in
     raycast
     readline
     shfmt
-    slack
     sqlite
     tcl
     utm

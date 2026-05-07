@@ -4,6 +4,7 @@
     ../../common/home.nix
     ../../apps/darwin/wallpaper
     ../../apps/darwin/karabiner
+    ../../apps/home-manager/brightintosh
     ../../apps/home-manager/ghostty
     ../../apps/home-manager/idea
     ../../apps/home-manager/ssh
