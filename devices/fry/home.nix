@@ -37,6 +37,7 @@ in
     ../../apps/home-manager/vscode
     ../../apps/home-manager/ssh
     ../../apps/home-manager/tmux
+    ../../apps/darwin/airpods-nc-toggle
   ];
 
   programs.zsh.initContent = lib.mkAfter ''

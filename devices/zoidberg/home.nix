@@ -10,6 +10,7 @@
     ../../apps/home-manager/ssh
     ../../apps/home-manager/tmux
     ../../apps/home-manager/opencode
+    ../../apps/darwin/airpods-nc-toggle
   ];
 
   home.packages = with pkgs; [
