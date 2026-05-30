@@ -32,6 +32,9 @@
       url = "github:dominicnunez/opencode-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-cuda = {
+      url = "github:NixOS/nixpkgs/nixos-24.05";
+    };
   };
 
   outputs =
@@ -41,6 +44,7 @@
       nix-vscode-extensions,
       nix-darwin,
       nixpkgs,
+      nixpkgs-cuda,
       nur,
       nixneovimplugins,
       alacritty-theme,
@@ -73,6 +77,7 @@
             specialArgs = {
               inherit device;
               accountUsername = linuxUsername;
+              cudaNixPkgs = nixpkgs-cuda.legacyPackages.${nixosSystem};
             };
             modules = [
               agenix.nixosModules.default
@@ -163,6 +168,7 @@
       nixosDeviceNames = [
         "bender"
         "farnsworth"
+        "flexo"
       ];
       macosDeviceNames = [
         "zoidberg"

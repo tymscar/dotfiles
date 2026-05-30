@@ -411,6 +411,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-cuda": {
+      "locked": {
+        "lastModified": 1735563628,
+        "narHash": "sha256-OnSAY7XDSx7CtDoqNh8jwVwh4xNL/2HaJxGjryLWzX8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b134951a4c9f3c995fd7be05f3243f8ecd65d798",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1743296961,
@@ -571,11 +587,11 @@
     },
     "nixpkgs_9": {
       "locked": {
-        "lastModified": 1778161554,
-        "narHash": "sha256-XDN5T+I5MC1aAyBZ6ABRaBEVjgMqnXboGCiOsCfFZLw=",
+        "lastModified": 1778954541,
+        "narHash": "sha256-wA/GFzxI8/j5kroiPNsQQVu8qTSBHUQTiKU0+Uu7GrM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7855981dcedc28981ab49ded1125e2a4053f209e",
+        "rev": "3c5481784ad87946de118ab8bcae611a3bbdb608",
         "type": "github"
       },
       "original": {
@@ -664,6 +680,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixneovimplugins": "nixneovimplugins",
         "nixpkgs": "nixpkgs_9",
+        "nixpkgs-cuda": "nixpkgs-cuda",
         "nur": "nur",
         "opencode-nix": "opencode-nix",
         "treefmt-nix": "treefmt-nix_3"
