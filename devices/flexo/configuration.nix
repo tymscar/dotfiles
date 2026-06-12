@@ -55,7 +55,7 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi -i 0 -pl 125 && ${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi -i 1 -pl 125";
+      ExecStart = "${config.boot.kernelPackages.nvidiaPackages.legacy_535.bin}/bin/nvidia-smi -i 0 -pl 125 && ${config.boot.kernelPackages.nvidiaPackages.legacy_535.bin}/bin/nvidia-smi -i 1 -pl 125";
     };
     wantedBy = [ "multi-user.target" ];
   };
