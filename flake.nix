@@ -77,7 +77,7 @@
             specialArgs = {
               inherit device;
               accountUsername = linuxUsername;
-              cudaNixPkgs = nixpkgs-cuda.legacyPackages.${nixosSystem};
+              cudaNixPkgs = import nixpkgs-cuda { system = nixosSystem; config.allowUnfree = true; };
             };
             modules = [
               agenix.nixosModules.default
