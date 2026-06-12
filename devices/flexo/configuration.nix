@@ -48,6 +48,18 @@
     };
   };
 
+  systemd.services.nvidia-power-limit = {
+    description = "Set NVIDIA GPU power limits to 125W";
+    after = [ "nvidia-persistenced.service" ];
+    wants = [ "nvidia-persistenced.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi -i 0 -pl 125 && ${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi -i 1 -pl 125";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
   services.llamacpp = {
     enable = true;
     model = "/mnt/nas/llamacpp/model.gguf";
