@@ -10,7 +10,6 @@
         if ! ${pkgs.docker}/bin/docker network ls --filter name=^proxy$ --format \"{{ .Name }}\" | grep -q ^proxy$; then \
           ${pkgs.docker}/bin/docker network create proxy; \
         fi'";
-      ExecStop = "${pkgs.docker}/bin/docker network rm proxy";
       RemainAfterExit = true;
     };
     wantedBy = [ "multi-user.target" ];

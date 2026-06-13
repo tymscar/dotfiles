@@ -5,8 +5,12 @@
     after = [
       "network.target"
       "docker.service"
+      "docker-create-proxy-network.service"
     ];
-    wants = [ "docker.service" ];
+    wants = [
+      "docker.service"
+      "docker-create-proxy-network.service"
+    ];
     serviceConfig = {
       ExecStart = "${pkgs.docker}/bin/docker compose -f docker-compose.yml up --force-recreate";
       ExecStop = "${pkgs.docker}/bin/docker compose -f docker-compose.yml down";

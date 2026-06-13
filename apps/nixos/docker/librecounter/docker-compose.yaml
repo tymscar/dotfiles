@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   librecounter:
-    build: https://github.com/tymscar/librecounter.git#add-docker-support
+    build: https://github.com/alexfernandez/librecounter.git
     container_name: librecounter
     restart: unless-stopped
     ports:

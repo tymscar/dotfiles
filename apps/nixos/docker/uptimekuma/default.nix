@@ -9,10 +9,14 @@ in
     after = [
       "network.target"
       "docker.service"
+      "docker-create-proxy-network.service"
       "mnt-nas.mount"
     ];
     requires = [ "mnt-nas.mount" ];
-    wants = [ "docker.service" ];
+    wants = [
+      "docker.service"
+      "docker-create-proxy-network.service"
+    ];
     serviceConfig = {
       ExecStart = "${pkgs.docker}/bin/docker compose --env-file ${dockerEnv} -f docker-compose.yml up --force-recreate";
       ExecStop = "${pkgs.docker}/bin/docker compose -f docker-compose.yml down";

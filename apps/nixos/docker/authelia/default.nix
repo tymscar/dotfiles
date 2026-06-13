@@ -9,10 +9,14 @@ in
     after = [
       "network.target"
       "docker.service"
+      "docker-create-proxy-network.service"
       "mnt-nas.mount"
     ];
     requires = [ "mnt-nas.mount" ];
-    wants = [ "docker.service" ];
+    wants = [
+      "docker.service"
+      "docker-create-proxy-network.service"
+    ];
     serviceConfig = {
       inherit WorkingDirectory;
       ExecStart = pkgs.writeShellScript "authelia-start" ''
