@@ -3,7 +3,7 @@ let
   # and then I should rekey the secrets.age file using the agenix key stored in 1pass
   # nix run github:ryantm/agenix -- --rekey --identity /home/tymscar/.ssh/id_agenix  (assuming I have it saved there)
   one-password-agenix = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPeudL4pX9bw/g9apBN7uOBGjbqOJW/pxLKvZNiAMVWs";
-  farnsworth = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAe9FWKQXgkfRiGEw8P1ajzg5vx4Wg8c/5gMOLAyEGua";
+  farnsworth = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAcZ+TIgOlcTApDs9nRaECb/9cfsRXTIBVZLFrHAvw+p";
 in
 {
   # to edit the secrets file, just run
