@@ -111,6 +111,15 @@ http:
         - https-redirectscheme
       tls: {}
       service: ollama
+    jetkvm:
+      entryPoints:
+        - "https"
+      rule: "Host(`jetkvm.tymscar.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: jetkvm
 
   services:
     authelia:
@@ -158,6 +167,11 @@ http:
       loadBalancer:
         servers:
           - url: "http://10.0.0.105:11434"
+        passHostHeader: true
+    jetkvm:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.0.238:80"
         passHostHeader: true
 
   middlewares:
