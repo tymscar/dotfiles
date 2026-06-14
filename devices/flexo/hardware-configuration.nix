@@ -22,7 +22,10 @@
     "uas"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "nct6775" ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "nct6775"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {

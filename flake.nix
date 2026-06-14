@@ -35,6 +35,10 @@
     nixpkgs-cuda = {
       url = "github:NixOS/nixpkgs/nixos-24.05";
     };
+    tesla-fan-control = {
+      url = "github:tymscar/TeslaGPUFanControl/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -51,6 +55,7 @@
       homeManager,
       agenix,
       emacs-overlays,
+      tesla-fan-control,
       treefmt-nix,
       opencode-nix,
       ...
@@ -77,10 +82,14 @@
             specialArgs = {
               inherit device;
               accountUsername = linuxUsername;
-              cudaNixPkgs = import nixpkgs-cuda { system = nixosSystem; config.allowUnfree = true; };
+              cudaNixPkgs = import nixpkgs-cuda {
+                system = nixosSystem;
+                config.allowUnfree = true;
+              };
             };
             modules = [
               agenix.nixosModules.default
+              tesla-fan-control.nixosModules.default
               {
                 nixpkgs.overlays = [
                   nixneovimplugins.overlays.default

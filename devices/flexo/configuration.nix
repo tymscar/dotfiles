@@ -10,6 +10,7 @@
     ../../common/nixos.nix
     ./hardware-configuration.nix
     ../../apps/nixos/llamacpp
+    ../../apps/nixos/tesla-fan-control
   ];
 
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_6;
@@ -46,21 +47,6 @@
       package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
       nvidiaPersistenced = true;
     };
-  };
-
-  systemd.services.nvidia-power-limit = {
-    description = "Set NVIDIA GPU power limits to 125W";
-    after = [ "nvidia-persistenced.service" ];
-    wants = [ "nvidia-persistenced.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = [
-        "${config.boot.kernelPackages.nvidiaPackages.legacy_535.bin}/bin/nvidia-smi -i 0 --power-limit=125"
-        "${config.boot.kernelPackages.nvidiaPackages.legacy_535.bin}/bin/nvidia-smi -i 1 --power-limit=125"
-      ];
-    };
-    wantedBy = [ "multi-user.target" ];
   };
 
   services.llamacpp = {

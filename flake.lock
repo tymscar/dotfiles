@@ -683,6 +683,7 @@
         "nixpkgs-cuda": "nixpkgs-cuda",
         "nur": "nur",
         "opencode-nix": "opencode-nix",
+        "tesla-fan-control": "tesla-fan-control",
         "treefmt-nix": "treefmt-nix_3"
       }
     },
@@ -758,6 +759,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tesla-fan-control": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781460729,
+        "narHash": "sha256-9AZ9m0hZgvNOrXLXuShctFpPE0Qc3xdfsTDidshquU4=",
+        "owner": "tymscar",
+        "repo": "TeslaGPUFanControl",
+        "rev": "c70aac9e94b7113bad7a2fa89f677aeaa4e6824a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tymscar",
+        "ref": "nix",
+        "repo": "TeslaGPUFanControl",
         "type": "github"
       }
     },
