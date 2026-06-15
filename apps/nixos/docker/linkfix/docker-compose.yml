@@ -9,7 +9,7 @@ services:
       - LINKFIX_DEBUG=0
       - INSTAGRAM_FIX_URL=kkinstagram.com
       - PIXIV_FIX_URL=phixiv.net
-      - REDDIT_FIX_URL=rxddit.com
+      - REDDIT_FIX_URL=vxreddit.com
       - TIKTOK_FIX_URL=vxtiktok.com
       - TWITTER_FIX_URL=${TWITTER_FIX_URL}
       - YOUTUBE_FIX_URL=youtu.be
