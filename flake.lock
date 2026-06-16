@@ -769,16 +769,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1781460729,
-        "narHash": "sha256-9AZ9m0hZgvNOrXLXuShctFpPE0Qc3xdfsTDidshquU4=",
-        "owner": "tymscar",
+        "lastModified": 1781547307,
+        "narHash": "sha256-FWiRRtOtyMGiIuZuKcdGK8HVtN4llti+KzKUTFRQ30E=",
+        "owner": "unimatrix099",
         "repo": "TeslaGPUFanControl",
-        "rev": "c70aac9e94b7113bad7a2fa89f677aeaa4e6824a",
+        "rev": "d5fa98506b54ff690802714bc7cad9d81d5796d1",
         "type": "github"
       },
       "original": {
-        "owner": "tymscar",
-        "ref": "nix",
+        "owner": "unimatrix099",
+        "ref": "main",
         "repo": "TeslaGPUFanControl",
         "type": "github"
       }

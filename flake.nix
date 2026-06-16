@@ -36,7 +36,7 @@
       url = "github:NixOS/nixpkgs/nixos-24.05";
     };
     tesla-fan-control = {
-      url = "github:tymscar/TeslaGPUFanControl/nix";
+      url = "github:unimatrix099/TeslaGPUFanControl/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
