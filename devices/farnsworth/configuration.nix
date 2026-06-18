@@ -70,6 +70,28 @@
 
   swapDevices = pkgs.lib.mkForce [ ];
 
+  power.ups = {
+    enable = true;
+    mode = "netserver";
+    ups.mecups = {
+      driver = "nutdrv_qx";
+      port = "auto";
+      description = "MEC0003 UPS";
+      directives = [
+        "vendorid = 0001"
+        "productid = 0000"
+        "product = MEC0003"
+      ];
+    };
+    upsd.listen = [
+      {
+        address = "127.0.0.1";
+        port = 3493;
+      }
+    ];
+    upsmon.enable = false;
+  };
+
   fileSystems."/mnt/nas" = {
     device = "truenas-nfs.tymscar.com:/mnt/oasis/services";
     fsType = "nfs";
