@@ -39,6 +39,7 @@
       url = "github:unimatrix099/TeslaGPUFanControl/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
   outputs =
@@ -58,6 +59,7 @@
       tesla-fan-control,
       treefmt-nix,
       opencode-nix,
+      claude-code,
       ...
     }:
     let
@@ -135,6 +137,7 @@
                   alacritty-theme.overlays.default
                   nur.overlays.default
                   opencode-nix.overlays.default
+                  claude-code.overlays.default
                   (final: prev: {
                     aerospace = prev.aerospace.overrideAttrs (_old: rec {
                       version = "0.21.1";

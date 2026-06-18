@@ -18,6 +18,7 @@
     uv
     appcleaner
     bottom
+    claude-code
     pinentry_mac
     raycast
     rustc
