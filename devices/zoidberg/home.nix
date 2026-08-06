@@ -10,6 +10,7 @@
     ../../apps/home-manager/ssh
     ../../apps/home-manager/tmux
     ../../apps/home-manager/opencode
+    ../../apps/home-manager/claude-code
     ../../apps/darwin/airpods-nc-toggle
   ];
 
@@ -18,7 +19,6 @@
     uv
     appcleaner
     bottom
-    claude-code
     pinentry_mac
     raycast
     rustc

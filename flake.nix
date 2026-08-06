@@ -106,6 +106,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                home-manager.backupFileExtension = "hm-backup";
                 home-manager.users.tymscar = import ./devices/${device}/home.nix;
                 home-manager.extraSpecialArgs = {
                   inherit device;
@@ -165,6 +166,7 @@
                 home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                home-manager.backupFileExtension = "hm-backup";
                 home-manager.users.${macUsername} = import ./devices/${device}/home.nix;
                 home-manager.extraSpecialArgs = {
                   inherit device;

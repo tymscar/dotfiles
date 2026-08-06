@@ -18,3 +18,14 @@ sudo nixos-rebuild switch --flake "./dotfiles#bender"
 
 I am thinking through a better way of handling hardware configs, but because each install has a different set of UUIDs for each partition, I can't really automate that yet.
 After running those commands, all you have to do is reboot. If you want to use this for yourself, I would suggest changing the username, and SSH keys at least.
+
+For my macs (zoidberg and fry) it is a bit different, since nix-darwin has no installer. The first switch has to go through `nix run`, because `darwin-rebuild` is not on the PATH until it has run once.
+
+All you have to do before running these commands is to install [Nix](https://determinate.systems/nix).
+
+```bash
+git clone https://www.github.com/tymscar/dotfiles
+sudo -H nix run "nix-darwin/master#darwin-rebuild" -- switch --flake "./dotfiles#zoidberg"
+```
+
+After that first switch `darwin-rebuild` is installed, and the `switch` alias takes over for everything afterwards.

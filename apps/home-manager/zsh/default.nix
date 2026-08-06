@@ -10,7 +10,7 @@ let
     if specialArgs.os == "linux" then
       "sudo nixos-rebuild switch --flake '.#${specialArgs.device}'"
     else
-      "sudo nix run nix-darwin -- switch --flake '.#${specialArgs.device}'";
+      "sudo -H darwin-rebuild switch --flake '.#${specialArgs.device}'";
 in
 {
   programs.zsh = {
@@ -68,6 +68,7 @@ in
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    historyWidget.command = "";
   };
 
   home.packages = with pkgs; [ bat-extras.batman ];

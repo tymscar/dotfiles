@@ -1,20 +1,18 @@
-{ lib, ... }:
+{ ... }:
 
 {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "*" = {
-        forwardAgent = lib.mkForce true;
-        extraOptions = {
-          "IgnoreUnknown" = "UseKeychain";
-          "UseKeychain" = "yes";
-        };
+        ForwardAgent = true;
+        IgnoreUnknown = "UseKeychain";
+        UseKeychain = "yes";
       };
       "git.tymscar.com" = {
-        hostname = "git.tymscar.com";
-        port = 2222;
+        HostName = "git.tymscar.com";
+        Port = 2222;
       };
     };
   };

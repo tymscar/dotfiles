@@ -28,5 +28,7 @@
     rust-analyzer
   ];
 
+  manual.manpages.enable = false;
+
   home.stateVersion = "22.11";
 }

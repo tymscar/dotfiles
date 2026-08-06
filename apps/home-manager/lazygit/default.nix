@@ -17,9 +17,9 @@
         }
       ];
       git = {
-        pagers = [
+        diffRenderers = [
           {
-            pager = "${pkgs.delta}/bin/delta --dark --paging=never --true-color always --line-numbers";
+            command = "${pkgs.delta}/bin/delta --dark --paging=never --true-color always --line-numbers";
           }
         ];
       };
