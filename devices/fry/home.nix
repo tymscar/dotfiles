@@ -41,10 +41,19 @@ in
   ];
 
   programs.zsh.initContent = lib.mkAfter ''
-    eval "$(direnv hook zsh)"
     alias cloud_sql_proxy=cloud-sql-proxy
     alias bash=zsh
   '';
+
+  programs.zsh.profileExtra = ''
+    # OrbStack: command-line tools and integration
+    source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+  '';
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   home.sessionVariables = {
     USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
@@ -80,7 +89,6 @@ in
     bottom
     bruno-wrapped
     cmake
-    direnv
     docker-credential-gcr
     fastlane
     git-lfs

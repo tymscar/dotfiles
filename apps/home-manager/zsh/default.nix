@@ -21,6 +21,13 @@ in
       [[ -t 0 ]] && stty -ixon
       autoload -Uz bracketed-paste-magic
       zle -N bracketed-paste bracketed-paste-magic
+
+      # tmux clobbers TERM_PROGRAM=tmux; restore the real emulator so telemetry
+      # (e.g. Claude Code's OTEL terminal.type) reflects what the user is in.
+      if [[ -n "$TMUX" && -n "$GHOSTTY_BIN_DIR" ]]; then
+        export TERM_PROGRAM=ghostty
+        export TERM_PROGRAM_VERSION="''${''${GHOSTTY_BIN_DIR#*ghostty-bin-}%%/*}"
+      fi
     ''
     + (
       if specialArgs.os == "darwin" then

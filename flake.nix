@@ -40,6 +40,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     claude-code.url = "github:sadjow/claude-code-nix";
+    hop = {
+      url = "github:tymscar/Hop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -60,6 +64,7 @@
       treefmt-nix,
       opencode-nix,
       claude-code,
+      hop,
       ...
     }:
     let
@@ -113,6 +118,7 @@
                   accountUsername = linuxUsername;
                   os = "linux";
                   nix-vscode-extensions = nix-vscode-extensions.extensions.${nixosSystem};
+                  hop = hop.packages.${nixosSystem}.default;
                 };
               }
             ];
@@ -173,6 +179,7 @@
                   accountUsername = macUsername;
                   os = "darwin";
                   nix-vscode-extensions = nix-vscode-extensions.extensions.${macosSystem};
+                  hop = hop.packages.${macosSystem}.default;
                 };
               }
             ];

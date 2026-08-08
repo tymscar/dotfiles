@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, hop, ... }:
 let
   tmux-power = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "tmux-power";
@@ -25,7 +25,6 @@ in
 
     plugins = with pkgs.tmuxPlugins; [
       better-mouse-mode
-      tmux-fzf
       prefix-highlight
       resurrect
       continuum
@@ -34,6 +33,18 @@ in
     extraConfig = ''
       set -sg escape-time 10
       set -g focus-events on
+
+      # Enter copy mode without the awkward prefix-[ (prefix Escape; [ still works)
+      bind Escape copy-mode
+
+      # Vim-style copy mode + copy to macOS clipboard (pbcopy)
+      # tmux's vi default puts begin-selection on Space and rectangle-toggle on v;
+      # rebind so v starts a selection and C-v toggles block select, like vim.
+      bind -T copy-mode-vi v   send-keys -X begin-selection
+      bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+      bind -T copy-mode-vi y   send-keys -X copy-pipe-and-cancel "pbcopy"
+      bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
+      bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
 
       # https://old.reddit.com/r/tmux/comments/mesrci/tmux_2_doesnt_seem_to_use_256_colors/
       set -g status-position bottom
@@ -71,8 +82,8 @@ in
       # List all keybindings (help)
       bind ? list-keys
 
-      # tmux-fzf: search everything (sessions, windows, panes, commands)
-      bind / run-shell -b "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/main.sh"
+      # hop: project / branch / scratch launcher and session switcher
+      bind / display-popup -E -w 80% -h 80% "${hop}/bin/hop"
 
       # Allow faster key repetition for -r bindings
       set -sg repeat-time 500
@@ -82,7 +93,7 @@ in
       set -g @continuum-restore-on-start 'true'
 
       # tmux-resurrect: restore programs
-      set -g @resurrect-processes 'lazygit opencode'
+      set -g @resurrect-processes 'lazygit claude'
 
       # tmux-power options (must be set before sourcing)
       set -g @tmux_power_theme '#96aa6e'

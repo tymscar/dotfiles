@@ -86,11 +86,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1785979872,
-        "narHash": "sha256-Ot7+3tmqWgzeA1FLd+V7yYtk76J4kQPfD9IOShQeJyk=",
+        "lastModified": 1786159714,
+        "narHash": "sha256-Rm3yXcjHmoebdRA35SVy/AM9PsckDPPJkY+xGodiIHQ=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "15b3d255166a0e45b66f1f6f5b1ec8eeb6fc772c",
+        "rev": "9bf9ac959eaee3b06d6ef13f18a711ae64a581b4",
         "type": "github"
       },
       "original": {
@@ -127,11 +127,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1786015618,
-        "narHash": "sha256-t6GYY5k1Qil8wlD0XTEJLNSu5ohusfPjc69YikM9M7Q=",
+        "lastModified": 1786181470,
+        "narHash": "sha256-p5bA2Gv5e/gaPuOhWDi1jSdE4GWw7hoPPadHkicRbGQ=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "c4c7a77d52dcf0d9752d3f7c84979675ecfe3b0b",
+        "rev": "77dea4962acf3d4b365a87deacf1c05ed328805a",
         "type": "github"
       },
       "original": {
@@ -329,6 +329,26 @@
         "type": "github"
       }
     },
+    "hop": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786025979,
+        "narHash": "sha256-XoH5eFEk9cii8Uh1rKZP2/bu/4+0lN6DqfHczga7Th8=",
+        "owner": "tymscar",
+        "repo": "Hop",
+        "rev": "e996248ab8db5b675c226e765bf9f7db12c986c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tymscar",
+        "repo": "Hop",
+        "type": "github"
+      }
+    },
     "mac-app-util": {
       "inputs": {
         "cl-nix-lite": "cl-nix-lite",
@@ -399,11 +419,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1785985474,
-        "narHash": "sha256-UCNpNsNnsVoPwlgxEvw60Voeom2GxO8ys/fGLm9o9XQ=",
+        "lastModified": 1786154646,
+        "narHash": "sha256-MDOvpk7B1eImC2TQbz4KoqKtYnnXOznGHx+2KaTLJBE=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "c961461eab1c9009a66d86584332e56739703032",
+        "rev": "7c0ca0a27c2e7338e2c7d61599c0de4873081d7c",
         "type": "github"
       },
       "original": {
@@ -496,11 +516,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1785858998,
-        "narHash": "sha256-fKCq5jphd6l/Ms6gc3dptkw/TcKLYub9lQE5g6rbbkc=",
+        "lastModified": 1785989512,
+        "narHash": "sha256-HFQhkQcl5D1hUNoen3SGHCSFCt2Bg6uP+HgbrnA3InQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "04607e1165ac22c5fde6dcc54c9e0b3c0487c555",
+        "rev": "445d861c6d31b4af0c79d8d4be2331f762a361d7",
         "type": "github"
       },
       "original": {
@@ -512,11 +532,11 @@
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1786044038,
-        "narHash": "sha256-Ag7YxHh+mAYoAibFmkAWErAmGBNyvw0RJ8dbw/ewqKU=",
+        "lastModified": 1786204586,
+        "narHash": "sha256-TQPd06c9Hqmw8KnROkdfGje7UzeL3b+zMVAdQOnDk0E=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e189cf1e3d05026646496be23f9be5a6014a74e3",
+        "rev": "9f1dcdfa35fadc9fac352e88a7e8205cb4c27c8e",
         "type": "github"
       },
       "original": {
@@ -662,11 +682,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786046475,
-        "narHash": "sha256-8Ifu82SmzemIWQJTUoj3mqARG1Adhb0uwBAKldVwiRY=",
+        "lastModified": 1786203086,
+        "narHash": "sha256-FvG3atiyrL7lH5Yw4sIASzxlb04W8MK0C0+8zWQZn/M=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6298e4ca51b04d7342473a14342134372fefee06",
+        "rev": "84b33a4cd6e261aaa9f1c2ae632f01e2ca3fc801",
         "type": "github"
       },
       "original": {
@@ -683,11 +703,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785968154,
-        "narHash": "sha256-Oq/X8OeRUYiu1aOvXaIvlcSK+Ld8D2sONfbh/CgyndQ=",
+        "lastModified": 1786087512,
+        "narHash": "sha256-Gg+vI5259kwy94YVcKWbu05vrYRIIepGsBw0RQPdmwk=",
         "owner": "dominicnunez",
         "repo": "opencode-nix",
-        "rev": "7a57dc6d8ec1ad5cab498e05a1fa08bbb9178540",
+        "rev": "ee5d18c9c4c73a2a9adfaf2ea5b097a6f58ceb82",
         "type": "github"
       },
       "original": {
@@ -729,6 +749,7 @@
         "claude-code": "claude-code",
         "emacs-overlays": "emacs-overlays",
         "homeManager": "homeManager",
+        "hop": "hop",
         "mac-app-util": "mac-app-util",
         "nix-darwin": "nix-darwin",
         "nix-vscode-extensions": "nix-vscode-extensions",
