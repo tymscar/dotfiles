@@ -132,7 +132,10 @@ in
   config = lib.mkIf cfg.enable {
     systemd.services.llamacpp = {
       description = "llama.cpp server (CUDA)";
-      after = [ "network.target" "mnt-nas.mount" ];
+      after = [
+        "network.target"
+        "mnt-nas.mount"
+      ];
       requires = [ "mnt-nas.mount" ];
       wantedBy = [ "multi-user.target" ];
 

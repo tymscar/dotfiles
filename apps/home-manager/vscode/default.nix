@@ -9,7 +9,6 @@ in
     profiles.default = {
       extensions = with extensions-marketplace; [
         bbenoist.nix
-        dracula-theme.theme-dracula
         vscodevim.vim
         bruno-api-client.bruno
         mkhl.shfmt
@@ -22,7 +21,6 @@ in
         ms-python.python
       ];
       userSettings = {
-        "workbench.colorTheme" = "Dracula";
         "window.titleBarStyle" = "custom";
         "vim.useSystemClipboard" = true;
         "vim.leader" = "<space>";

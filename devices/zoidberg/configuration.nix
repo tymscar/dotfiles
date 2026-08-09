@@ -40,6 +40,7 @@
     loginwindow.LoginwindowText = "If found, contact oscar@tymscar.com for reward";
     dock = {
       persistent-apps = [
+        "/Applications/Orion.app"
         "/Applications/Arc.app"
         "/Applications/Discord.app"
         "/System/Applications/iPhone Mirroring.app"

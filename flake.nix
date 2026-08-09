@@ -8,7 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
-    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     homeManager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,7 +59,7 @@
       nixpkgs-cuda,
       nur,
       nixneovimplugins,
-      alacritty-theme,
+      catppuccin,
       homeManager,
       agenix,
       emacs-overlays,
@@ -100,7 +103,6 @@
               {
                 nixpkgs.overlays = [
                   nixneovimplugins.overlays.default
-                  alacritty-theme.overlays.default
                   nur.overlays.default
                   emacs-overlays.overlays.default
                   opencode-nix.overlays.default
@@ -109,6 +111,7 @@
               ./devices/${device}/configuration.nix
               homeManager.nixosModules.home-manager
               {
+                home-manager.sharedModules = [ catppuccin.homeModules.catppuccin ];
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.backupFileExtension = "hm-backup";
@@ -141,7 +144,6 @@
               {
                 nixpkgs.overlays = [
                   nixneovimplugins.overlays.default
-                  alacritty-theme.overlays.default
                   nur.overlays.default
                   opencode-nix.overlays.default
                   claude-code.overlays.default
@@ -169,7 +171,10 @@
               ./devices/${device}/configuration.nix
               homeManager.darwinModules.home-manager
               {
-                home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
+                home-manager.sharedModules = [
+                  mac-app-util.homeManagerModules.default
+                  catppuccin.homeModules.catppuccin
+                ];
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.backupFileExtension = "hm-backup";

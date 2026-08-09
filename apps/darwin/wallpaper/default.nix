@@ -2,8 +2,9 @@
 
 let
   wallpaper = builtins.fetchurl {
-    url = "https://w.wallhaven.cc/full/1j/wallhaven-1jrd5g.jpg";
-    sha256 = "sha256-JDqWYWSf+RLLTvRNmBnFxjy9A+03Aj8nn8xXyfVMlcg=";
+    name = "wallpaper.png";
+    url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/7bfdf10d16ad3a689f9f0cf3a0930da3d1a245a8/flowers-21.png";
+    sha256 = "sha256-Ox07pWnIW8F1go1QjUqpLzTY9LrP6P29QDlUJUu45os=";
   };
 
   knownWallpapers = pkgs.stdenv.mkDerivation {

@@ -32,11 +32,6 @@
     options = {
       dark = true;
       "line-numbers" = true;
-      "minus-style" = "syntax #3f0001";
-      "minus-emph-style" = "syntax #6f0000";
-      "plus-style" = "syntax #003800";
-      "plus-emph-style" = "syntax #005000";
-      "zero-style" = "syntax";
     };
   };
 }

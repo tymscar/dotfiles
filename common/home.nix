@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -10,16 +10,32 @@
     ../apps/home-manager/atuin
   ];
 
+  catppuccin = {
+    enable = true;
+    autoEnable = true;
+    flavor = "mocha";
+    accent = "mauve";
+    # apps/home-manager/tmux
+    tmux.enable = false;
+    # apps/home-manager/neovim
+    nvim.enable = false;
+    # apps/home-manager/polybar/config.ini
+    polybar.enable = false;
+  };
+
+  programs.bat.enable = true;
+  programs.lsd.enable = true;
+
+  home.sessionVariables.BAT_THEME = config.programs.bat.config.theme or "";
+
   home.packages = with pkgs; [
     man-pages
     man-pages-posix
-    bat
     tree
     ripgrep
     gnupg
     gotop
     htop
-    lsd
     fastfetch
     nixfmt
     p7zip

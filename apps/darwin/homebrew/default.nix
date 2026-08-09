@@ -18,8 +18,10 @@
       "arc"
       "coconutbattery"
       "cyberduck"
+      "orion"
       "proxyman"
       "vlc"
+      "zen"
     ];
     masApps = {
       "Slack" = 803453959;

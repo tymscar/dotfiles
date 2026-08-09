@@ -4,7 +4,6 @@
   programs.zed-editor = {
     enable = true;
     userSettings = {
-      theme = "Catppuccin Macchiato";
       features = {
         copilot = false;
       };

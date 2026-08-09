@@ -50,6 +50,7 @@ in
       with pkgs.vimExtraPlugins;
       with pkgs.vimPlugins;
       [
+        catppuccin-nvim
         comment-nvim
         diffview-nvim
         luasnip
@@ -65,18 +66,20 @@ in
         nvim-cmp
         nvim-lspconfig
         nvim-tree-lua
-        (nvim-treesitter.withPlugins (plugins: with plugins; [
-          tree-sitter-bash
-          tree-sitter-go
-          tree-sitter-json
-          tree-sitter-kotlin
-          tree-sitter-lua
-          tree-sitter-markdown
-          tree-sitter-nix
-          tree-sitter-rust
-          tree-sitter-typescript
-          tree-sitter-yaml
-        ]))
+        (nvim-treesitter.withPlugins (
+          plugins: with plugins; [
+            tree-sitter-bash
+            tree-sitter-go
+            tree-sitter-json
+            tree-sitter-kotlin
+            tree-sitter-lua
+            tree-sitter-markdown
+            tree-sitter-nix
+            tree-sitter-rust
+            tree-sitter-typescript
+            tree-sitter-yaml
+          ]
+        ))
         nvim-web-devicons
         plenary-nvim
         telescope-nvim

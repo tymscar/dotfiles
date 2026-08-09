@@ -14,11 +14,11 @@
           all-the-icons
           all-the-icons-dired
           all-the-icons-ibuffer
+          catppuccin-theme
           centaur-tabs
           company
           dashboard
           doom-modeline
-          dracula-theme
           elisp-autofmt
           evil
           evil-collection

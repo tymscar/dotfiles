@@ -64,8 +64,7 @@ in
       theme = "lambda";
     };
     shellAliases = {
-      ls = "lsd";
-      cat = "bat -p --theme 1337";
+      cat = "bat -p";
       vim = "nvim";
       switch = switchCommand;
       man = "batman";

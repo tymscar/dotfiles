@@ -96,12 +96,12 @@ in
       set -g @resurrect-processes 'lazygit claude'
 
       # tmux-power options (must be set before sourcing)
-      set -g @tmux_power_theme '#96aa6e'
-      set -g @tmux_power_g0 "#11140a"
-      set -g @tmux_power_g1 "#1a1e12"
-      set -g @tmux_power_g2 "#283020"
-      set -g @tmux_power_g3 "#3a4230"
-      set -g @tmux_power_g4 "#505a42"
+      set -g @tmux_power_theme '#cba6f7'
+      set -g @tmux_power_g0 "#1e1e2e"
+      set -g @tmux_power_g1 "#313244"
+      set -g @tmux_power_g2 "#45475a"
+      set -g @tmux_power_g3 "#585b70"
+      set -g @tmux_power_g4 "#6c7086"
       set -g @tmux_power_left_a '#{pane_current_path}'
       set -g @tmux_power_left_b '''
       set -g @tmux_power_right_y '#S'

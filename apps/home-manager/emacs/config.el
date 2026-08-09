@@ -127,8 +127,9 @@
 (setq dashboard-center-content t)
 (setq dashboard-items '((recents . 10) (projects . 5)))
 
-;; Dracula theme
-(load-theme 'dracula t)
+;; Catppuccin Mocha theme
+(setq catppuccin-flavor 'mocha)
+(load-theme 'catppuccin t)
 
 ;; All-the-icons
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
