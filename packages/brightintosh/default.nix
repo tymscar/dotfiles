@@ -20,7 +20,7 @@ let
     MACOSX_DEPLOYMENT_TARGET = "14.6";
 
     buildPhase = ''
-      export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+      export DEVELOPER_DIR=$(/usr/bin/xcode-select -p)
       export PATH=/usr/bin:/bin:$PATH
       export HOME=$TMPDIR/home
       mkdir -p "$HOME"
@@ -80,7 +80,7 @@ stdenvNoCC.mkDerivation {
   '';
 
   buildPhase = ''
-    export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+    export DEVELOPER_DIR=$(/usr/bin/xcode-select -p)
     export PATH=/usr/bin:/bin:$PATH
     export HOME=$TMPDIR/home
     mkdir -p "$HOME"
