@@ -23,8 +23,6 @@
       "vlc"
       "zen"
     ];
-    masApps = {
-      "Slack" = 803453959;
-    };
+    masApps = { };
   };
 }

@@ -17,6 +17,9 @@
       "firefox@developer-edition"
       "zen"
     ];
+    masApps = {
+      "Slack" = 803453959;
+    };
   };
 
   system.defaults = {

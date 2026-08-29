@@ -33,7 +33,11 @@
       "macs-fan-control"
       "bambu-studio"
       "autodesk-fusion"
+      "nordvpn"
     ];
+    masApps = {
+      "Amphetamine" = 937984704;
+    };
   };
 
   system.defaults = {

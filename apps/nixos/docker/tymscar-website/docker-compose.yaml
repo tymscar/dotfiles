@@ -2,10 +2,13 @@ version: '3'
 
 services:
   website:
-    image: nginx:alpine
+    image: node:24-alpine
     container_name: web-server-tymscarcom
+    command: node /site/server.mjs
+    environment:
+      - PORT=80
     volumes:
-      - /mnt/nas/tymscar-website/website:/usr/share/nginx/html:ro
+      - /mnt/nas/tymscar-website/site:/site:ro
     networks:
       - proxy
     restart: unless-stopped
