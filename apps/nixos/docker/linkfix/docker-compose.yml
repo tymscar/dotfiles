@@ -7,7 +7,7 @@ services:
       - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
       - LOCALE=en
       - LINKFIX_DEBUG=0
-      - INSTAGRAM_FIX_URL=kkinstagram.com
+      - INSTAGRAM_FIX_URL=instagram7.com
       - PIXIV_FIX_URL=phixiv.net
       - REDDIT_FIX_URL=vxreddit.com
       - TIKTOK_FIX_URL=vxtiktok.com

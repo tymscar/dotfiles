@@ -154,7 +154,7 @@ in
     lsof
     nixfmt
     pciutils
-    pinentry-gtk2
+    pinentry-gnome3
     wget
     gcc_multi
     traceroute
