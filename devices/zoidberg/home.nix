@@ -16,13 +16,13 @@
 
   home.packages = with pkgs; [
     _1password-cli
-    uv
     appcleaner
     bottom
+    ffmpeg
     pinentry_mac
     raycast
     rustc
+    uv
     yt-dlp
-    ffmpeg
   ];
 }

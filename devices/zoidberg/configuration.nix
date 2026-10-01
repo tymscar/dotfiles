@@ -5,6 +5,7 @@
 {
   imports = [
     ../../common/darwin.nix
+    ../../apps/darwin/tailscale
   ];
 
   homebrew = {

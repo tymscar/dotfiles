@@ -9,6 +9,7 @@
     ../../apps/nixos/b2-cleanup
     ../../apps/nixos/unifi-backup
     ../../apps/nixos/pihole-backup
+    ../../apps/nixos/tailscale
   ];
 
   networking.firewall = {
