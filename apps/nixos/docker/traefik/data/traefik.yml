@@ -11,6 +11,9 @@ entryPoints:
           scheme: https
   https:
     address: ":443"
+    transport:
+      respondingTimeouts:
+        readTimeout: 0
   mqtt:
     address: ":1883"
 serversTransport:
