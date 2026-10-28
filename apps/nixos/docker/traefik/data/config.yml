@@ -140,7 +140,7 @@ http:
     nas:
       loadBalancer:
         servers:
-          - url: "https://10.0.0.7:5001"
+          - url: "https://synology-nas.yak-pythagorean.ts.net:5001"
         passHostHeader: true
     truenas:
       loadBalancer:
