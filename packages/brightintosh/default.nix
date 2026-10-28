@@ -39,7 +39,7 @@ let
     '';
 
     installPhase = ''
-      rel=.build/${arch}-apple-macosx/release
+      rel=$(/usr/bin/swift build -c release --arch ${arch} --show-bin-path)
       mod=$out/include/KeyboardShortcuts.swiftmodule
 
       mkdir -p $out/lib $mod $out/resources

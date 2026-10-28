@@ -167,6 +167,11 @@
                         hash = "sha256-feEHK3LOycG2vKqQZfMrSkw+NY2yCFYK4RM4iodaV6Y=";
                       };
                     });
+                    appcleaner = prev.appcleaner.overrideAttrs (old: {
+                      postInstall = (old.postInstall or "") + ''
+                        rm -rf $out/Applications/__MACOSX
+                      '';
+                    });
                   })
                   emacs-overlays.overlays.default
                 ];
