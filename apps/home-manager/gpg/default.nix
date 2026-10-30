@@ -27,7 +27,7 @@
         enable = true;
         enableSshSupport = true;
         enableZshIntegration = true;
-        pinentryPackage = pkgs.pinentry-gnome3;
+        pinentry.package = pkgs.pinentry-gnome3;
         defaultCacheTtl = 60;
         maxCacheTtl = 120;
       }
