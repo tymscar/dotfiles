@@ -2,9 +2,9 @@ version: '3.5'
 
 services:
   atuin:
-    image: ghcr.io/atuinsh/atuin:v18.6.1
+    image: ghcr.io/atuinsh/atuin:18.24
     container_name: atuin
-    command: server start
+    command: start
     restart: unless-stopped
 
     volumes:
