@@ -15,13 +15,10 @@
     brews = [ ];
     casks = [
       "1password"
-      "arc"
       "coconutbattery"
       "cyberduck"
-      "orion"
       "proxyman"
       "vlc"
-      "zen"
     ];
     masApps = { };
   };

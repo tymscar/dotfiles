@@ -1,5 +1,6 @@
 {
   lib,
+  accountUsername,
   ...
 }:
 {
@@ -45,8 +46,7 @@
     loginwindow.LoginwindowText = "If found, contact oscar@tymscar.com for reward";
     dock = {
       persistent-apps = [
-        "/Applications/Orion.app"
-        "/Applications/Arc.app"
+        "/Users/${accountUsername}/Applications/Zen.app"
         "/Applications/Discord.app"
         "/System/Applications/iPhone Mirroring.app"
         "/System/Applications/System Settings.app"
@@ -54,6 +54,8 @@
       ];
     };
   };
+
+  launchd.user.envVariables.MOZ_LEGACY_PROFILES = "1";
 
   ids.gids.nixbld = 30000;
 }

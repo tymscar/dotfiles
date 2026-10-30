@@ -616,7 +616,8 @@
         "nur": "nur",
         "opencode-nix": "opencode-nix",
         "tesla-fan-control": "tesla-fan-control",
-        "treefmt-nix": "treefmt-nix_3"
+        "treefmt-nix": "treefmt-nix_3",
+        "zen-browser": "zen-browser"
       }
     },
     "systems": {
@@ -768,6 +769,29 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "homeManager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793309674,
+        "narHash": "sha256-d1Tvbgn//HQ3f1PDh/iIMEpvuUu9Lc4lJqiwGl18cY8=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "2656d974602749ca5594b133e3022a241ab5d4e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

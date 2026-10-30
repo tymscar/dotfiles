@@ -9,6 +9,7 @@
     ../../apps/home-manager/idea
     ../../apps/home-manager/ssh
     ../../apps/home-manager/tmux
+    ../../apps/home-manager/zen
     ../../apps/home-manager/opencode
     ../../apps/home-manager/claude-code
     ../../apps/darwin/airpods-nc-toggle

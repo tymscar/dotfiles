@@ -50,6 +50,13 @@
       url = "github:tymscar/Hop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "homeManager";
+      };
+    };
   };
 
   outputs =
@@ -71,6 +78,7 @@
       opencode-nix,
       claude-code,
       hop,
+      zen-browser,
       ...
     }:
     let
@@ -182,6 +190,7 @@
                 home-manager.sharedModules = [
                   mac-app-util.homeManagerModules.default
                   catppuccin.homeModules.catppuccin
+                  zen-browser.homeModules.beta
                 ];
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
@@ -193,6 +202,7 @@
                   os = "darwin";
                   nix-vscode-extensions = nix-vscode-extensions.extensions.${macosSystem};
                   hop = hop.packages.${macosSystem}.default;
+                  zen-browser = zen-browser.packages.${macosSystem}.beta-unwrapped;
                 };
               }
             ];
