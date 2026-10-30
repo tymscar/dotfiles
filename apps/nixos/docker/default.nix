@@ -21,6 +21,7 @@
     ./imgur-proxy
     ./immich
     ./forgejo
+    ./docker-update
   ];
 
   virtualisation.docker.enable = true;
