@@ -14,12 +14,9 @@ in
     };
   };
 
-  services.matter-server = {
+  services.matterjs-server = {
     enable = true;
-    extraArgs = {
-      listen-address = "127.0.0.1";
-      primary-interface = lanInterface;
-    };
+    extraArgs = [ "--primary-interface=${lanInterface}" ];
   };
 
   networking.firewall = {
