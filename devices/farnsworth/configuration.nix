@@ -19,6 +19,7 @@ in
     ../../apps/nixos/unifi-backup
     ../../apps/nixos/pihole-backup
     ../../apps/nixos/tailscale
+    ../../apps/nixos/thread-matter
   ];
 
   networking.firewall = {
