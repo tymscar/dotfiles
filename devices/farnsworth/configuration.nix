@@ -1,5 +1,14 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  utils,
+  ...
+}:
 
+let
+  zigbeeStick = "/dev/usb/by-id/Nabu_Casa_SkyConnect_v1.0_8ccdf013f48cec11a31769e883c5466d";
+  zigbeeStickUnit = "${utils.escapeSystemdPath zigbeeStick}.device";
+in
 {
   imports = [
     ../../common/nixos.nix
@@ -34,13 +43,21 @@
     };
   };
 
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_SERIAL}=="?*", SYMLINK+="usb/by-id/$env{ID_SERIAL}", TAG+="systemd"
+  '';
+
   systemd.services.homeassistant-vm = {
     description = "Home Assistant";
     after = [
       "network.target"
       "mnt-nas.mount"
+      zigbeeStickUnit
     ];
-    requires = [ "mnt-nas.mount" ];
+    requires = [
+      "mnt-nas.mount"
+      zigbeeStickUnit
+    ];
 
     serviceConfig = {
       ExecStart = ''
@@ -57,7 +74,7 @@
           -netdev user,id=net0,hostfwd=tcp::8123-:8123,hostfwd=tcp::22222-:22222,hostfwd=tcp::1883-:1883 \
           -device virtio-net-pci,netdev=net0,rombar=0 \
           -device qemu-xhci,id=xhci \
-          -device usb-host,bus=xhci.0,vendorid=0x10c4,productid=0xea60 \
+          -device usb-host,bus=xhci.0,hostdevice=${zigbeeStick} \
           -device usb-host,bus=xhci.0,vendorid=0x0a5c,productid=0x21ec \
           -nographic
       '';
